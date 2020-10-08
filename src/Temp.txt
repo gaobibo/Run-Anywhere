@@ -1,0 +1,3 @@
+https://cordova.apache.org/docs/en/9.x/guide/cli/index.html
+
+^ See this to download node, js... (needed to edit and run code)
