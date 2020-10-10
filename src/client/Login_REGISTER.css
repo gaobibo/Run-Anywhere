@@ -33,8 +33,20 @@ h2
     text-align: center;
 
     margin-top: 0;
-    margin-bottom: 200px;
+    margin-bottom: 50px;
     padding-top: 75px;
+}
+
+h3
+{
+    color: white;
+    font-size: 12px;
+    text-align: left;
+
+    margin-top: 0;
+    margin-bottom: 30px;
+    margin-left: 32px;
+    padding-top: 30px;
 }
 
 img
@@ -58,35 +70,46 @@ button
     border-radius: 4px;
 }
 
+input[type = "text"], input[type="password"]
+{
+    display: block;
+    margin-top: auto;
+    margin-bottom: 8px;
+    margin-left: 32px;
+    margin-right: 160px;
+    padding-right: 160px;
+    padding-bottom: 8px;
+
+}
+
+       
+
 #container
 {
     text-align: center;
 }
 
-#new-user
-{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 
-    padding: 5px 80px;
-}
-
-#sign-in, #guest
+#goback, #register
 {
     display: inline-block;
 
-    margin-top: 10x;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 68px;
+    
 }
 
-#sign-in
+#goback
 {
-    margin-right: 28px;
-    padding: 5px 49px;
+    margin-right: 6px;
+    padding: 5px 46px;
+   
 }
 
-#guest
+#register
 {
-    padding: 5px 12px;
+
+    margin-left: 6px;
+    padding: 5px 46px;
+ 
 }
