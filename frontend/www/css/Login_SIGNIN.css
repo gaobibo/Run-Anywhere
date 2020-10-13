@@ -1,0 +1,115 @@
+body
+{
+    font-family: 'Sen', sans-serif;
+
+    max-width: 375px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header
+{
+    background-color: #21e3ec;
+}
+
+main
+{
+    background-color: #4bbf6e;
+}
+
+h1
+{
+    color: white;
+    font-size: 48px;
+    text-align: center;
+
+    padding-top: 20px;
+}
+
+h2
+{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+
+    margin-top: 0;
+    margin-bottom: 50px;
+    padding-top: 75px;
+}
+
+h3
+{
+    color: white;
+    font-size: 12px;
+    text-align: left;
+
+    margin-top: 0;
+    margin-bottom: 30px;
+    margin-left: 32px;
+    padding-top: 30px;
+}
+
+img
+{
+    width: 85px;
+    height: 85px;
+
+    display: block;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button
+{
+    background-color: white;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+}
+
+input[type = "text"], input[type="password"]
+{
+    display: block;
+    margin-top: auto;
+    margin-bottom: 8px;
+    margin-left: 32px;
+    margin-right: 160px;
+    padding-right: 160px;
+    padding-bottom: 8px;
+
+}
+
+       
+
+#container
+{
+    text-align: center;
+}
+
+
+#goback, #login
+{
+    display: inline-block;
+
+    margin-top: 20px;
+    margin-bottom: 68px;
+    
+}
+
+#goback
+{
+    margin-right: 6px;
+    padding: 5px 48px;
+   
+}
+
+#login
+{
+
+    margin-left: 6px;
+    padding: 5px 50px;
+ 
+}
