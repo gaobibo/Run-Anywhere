@@ -124,9 +124,9 @@ function signUp(){
             }
             firebaseRef.child(uid).set(userData);*/
             alert("success signup")
-/*            setTimeout(function(){
-                    window.location.replace("../index.html");
-                }, 1000);*/
+            setTimeout(function(){
+                window.location.replace("../races/race_map.html");
+            }, 1000);
             
         }).catch((error) => {
             // Handle Errors here.
@@ -188,6 +188,9 @@ function signIn(){
         console.log("bibi");
         firebase.auth().signInWithEmailAndPassword(userSIEmail, userSIPassword).then((success) => {
             alert("Succesfully signed in");
+            setTimeout(function(){
+                    window.location.replace("../races/race_map.html");
+                }, 1000);
         }).catch((error) => {
             // Handle Errors here.
             var errorCode = error.code;
