@@ -1,18 +1,3 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyCBGaRnSWZYSthvaDcyjJDWIYyncaEhB7c",
-    authDomain: "runanywhere-4441e.firebaseapp.com",
-    databaseURL: "https://runanywhere-4441e.firebaseio.com",
-    projectId: "runanywhere-4441e",
-    storageBucket: "runanywhere-4441e.appspot.com",
-    messagingSenderId: "41229694585",
-    appId: "1:41229694585:web:89287ad59749273aa706a8",
-    measurementId: "G-33FQCTYJ01"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
-
 // xxxxxxxxxx Working For Sign Up Form xxxxxxxxxx
 // xxxxxxxxxx Full Name Validation xxxxxxxxxx
 function checkUserFullName(){
@@ -82,60 +67,7 @@ function checkUserBio(){
         document.getElementById("userBioError").style.display = "none";
     }
 }
-// xxxxxxxxxx Submitting and Creating new user in firebase authentication xxxxxxxxxx
-function signUp(){
-    //var userSurname = document.getElementById("userSurname").value;
-    var userEmail = document.getElementById("userEmail").value;
-    var userPassword = document.getElementById("userPassword").value;
-    var userFullNameFormate = /^([A-Za-z.\s_-])/;    
-    var userEmailFormate = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var userPasswordFormate = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}/;      
-    
-    //var checkUserFullNameValid = userFullName.match(userFullNameFormate);
-    var checkUserEmailValid = userEmail.match(userEmailFormate);
-    var checkUserPasswordValid = userPassword.match(userPasswordFormate);
-    /*
-    if(checkUserFullNameValid == null){
-        return checkUserFullName();
-    }else if(userSurname === ""){
-        return checkUserSurname();
-    }else if(checkUserEmailValid == null){
-        return checkUserEmail();
-    }else if(checkUserPasswordValid == null){
-        return checkUserPassword();
-    }else*/{
-        firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).then((success) => {
-            var user = firebase.auth().currentUser;
-            var uid;
-            if (user != null) {
-                uid = user.uid;
-            }
-            /*
-            var firebaseRef = firebase.database().ref();
-            var userData = {
-                userFullName: userFullName,
-                userSurname: userSurname,
-                userEmail: userEmail,
-                userPassword: userPassword,
-                userFb: "https://www.facebook.com/",
-                userTw: "https://twitter.com/",
-                userGp: "https://plus.google.com/",
-                userBio: "User biography",
-            }
-            firebaseRef.child(uid).set(userData);*/
-            alert("success signup")
-            setTimeout(function(){
-                window.location.replace("../races/race_map.html");
-            }, 1000);
-            
-        }).catch((error) => {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(errorMessage);
-        });
-    }
-}
+
 // xxxxxxxxxx Working For Sign In Form xxxxxxxxxx
 // xxxxxxxxxx Sign In Email Validation xxxxxxxxxx
 function checkUserSIEmail(){
@@ -169,49 +101,3 @@ function checkUserSIPassword(){
         document.getElementById("userSIPasswordError").style.display = "none";
     }
 }
-// xxxxxxxxxx Check email or password exsist in firebase authentication xxxxxxxxxx    
-function signIn(){
-    console.log("bibi2");
-    var userSIEmail = document.getElementById("userSIEmail").value;
-    var userSIPassword = document.getElementById("userSIPassword").value;
-    var userSIEmailFormate = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var userSIPasswordFormate = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}/;      
-    console.log(userSIEmail);
-    var checkUserEmailValid = userSIEmail.match(userSIEmailFormate);
-    var checkUserPasswordValid = userSIPassword.match(userSIPasswordFormate);
-/*
-    if(checkUserEmailValid == null){
-        return checkUserSIEmail();
-    }else if(checkUserPasswordValid == null){
-        return checkUserSIPassword();
-    }else*/{
-        console.log("bibi");
-        firebase.auth().signInWithEmailAndPassword(userSIEmail, userSIPassword).then((success) => {
-            alert("Succesfully signed in");
-            setTimeout(function(){
-                    window.location.replace("../races/race_map.html");
-                }, 1000);
-        }).catch((error) => {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-           
-            alert(errorMessage);
-        });
-    }
-}
-
-
-// xxxxxxxxxx Working For Sign Out xxxxxxxxxx
-function signOut(){
-    firebase.auth().signOut().then(function() {
-        // Sign-out successful.
-        alert("Signed Out");
-    }).catch(function(error) {
-        // An error happened.
-        let errorMessage = error.message;
-        alert( errorMessage);
-    });
-}
-
-

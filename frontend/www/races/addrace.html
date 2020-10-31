@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create a Race</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/addrace.css" />
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+    <script type="text/javascript" src="../js/data_opr.js"></script>
+    <script type="text/javascript" src="../js/footer.js"></script>
+   
+
+    <!--
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=[API_KEY]&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+
+   -->
+    
+  </head>
+  <body>
+    <div class="testbox">
+      <div class="yongs">
+        <div class="banner">
+          <h1>Create a Race</h1>
+        </div>
+        <p class="top-info">Welcome, race director!</p>
+        <div class="item">
+          <p>Name<span class="required">*</span></p>
+          <div class="name-item">
+            <input type="text" id="raceName" value="test" required/>
+          </div>
+          <div class="item">
+            <p>Description</p>
+            <textarea rows="5" id="raceDescription"></textarea>
+          </div>
+          <div class="item">
+            <p>Capacity<span class="required">*</span></p>
+            <div class="name-item">
+              <input type="text" id="capactity" value="123" required/>
+            </div>
+          </div>
+          <div class="item">
+            <p>Distance<span class="required">*</span></p>
+            <div class="name-item">
+              <input type="text" id="distance" value="42" required/>
+            </div>
+          </div>
+          <div class="item">
+            <p>Event Day<span class="required">*</span></p>
+            <input type="date" id="eventday" value="2020-10-12" required/>
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="item">
+            <p>Start Time<span class="required">*</span></p>
+            <input type="time" id="startdttm" value="08:12:00" required/>
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="item">
+            <p>Submit your logo image URL or attach file:</p>
+            <input type="text" id="imagePath"/>
+            <input type="file" name="file" accept="file/(*.JPG|*.PNG)">
+            <input type="button" id="takePhoto" data-icon="camera" value="Take Photo" />
+          </div>
+          <div class="item">  
+            <input type="button" id="selectStart" data-icon="map" value="Start Address" onclick="document.location='race_map.html'" />
+            <input type="text" id="startLatLng"/>
+            <!--
+            <iframe
+              height="450" 
+              frameborder="0" style="border:0"
+              onclick="selectAddress()"
+              src="https://www.google.com/maps/embed/v1/place?key=[API_KEY]
+              &q=Space+Needle,Seattle+WA" allowfullscreen>
+            </iframe> 
+        -->  
+          </div>
+          <div class="item">
+            <p>Submit your GPX URL :</p>
+            <input type="url" id="gpxFile"/>
+          </div>
+        </div>
+        <div class="btn-block">
+          <button id="addRace" onclick="addRace()">Create a Race</button>
+        </div>
+      
+      </div>
+
+      
+    </div>
+
+  </body>
+</html>
+
+

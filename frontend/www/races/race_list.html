@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Race List</title>
+    <link rel = "stylesheet" href = "../css/race_list.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script type="text/javascript" src="race_list.js"></script>
+    <script type="text/javascript" src="../js/data_opr.js"></script>
+    <script type="text/javascript" src="../js/footer.js"></script>
+  </head>
+  <body onload="getRacesForList()">
+    <h2>My created race list:</h2>
+    <div>
+        <ul id="dynamic-list">
+          
+        </ul>
+      </div>
+  </body>
+</html>

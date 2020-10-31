@@ -1,6 +1,6 @@
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-       #map {
+       #map-canvas{
         height: 100%;
       }
       
@@ -60,7 +60,7 @@
       #pac-input {
         background-color: #fff;
         font-family: Roboto;
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 300;
         margin-left: 12px;
         padding: 0 11px 0 13px;

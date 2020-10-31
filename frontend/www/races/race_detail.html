@@ -4,28 +4,67 @@
        
         <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
         <link href = "https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel = "stylesheet">
-        <link rel = "stylesheet" href = "../css/Login_MAIN.css">
+        
     
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+        <link rel = "stylesheet" href = "../css/race_detail.css">
+        <script type="text/javascript" src="codova.js"></script>
+
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=[API_KEY]&callback=initMap&libraries=places&v=weekly"
+        defer
+        ></script>
+        <script type="text/javascript" src="../js/map_opr.js"></script>
+     
+         <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+        
+        <script type="text/javascript" src="race_detail.js"></script>
+        <script type="text/javascript" src="../js/data_opr.js"></script>
+        <script type="text/javascript" src="../js/footer.js"></script>
+
+       
         <title>Race Detail</title>
     </head>
-    <body>
-
-        <header>
-            <h1> Run Anywhere </h1>
-    
-            <img src = "https://cdn.pixabay.com/photo/2017/09/25/15/37/hurry-up-2785528__340.png" alt = "App Logo">
-        </header>
-    
-        <main>
-            <h2> Finding runners and races near you. </h2>
-    
-            <br>
-    
-            <div id = "container">
-           </div>
-        </main>
-
-        <script src="cordova.js"></script>
-        <script src="../js/index.js"></script>
+    <body onload="getCurrentRace()">
+        <div class="main-block">
+            <div class="left-part">
+              <img id="raceLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Chicago_Marathon_logo_%28gradient%29.svg/1200px-Chicago_Marathon_logo_%28gradient%29.svg.png"/>
+              <h1 id="raceName">Loading</h1>
+              <h2 id="capactity"></h2>
+              <h2 id="distance"></h2>
+              <h2 id="eventTime"></h2>
+              <p id="raceDescription"></p>
+              
+              <div class="btn-group">
+                <a class="btn-item" onclick="registerRace()">Register</a>
+                <a class="btn-item" onclick="">Invite Friends</a>
+              </div>
+             
+              <!--
+              <iframe
+              height="450" width="100%"
+              frameborder="0" style="border:0"
+              onclick="selectAddress()"
+              src="https://www.google.com/maps/embed/v1/place?key=[API_KEY]
+              &q=Space+Needle,Seattle+WA" allowfullscreen>
+            </iframe> 
+            -->
+            </div>
+            <div id="map-canvas"></div> 
+          </div>
     </body>
 </html>
