@@ -11,9 +11,15 @@ function getCurrentRace()
 }
 
 function registerRace()
-{
+{ 
+    addRegister(raceId);
+    document.getElementById("registerRace").setAttribute("disable", true);
     
-    addRegistear(raceId);
+}
+
+
+function inviteFriends()
+{
     
 }
 

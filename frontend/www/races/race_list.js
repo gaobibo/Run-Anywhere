@@ -20,7 +20,7 @@ function openPage(pageName, elmnt) {
 }
   
   // Get the element with id="defaultOpen" and click on it
-  document.getElementById("defaultOpen").click();
+ // document.getElementById("defaultOpen").click();
 
 function handleClickEvent()
 {
@@ -45,6 +45,7 @@ function filterFunction() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("listSearch");
     filter = input.value;//.toUpperCase(); 
+    console.log(filter);
     queryRaceName(filter);
     
   }
@@ -53,7 +54,7 @@ function filterFunction() {
 
 
 function addItem(raceId, raceData){
-    console.log(raceData);
+    //console.log(raceData);
     var ul = document.getElementById("dynamic-list");
     
     var li = document.createElement("li");
