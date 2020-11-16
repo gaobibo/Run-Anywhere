@@ -6,21 +6,43 @@ function getCurrentRace()
 	var temp = parameters[0].split("="); 
     raceId = unescape(temp[1]); 
     console.log(raceId);
-    getRace(raceId);
+    getRace(raceId, function(snap){
+        setContent( snap.val());
+    });
+
+    isMyRegisterRace(raceId, function(){
+        document.getElementById("registerRace").style.display = "none";
+        document.getElementById("dropRace").style.display = "block";
+    });
     
 }
 
 function registerRace()
 { 
     addRegister(raceId);
-    document.getElementById("registerRace").setAttribute("disable", true);
+    document.getElementById("registerRace").style.display = "none";
+    document.getElementById("dropRace").style.display = "block";
+   
+}
+
+function dropRace()
+{ 
+    
+    cancelRegister(raceId);
+    document.getElementById("registerRace").style.display = "block";
+    document.getElementById("dropRace").style.display = "none";
     
 }
+
 
 
 function inviteFriends()
 {
     
+}
+
+function goBack() {
+    window.history.back();
 }
 
 
