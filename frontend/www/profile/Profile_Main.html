@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+    <link href = "https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel = "stylesheet">
+    <link rel = "stylesheet" href = "../css/Profile_Main.css">
+    <title>Profile</title>
+    <link rel = "stylesheet" href = "../css/race_list.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script type="text/javascript" src="race_list.js"></script>
+    <script type="text/javascript" src="../js/data_opr.js"></script>
+    <script type="text/javascript" src="../js/footer.js"></script>
+  </head>
+  <body>
+    <header>
+        <button id = "stats"> My Stats </button>
+        <button id = "edit"> Edit Profile </button>
+      
+    </header>  
+    <main>
+        
+        <div class="column-layout">
+            <div class="dot"></div>
+            <div class="two">
+               <p>Name:</p> 
+               <p>Email:</p> 
+            </div>
+            <div class="three">
+               <p>Person McRunner</p>
+               <p>personmcr@gmail.com</p>
+            </div>
+        </div>
+        <h2> Your Races: 
+        <a class="article-title" href="race_detail.html" id="childSnapshot.key + raceData.raceName" ></a>
+    
+        </h2>
+        <h2> Upcoming Races: </h2>
+        <h2> Past Races: </h2>
+
+    </main>
+  </body>
+</html>

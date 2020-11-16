@@ -1,0 +1,97 @@
+body
+{
+    font-family: 'Sen', sans-serif;
+    max-width: 375px;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-top: 20px;
+}
+
+header
+{
+    background-color: #21e3ec;
+}
+
+main
+{
+    background-color: #4bbf6e;
+}
+h2
+{
+    color: white;
+    font-size: 16px;
+    font-family: 'Sen', sans-serif;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    margin-left: 10px;
+    display: block;
+}
+button
+{
+    background-color: #21e3ec;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+    margin-top: 30px;
+    color:  white;
+    border: 1px solid #21e3ec;
+    border-radius: 4px;
+}
+
+
+#stats, #edit
+{
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#stats
+{
+    margin-left: 16px;
+}
+
+#edit
+{
+    margin-left: 180px;
+}
+
+.column-layout{
+    display:flex;
+    max-width: 376px;
+}
+.dot {
+    height: 80px;
+    width: 80px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 8px;
+    padding-top: 20px;
+    flex: 1;
+}    
+
+.two{
+    color: white;
+    font-size: 12px;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 40px;
+    margin-left: 16px;
+    flex: .5;
+
+}
+   
+.three{
+    color: white;
+    font-size: 12px;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 40px;
+    margin-right: 20px;
+    flex: 2;
+
+}
