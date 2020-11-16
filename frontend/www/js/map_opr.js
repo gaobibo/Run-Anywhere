@@ -70,12 +70,6 @@ function initMap()
     });
   }
 
-  function raceDetail(raceId ) {
-    setTimeout(function(){
-        window.location.replace("../races/race_detail.html?id=" + raceId );
-        }, 1000);
-    }
-
   function setRoute(kmlPath)
   {
     //loadGPXFileIntoGoogleMap(map, "https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml");
@@ -107,20 +101,34 @@ function initMap()
                 type: "poly",
             };
             */
-
-        var marker2 = new google.maps.Marker({
-        position: raceData.startLatLng,
-        map:map,
-        icon: image,
-        animation: google.maps.Animation.BOUNCE,
-        title: raceData.raceName,
-        label: {
-            fontWeight: "bold",
-            color: "#4bbf6e",
-            text:raceData.raceName
-            }
-        });
-        marker2.addListener("click", raceDetail(raceId));
+        var arr = raceData.startLatLng.split(",");
+        if( arr.length >= 2 ){
+          var lat = parseFloat(arr[0]);
+          var lang = parseFloat(arr[1]);
+          console.log(lat);
+          console.log(lang);
+      
+          var latlng = new google.maps.LatLng(lat, lang);
+  
+          
+          var marker2 = new google.maps.Marker({
+          position: latlng,
+          map:map,
+          icon: image,
+          animation: google.maps.Animation.BOUNCE,
+          title: raceData.raceName,
+          label: {
+              fontWeight: "bold",
+              color: "#4bbf6e",
+              text:raceData.raceName
+              }
+          });
+          google.maps.event.addListener(marker2, 'click', ()=>{
+            setTimeout(function(){
+              window.location.replace("../races/race_detail.html?id=" + raceId );
+              }, 1000);
+          });
+        }      
 
   }
 
@@ -171,6 +179,9 @@ function initMap()
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener("places_changed", () => {
+      var iconShowingMode = document.getElementById("showingMode");
+
+      
         const places = searchBox.getPlaces();
 
         if (places.length == 0) {

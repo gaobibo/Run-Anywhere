@@ -143,7 +143,7 @@ function signIn(){
         }
         alert("Succesfully signed in");
         setTimeout(function(){
-            window.location.replace("../races/races.html");
+            window.location.replace("../races/races_map.html");
         }, 1000);
         }).catch((error) => {
             // Handle Errors here.
@@ -206,7 +206,7 @@ function addRaceTest()
     imagePath, eventday,startdttm,capactity, distance, startLatLng, gpxFile, true);
       
     setTimeout(function(){
-        window.location.replace("../races/races.html");
+        window.location.replace("../races/races_map.html");
     }, 1000);
 
   }
@@ -453,8 +453,13 @@ function addRaceTest()
     }
     var firebaseRef = firebase.database().ref();
     var participatesRef = firebaseRef.child("participates");
-    var registerRef = participatesRef.orderByChild("uid").equalTo(uid);
-    registerRef.orderByChild("raceId").equalTo(raceId).remove();
+    participatesRef.orderByChild("uid").equalTo(uid).once("value", function(snapshot) {
+        snapshot.forEach( childSnapshot => {
+            if( childSnapshot.val().raceId == raceId )
+                participatesRef.child("participates/" + childSnapshot.key).remove();
+            });
+        }); 
+   
    }
 
    function Unfollow(peopleId){
@@ -466,8 +471,12 @@ function addRaceTest()
     }
     var firebaseRef = firebase.database().ref();
     var fellowsRef = firebaseRef.child("follows");
-    var fellowRef = fellowsRef.orderByChild("uid").equalTo(uid);
-    fellowRef.orderByChild("FollowId").equalTo(peopleId).remove();
+    fellowsRef.orderByChild("uid").equalTo(uid).once("value", function(snapshot) {
+        snapshot.forEach( childSnapshot => {
+            if( childSnapshot.val().FollowId == peopleId )
+            fellowsRef.child("follows/" + childSnapshot.key).remove();
+            });
+        }); 
    }
 
    function removeInvite(peopleId){
@@ -479,8 +488,12 @@ function addRaceTest()
     }
     var firebaseRef = firebase.database().ref();
     var invitesRef = firebaseRef.child("invites");
-    var inviteRef = invitesRef.orderByChild("uid").equalTo(uid);
-    inviteRef.orderByChild("followId").equalTo(peopleId).remove();
+    invitesRef.orderByChild("uid").equalTo(uid).once("value", function(snapshot) {
+        snapshot.forEach( childSnapshot => {
+            if( childSnapshot.val().FollowId == peopleId )
+            fellowsRef.child("invites/" + childSnapshot.key).remove();
+            });
+        }); 
    }
 
 
@@ -499,18 +512,22 @@ function addRaceTest()
     });
   }
 
-  function getRacesForShowing()
+  function getRaces3(cb)
   {
-    getRaces( function(childSnapshot) {
-          addItem( childSnapshot.key ,childSnapshot.val() );
-          //setRacesMarker( childSnapshot.key ,childSnapshot.val());
-      });
-    
+    let user = firebase.auth().currentUser;
+    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    if(user != null){
+        uid = user.uid;
+        console.log(uid);
+    }
+    console.log(uid);
+    var query = firebase.database().ref("races");
+    query.once("value", cb);
   }
 
   function getRacesForShowing3()
   {
-    getRaces( snapshot => {
+    getRaces3( snapshot => {
         snapshot.forEach(function(childSnapshot) {
           addItem( childSnapshot.key ,childSnapshot.val() );
           //setRacesMarker( childSnapshot.key ,childSnapshot.val());
@@ -559,15 +576,7 @@ function addRaceTest()
     });
   }
 
-  function loadRaces()
-  {
-    getRacesForShowing();
-    //getRacesForMap();
-    document.getElementById("defaultOpen").click();
-    
-    testAPI();
-}
-
+ 
 
   function getRace2(raceID)
   {
@@ -615,13 +624,7 @@ function addRaceTest()
     });
   }
 
-  function queryRaceName( raceName )
-  {
-    searchRaceByName(raceName, childSnapshot => {
-            setDropList( childSnapshot.key ,childSnapshot.val());
-      });
-  }
-
+  
 
     function getFollows(cb)
     {
@@ -662,6 +665,22 @@ function addRaceTest()
         });
     }
 
+    function isMyRegisterRace( raceId,cb ){
+        let user = firebase.auth().currentUser;
+        let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+        if(user != null){
+            uid = user.uid;
+            console.log(uid);
+        }
+        var firebaseRef = firebase.database().ref();
+        var participatesRef = firebaseRef.child("participates");
+        participatesRef.orderByChild("uid").equalTo(uid).on("child_added", snap => {
+            if( raceId == snap.val().raceId )
+                cb();
+          });
+    }
+
+    
 
 
     function getRegisterRaces(peopleId, cb){
