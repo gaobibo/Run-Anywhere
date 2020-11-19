@@ -15,3 +15,9 @@ homeButton.addEventListener("click", () => {
 // peopleButton.addEventListener("click", () => {
 //     location.href = ".html";
 // })
+
+// const editButton = document.querySelector("#edit-button");
+
+// editButton.addEventListener("click", () => {
+
+// })

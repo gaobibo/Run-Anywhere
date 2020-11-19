@@ -19,7 +19,11 @@
 
 <body>
     <header>
-        <h1>Edit Profile</h1>
+        <div id="header-spacer"></div>
+
+        <h1>My Profile</h1>
+
+        <button id="edit-button">Edit</button>
     </header>
 
     <main>
@@ -27,8 +31,75 @@
             <div id="picture"></div>
         </section>
 
-        <section>
+        <section id="profile-info">
+            <form action="/run">
+                <div class="info">
+                    <label for="first-name">First name:</label>
+                    <input type="text" placeholder="Robert" readonly>
+                </div>
 
+                <div class="info">
+                    <label for="last-name">Last name:</label>
+                    <input type="text" placeholder="Bulai" readonly>
+                </div>
+
+                <div class="info">
+                    <label for="gender">Gender:</label>
+                    <select>
+                        <option value=""></option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="info">
+                    <span id="dob">Date of birth: </span><span>08/09/1998</span>
+                </div>
+
+                <div class="info">
+                    <label for="phone-number">Phone number:</label>
+                    <input type="text" placeholder="773-387-9250" readonly>
+                </div>
+
+                <div class="info">
+                    <label for="email">Email address:</label>
+                    <input type="text" placeholder="rbulai@luc.edu" readonly>
+                </div>
+
+                <div class="info">
+                    <label for="password">Password:</label>
+                    <input type="password" placeholder="********" readonly>
+                </div>
+
+                <div class="info">
+                    <label for="address-1">Address 1:</label>
+                    <input type="text" placeholder="535 Michigan Ave" readonly>
+                </div>
+
+                <div class="info">
+                    <label for="address-2">Address 2:</label>
+                    <input type="text" placeholder="APT 2W" readonly>
+                </div>
+
+                <div class="info">
+                    <label for="city">City:</label>
+                    <input type="text" placeholder="Evanston" readonly>
+                </div>
+
+                <div class="info">
+                    <label for="state">State:</label>
+                    <select>
+                        <option value=""></option>
+                        <option value="IL">IL</option>
+                    </select>
+                </div>
+
+                <div class="info">
+                    <label for="zip">ZIP:</label>
+                    <input type="text" placeholder="60202" readonly>
+                </div>
+            </form>
         </section>
     </main>
 
