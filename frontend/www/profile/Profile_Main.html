@@ -4,33 +4,35 @@
     <meta charset = "UTF-8">
     <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
     <link href = "https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel = "stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
     <link rel = "stylesheet" href = "../css/Profile_Main.css">
     <title>Profile</title>
-    <link rel = "stylesheet" href = "../css/race_list.css">
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-
+​
     <!-- TODO: Add SDKs for Firebase products that you want to use
     https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
-
+​
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
-    <script type="text/javascript" src="race_list.js"></script>
     <script type="text/javascript" src="../js/data_opr.js"></script>
-    <script type="text/javascript" src="../js/footer.js"></script>
+    <!-- <script type="text/javascript" src="../js/footer.js"></script> -->
+
+   
   </head>
-  <body>
+  <body onload="getMyRacesShowing()">
     <header>
         <button id = "stats"> My Stats </button>
+        <div id="header-spacer"></div>
         <button id = "edit"> Edit Profile </button>
       
     </header>  
     <main>
-        
         <div class="column-layout">
             <div class="dot"></div>
             <div class="two">
@@ -42,13 +44,160 @@
                <p>personmcr@gmail.com</p>
             </div>
         </div>
-        <h2> Your Races: 
-        <a class="article-title" href="race_detail.html" id="childSnapshot.key + raceData.raceName" ></a>
-    
+        <h2> Your Races:
+        <!-- <a class="article-title" href="race_list.html?id=' + childSnapshot.key + raceData.raceName + "></a> -->
+        <div id = "latest_races_list" class="w3-container" style="background-color: #4bbf6e;">
+          <hr>
+          <div class="w3-cell-row">
+            <div class="w3-cell" style="width:30%">
+              <img class="w3-circle" src="../img/marathon-running.jpg" style="width:100%">
+            </div>
+            <div class="w3-cell w3-container">
+              <h3>Loading</h3>
+              <p>Loading</p>
+            </div>
+          </div>  
+          <hr>
+          </div>
+      </h2>
+        <h2> Upcoming Races: 
+          <div id = "upcoming_races_list" class="w3-container" style="background-color: #4bbf6e;">
+            <hr>
+            <div class="w3-cell-row">
+              <div class="w3-cell" style="width:30%">
+                <img class="w3-circle" src="../img/marathon-running.jpg" style="width:100%">
+              </div>
+              <div class="w3-cell w3-container">
+                <h3>Loading</h3>
+                <p>Loading</p>
+              </div>
+            </div>  
+            <hr>
+            </div>
         </h2>
-        <h2> Upcoming Races: </h2>
-        <h2> Past Races: </h2>
-
+        <h2> Past Races: 
+        <div id = "past_races_list" class="w3-container" style="background-color: #4bbf6e;">
+          <hr>
+          <div class="w3-cell-row">
+            <div class="w3-cell" style="width:30%">
+              <img class="w3-circle" src="../img/marathon-running.jpg" style="width:100%">
+            </div>
+            <div class="w3-cell w3-container">
+              <h3>Loading</h3>
+              <p>Loading</p>
+            </div>
+          </div>  
+          <hr>
+          </div>
+        </h2>
     </main>
   </body>
+  ​
+  <script>
+    
+    var latest_races_list = document.getElementById('latest_races_list');
+    var latest_races_html = '';
+    var latest_races_count = 2; //define the count you want to show
+    var latest_races_index = 0; 
+​
+    var upcoming_races_list = document.getElementById('upcoming_races_list');
+    var upcoming_races_html = '';
+    var upcoming_races_count = 2; //define the count you want to show
+    var upcoming_races_index = 0; 
+​
+    var past_races_list = document.getElementById('past_races_list');
+    var past_races_html = '';
+    var past_races_count = 2;
+    var past_races_index = 0; 
+​
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+​
+    today = yyyy + '-' + mm + '-' + dd;
+    console.log(today);
+​
+    function getMyRacesShowing()
+      {
+        
+        getMyRacesByEventday( snap =>{
+          var raceData = snap.val();
+          console.log( raceData.eventday );
+          if( latest_races_index < latest_races_count ){
+            if( raceData.eventday < today ){
+              latest_races_index += 1;
+              latest_races_html += '<div class="w3-cell-row">' +
+                               '<div class="w3-cell" style="width:30%">' +
+                                '<img class="w3-circle" src="' + raceData.imagePath + '" style="width:100%">' +
+                                '</div>' +
+                                '<div class="w3-cell w3-container">' +
+                                '<h3><a class="article-title" href="race_detail.html?id=' + snap.key + '">' + raceData.raceName + '</a></h3>' +
+                                '<p>'+ raceData.eventday +'</p>' +
+                                '</div>' +
+                                '</div>' +
+                                '<hr>';
+              return;
+            }
+          }
+          
+          if( upcoming_races_index < upcoming_races_count ){
+            if( raceData.eventday > today ){
+              upcoming_races_index += 1;
+              upcoming_races_html += '<div class="w3-cell-row">' +
+                               '<div class="w3-cell" style="width:30%">' +
+                                '<img class="w3-circle" src="' + raceData.imagePath + '" style="width:100%">' +
+                                '</div>' +
+                                '<div class="w3-cell w3-container">' +
+                                '<h3><a class="article-title" href="race_detail.html?id=' + snap.key + '">' + raceData.raceName + '</a></h3>' +
+                                '<p>'+ raceData.eventday +'</p>' +
+                                '</div>' +
+                                '</div>' +
+                                '<hr>';
+              return;
+            }
+          }
+          
+​
+          if( past_races_index < past_races_count ){
+            if( raceData.eventday < today ){
+              past_races_index += 1;
+              past_races_html += '<div class="w3-cell-row">' +
+                               '<div class="w3-cell" style="width:30%">' +
+                                '<img class="w3-circle" src="' + raceData.imagePath + '" style="width:100%">' +
+                                '</div>' +
+                                '<div class="w3-cell w3-container">' +
+                                '<h3><a class="article-title" href="race_detail.html?id=' + snap.key + '">' + raceData.raceName + '</a></h3>' +
+                                '<p>'+ raceData.eventday +'</p>' +
+                                '</div>' +
+                                '</div>' +
+                                '<hr>';
+              return;
+            }
+          }
+​
+          latest_races_list.innerHTML = latest_races_html;
+          upcoming_races_list.innerHTML = upcoming_races_html;
+          past_races_list.innerHTML = past_races_html;
+        });
+              
+      }
+​
+</script>
+<footer>
+  <button id="races-button">
+      <img src="../img/logo.webp" alt="Logo">
+  </button>
+
+  <button id="home-button">
+      <img src="../img/home-icon.png" alt="Home icon">
+  </button>
+
+  <button id="people-button">
+      <img src="../img/people-icon.png" alt="People icon">
+  </button>
+</footer>
+
+<script src="../js/profile.js"></script>
+
 </html>
