@@ -215,7 +215,7 @@ function addRaceTest()
     imagePath, eventday,startdttm,capacity, distance, startLatLng, gpxFile, isOpen )
 {
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -253,10 +253,10 @@ function addRaceTest()
   }
 
   function addProfileForTest( profileImg,
-    firstName, lastName, email, gender, birthdate, phone, address1, address2, city, state,zipcode ){
+    firstName, lastName, email, gender, birthdate, phone ){
 
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -270,11 +270,15 @@ function addRaceTest()
         gender:gender,
         birthdate:birthdate,
         phone:phone,
-        address1:address1,
-        address2:address2,
-        city: city,
-        state:state, 
-        zipcode:zipcode
+        address1:'',
+        address2:'',
+        city: '',
+        state:'', 
+        zipcode:'',
+        organization:'',
+        club:'',
+        emergName:'',
+        emergPhone :''
     };
     
     // Get a key for a new race.
@@ -291,7 +295,7 @@ function addRaceTest()
     firstName, lastName, email, gender, birthdate, phone ){
 
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -326,7 +330,7 @@ function addRaceTest()
 
   function addFollow( peopleId ){
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -349,7 +353,7 @@ function addRaceTest()
   function addRegister(raceId)
   {
         let user = firebase.auth().currentUser;
-        let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+        let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
         if(user != null){
             uid = user.uid;
             console.log(uid);
@@ -376,7 +380,7 @@ function addRaceTest()
   function updatePanticipateInfo(raceId, panticipateid, finishedtime, finisheddistance)
   {
         let user = firebase.auth().currentUser;
-        let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+        let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
         if(user != null){
             uid = user.uid;
             console.log(uid);
@@ -412,7 +416,7 @@ function addRaceTest()
   function inviteRace(raceId, peopleId)
   {
         let user = firebase.auth().currentUser;
-        let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+        let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
         if(user != null){
             uid = user.uid;
             console.log(uid);
@@ -435,7 +439,7 @@ function addRaceTest()
 
    function deleteRace(raceId){
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -446,7 +450,7 @@ function addRaceTest()
 
    function cancelRegister(raceId){
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -464,7 +468,7 @@ function addRaceTest()
 
    function Unfollow(peopleId){
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -481,7 +485,7 @@ function addRaceTest()
 
    function removeInvite(peopleId){
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -499,8 +503,9 @@ function addRaceTest()
 
   function getRaces(cb)
   {
+   
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -514,15 +519,16 @@ function addRaceTest()
 
   function getRaces3(cb)
   {
+    //testAPI();
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
     }
     console.log(uid);
     var query = firebase.database().ref("races");
-    query.once("value", cb);
+    query.orderByChild("eventday").once("value", cb);
   }
 
   function getRacesForShowing3()
@@ -540,7 +546,7 @@ function addRaceTest()
   function getRacesForShowing2()
   {
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -561,7 +567,7 @@ function addRaceTest()
   function getRacesForMap()
   {
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
         console.log(uid);
@@ -596,7 +602,7 @@ function addRaceTest()
   function getRace(raceID, cb)
   {
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
     }
@@ -607,7 +613,7 @@ function addRaceTest()
   function getProfile(cb)
   {
     let user = firebase.auth().currentUser;
-    let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
     if(user != null){
         uid = user.uid;
     }
@@ -629,7 +635,7 @@ function addRaceTest()
     function getFollows(cb)
     {
         let user = firebase.auth().currentUser;
-        let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+        let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
         if(user != null){
             uid = user.uid;
             console.log(uid);
@@ -642,7 +648,7 @@ function addRaceTest()
 
     function getMyRaces(cb){
         let user = firebase.auth().currentUser;
-        let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+        let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
         if(user != null){
             uid = user.uid;
             console.log(uid);
@@ -650,10 +656,22 @@ function addRaceTest()
      
        getRegisterRaces(uid, cb);
     }
+    
+    function getMyRacesByEventday(cb){
+        let user = firebase.auth().currentUser;
+        let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
+        if(user != null){
+            uid = user.uid;
+            console.log(uid);
+        }
+     
+       getRegisterRacesByEventDay(uid, cb);
+    }
+
 
     function getMyCreateRaces(cb){
         let user = firebase.auth().currentUser;
-        let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+        let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
         if(user != null){
             uid = user.uid;
             console.log(uid);
@@ -667,7 +685,7 @@ function addRaceTest()
 
     function isMyRegisterRace( raceId,cb ){
         let user = firebase.auth().currentUser;
-        let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+        let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
         if(user != null){
             uid = user.uid;
             console.log(uid);
@@ -676,16 +694,34 @@ function addRaceTest()
         var participatesRef = firebaseRef.child("participates");
         participatesRef.orderByChild("uid").equalTo(uid).on("child_added", snap => {
             if( raceId == snap.val().raceId )
-                cb();
+                cb(snap);
           });
     }
 
-    
+    function getRegisterRacesByEventDay(peopleId, cb){
+
+        console.log(peopleId);
+        
+        var firebaseRef = firebase.database().ref();
+        var participatesRef = firebaseRef.child("participates");
+        var racesRef = firebaseRef.child("races");
+        racesRef.orderByChild("eventday").once("value", function(snapshot) {
+            snapshot.forEach( childSnapshot => {
+                participatesRef.orderByChild("uid").equalTo(peopleId).once("value", function(snapshot2){
+                    snapshot2.forEach( childSnapshot2 => {
+                        if( childSnapshot.key == childSnapshot2.val().raceId )
+                            cb(childSnapshot);
+                    })
+                    
+                });
+            });
+        });
+    }
 
 
     function getRegisterRaces(peopleId, cb){
         let user = firebase.auth().currentUser;
-        let uid="dKNyWQ5BfDUhw91Ru0tDJ36ir4I2";
+        let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
         if(user != null){
             uid = user.uid;
             console.log(uid);
@@ -832,20 +868,44 @@ function addRaceTest()
     function testAPI(){
         
         console.log("testAPI");
+        /*
+        addUpdateRace(null, "Chicago Marathon", "", "https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Chicago_Marathon_logo_%28gradient%29.svg/1200px-Chicago_Marathon_logo_%28gradient%29.svg.png",
+        "2020-10-14", "08:00 AM", "60000", "26.2", "42.189, -87.93",  "https://gaobibo.github.io/2017chickenrun.kml", true);
 
-        //getRegisterRaces("dKNyWQ5BfDUhw91Ru0tDJ36ir4I2", snap =>  console.log(snap.val()));
-        
-        //getMyRaces( snap => console.log(snap.val()));
-        //getMyCreateRaces( snap => console.log(snap.val()));
-        //addUpdateProfile("", "Bibo", "Gao", "test3@test.com","","",",","","","","","");
-        //addProfileForTest("","Robert","Jimmy","","","",",","","","","","");
+     
+        addUpdateRace(null, "Kettle Moraine", "", "https://d368g9lw5ileu7.cloudfront.net/races/race85674-social382x200.bElg-6.jpg",
+        "2021-06-01", "06:00 AM", "400", "100", "42.191, -87.92",  "https://gaobibo.github.io/2017chickenrun.kml", true);
+
+        addUpdateRace(null, "Indiana100", "", "https://static1.squarespace.com/static/5b8d4be355b02c6a091b6760/t/5bc913418165f53f52c6c553/1598318875267/?format=1500w",
+        "2020-10-14", "06:00 AM", "1000", "100", "42.192, -87.91",  "https://gaobibo.github.io/2017chickenrun.kml", true);
+
+        addUpdateRace(null, "Hard Rock 100", "", "https://pbs.twimg.com/profile_images/2419623856/5pnd61mlmf4lspptaudc.gif",
+        "2020-10-14", "06:00 AM", "345", "100", "42.188, -87.89",  "https://gaobibo.github.io/2017chickenrun.kml", true);
+
+        addUpdateRace(null, "Western 100", "", "https://upload.wikimedia.org/wikipedia/en/4/42/Western_States_Endurance_Run_patch.png",
+        "2020-10-14", "05:00 AM", "234", "100", "42.188, -87.90",  "https://gaobibo.github.io/2017chickenrun.kml", true);
+
+        addUpdateRace(null, "Vermont 100", "", "https://runningoffthebeatenpath.files.wordpress.com/2014/09/vermont-logo.jpg",
+        "2020-10-14", "04:00 AM", "2000", "100", "42.189, -87.89",  "https://gaobibo.github.io/2017chickenrun.kml", true);
+
+        addUpdateRace(null, "Boston Marathon", "", "https://raceraves.com/wp-content/uploads/2016/05/Boston-Marathon-logo.jpg",
+        "2020-10-14", "08:00 AM", "5000", "26.2", "42.189, -87.88",  "https://gaobibo.github.io/2017chickenrun.kml", true);
+*/
+/*
+        addUpdateProfile("default_profile.png", "Bibo", "Gao", "test3@test.com","F","1999-12-08","1111111111");
+        addProfileForTest("default_profile.png","Robert","Jimmy", "test3@test.com","M","1989-04-08","1234567890");
         //getProfile( snap => console.log(snap.val()));
         //addFollow("ML5b7AgahwMozDwOXPn");
         //Unfollow();
 
-        //addProfileForTest("","James","Kenny","","","",",","","","","","");
-        //addProfileForTest("","James2","Kenny2","","","",",","","","","","");
-
+        addProfileForTest("default_profile.png","James","Kenny", "test3@test.com","M","1990-08-08","8888888888");
+        addProfileForTest("default_profile.png","Mikki","Shao", "test3@test.com","F","1995-08-18","54546556656");
+*/
+        //getRegisterRaces("hAzCSU3lGVhj5hhGrdPrViIF22l1", snap =>  console.log(snap.val()));
+        
+        //getMyRaces( snap => console.log(snap.val()));
+        //getMyCreateRaces( snap => console.log(snap.val()));
+        
         /*
         searchRaceByDistance("5","100", snap => console.log(snap.val()));
         getFollows(snap => console.log(snap.val()));
@@ -853,8 +913,8 @@ function addRaceTest()
         //inviteRace("MJxxESa1SpS-6mHlv6N","ML5b7AgahwMozDwOXPn");
 
         /*
-        updatePanticipateInfo("-MJxxESa1SpS-6mHlv6N","dKNyWQ5BfDUhw91Ru0tDJ36ir4I2", "3:00:51", "");
-        updatePanticipateInfo("-MJynGHzRnh63CuTkrmS","dKNyWQ5BfDUhw91Ru0tDJ36ir4I2", "3:00:51", "");
+        updatePanticipateInfo("-MJxxESa1SpS-6mHlv6N","hAzCSU3lGVhj5hhGrdPrViIF22l1", "3:00:51", "");
+        updatePanticipateInfo("-MJynGHzRnh63CuTkrmS","hAzCSU3lGVhj5hhGrdPrViIF22l1", "3:00:51", "");
 
         getRaceResults("-MJxxESa1SpS-6mHlv6N", (resultsnap, profilesnap ) => {
             console.log(profilesnap);
@@ -863,7 +923,7 @@ function addRaceTest()
             
         });
 
-        getPeopleResults("dKNyWQ5BfDUhw91Ru0tDJ36ir4I2", (resultsnap, racesnap ) => {
+        getPeopleResults("hAzCSU3lGVhj5hhGrdPrViIF22l1", (resultsnap, racesnap ) => {
             console.log(racesnap.val().raceName );
             console.log(resultsnap.val().finishedtime);
             
