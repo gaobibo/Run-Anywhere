@@ -12,25 +12,27 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-
+​
     <!-- TODO: Add SDKs for Firebase products that you want to use
     https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
-
+​
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
     <script type="text/javascript" src="../js/data_opr.js"></script>
-    <script type="text/javascript" src="../js/footer.js"></script>
+    <!-- <script type="text/javascript" src="../js/footer.js"></script> -->
+
+   
   </head>
   <body onload="getMyRacesShowing()">
     <header>
         <button id = "stats"> My Stats </button>
+        <div id="header-spacer"></div>
         <button id = "edit"> Edit Profile </button>
       
     </header>  
     <main>
-        
         <div class="column-layout">
             <div class="dot"></div>
             <div class="two">
@@ -42,8 +44,24 @@
                <p>personmcr@gmail.com</p>
             </div>
         </div>
-        <h2> Your Races: 
-          <div id = "latest_races_list" class="w3-container" style="background-color: #1BDD32;">
+        <h2> Your Races:
+        <!-- <a class="article-title" href="race_list.html?id=' + childSnapshot.key + raceData.raceName + "></a> -->
+        <div id = "latest_races_list" class="w3-container" style="background-color: #4bbf6e;">
+          <hr>
+          <div class="w3-cell-row">
+            <div class="w3-cell" style="width:30%">
+              <img class="w3-circle" src="../img/marathon-running.jpg" style="width:100%">
+            </div>
+            <div class="w3-cell w3-container">
+              <h3>Loading</h3>
+              <p>Loading</p>
+            </div>
+          </div>  
+          <hr>
+          </div>
+      </h2>
+        <h2> Upcoming Races: 
+          <div id = "upcoming_races_list" class="w3-container" style="background-color: #4bbf6e;">
             <hr>
             <div class="w3-cell-row">
               <div class="w3-cell" style="width:30%">
@@ -56,10 +74,9 @@
             </div>  
             <hr>
             </div>
-    
         </h2>
-        <h2> Upcoming Races: </h2>
-        <div id = "upcoming_races_list" class="w3-container" style="background-color: #1BDD32;">
+        <h2> Past Races: 
+        <div id = "past_races_list" class="w3-container" style="background-color: #4bbf6e;">
           <hr>
           <div class="w3-cell-row">
             <div class="w3-cell" style="width:30%">
@@ -72,51 +89,38 @@
           </div>  
           <hr>
           </div>
-        <h2> Past Races: </h2>
-        <div id = "past_races_list" class="w3-container" style="background-color: #1BDD32;">
-          <hr>
-          <div class="w3-cell-row">
-            <div class="w3-cell" style="width:30%">
-              <img class="w3-circle" src="../img/marathon-running.jpg" style="width:100%">
-            </div>
-            <div class="w3-cell w3-container">
-              <h3>Loading</h3>
-              <p>Loading</p>
-            </div>
-          </div>  
-          <hr>
-          </div>
-
+        </h2>
     </main>
   </body>
-
+  ​
   <script>
     
     var latest_races_list = document.getElementById('latest_races_list');
     var latest_races_html = '';
     var latest_races_count = 2; //define the count you want to show
     var latest_races_index = 0; 
-
+​
     var upcoming_races_list = document.getElementById('upcoming_races_list');
     var upcoming_races_html = '';
     var upcoming_races_count = 2; //define the count you want to show
     var upcoming_races_index = 0; 
-
+​
     var past_races_list = document.getElementById('past_races_list');
     var past_races_html = '';
     var past_races_count = 2;
     var past_races_index = 0; 
-
+​
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-
+​
     today = yyyy + '-' + mm + '-' + dd;
     console.log(today);
-
+​
     function getMyRacesShowing()
-      {   
+      {
+        
         getMyRacesByEventday( snap =>{
           var raceData = snap.val();
           console.log( raceData.eventday );
@@ -154,7 +158,7 @@
             }
           }
           
-
+​
           if( past_races_index < past_races_count ){
             if( raceData.eventday < today ){
               past_races_index += 1;
@@ -171,14 +175,29 @@
               return;
             }
           }
-
+​
           latest_races_list.innerHTML = latest_races_html;
           upcoming_races_list.innerHTML = upcoming_races_html;
           past_races_list.innerHTML = past_races_html;
         });
               
       }
-
-     
+​
 </script>
+<footer>
+  <button id="races-button">
+      <img src="../img/logo.webp" alt="Logo">
+  </button>
+
+  <button id="home-button">
+      <img src="../img/home-icon.png" alt="Home icon">
+  </button>
+
+  <button id="people-button">
+      <img src="../img/people-icon.png" alt="People icon">
+  </button>
+</footer>
+
+<script src="../js/profile.js"></script>
+
 </html>
