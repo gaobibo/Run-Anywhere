@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+    <link href = "https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel = "stylesheet">
+    <link rel = "stylesheet" href = "../css/race_add.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="auth.js"></script>
+    <script src="../js/data_opr.js"></script>
+    <title> Register </title>
+</head>
+	<body>
+		<header>
+			<h1> Add Race </h1>
+
+			<img src = "https://cdn.pixabay.com/photo/2017/09/25/15/37/hurry-up-2785528__340.png" alt = "App Logo">
+		</header>
+		<main>
+			<h2> Name<span class = "required">*</span> </h2>
+				<input type="text" id="raceName" name="" placeholder="" required> 
+			
+			<h3> Description: </h3>
+				<input type="text" id="raceDescription" name="" placeholder=""> 
+			
+			<h4> Capacity<span class = "required">*</span> </h4>
+				<input type="text" id="capacity" name="" placeholder=""> 
+			
+				<div id="centerAlignment">
+			<h5> Event Day<span class = "required">*</span> </h5>
+				<input type="date" id="eventday" value="2020-10-12" required>
+				<i class="fas fa-calendar-alt"></i>
+	
+			<h6> Start Time<span class = "required">*</span> </h6>
+				<input type="time" id="startdttm" value="08:12:00" required/>
+				<i class="fas fa-clock"></i>
+				</div>
+		
+			<h7> Distance<span class = "required">*</span> </h7>
+				<input type="text" id="raceName" name="" placeholder=""> 
+				
+				<div id="centerAlignment">
+			<h8> Submit Logo URL or attach file </h8>
+				<input type="file" name="file" accept="file/(*.JPG|*.PNG)">
+				<input type="button" id="takePhoto" data-icon="camera" value="Take Photo" />
+				</div>
+				
+			<h9> Start Address: </h9>
+				<input type="text" id="raceName" name="" placeholder=""> 
+			
+			<h10> GPX URL: </h10>
+				<input type="text" id="raceName" name="" placeholder=""> 
+			
+			<div id = "centerAlignment">
+				<button id = "goback" onclick="document.location='races.html'"> Go Back </button>
+				<button id = "register" onclick="addUpdateRace()"> Register </button>
+			</div>
+		</main>
+	</body>
+</html> 
