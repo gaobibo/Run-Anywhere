@@ -841,15 +841,9 @@ function addRaceTest()
         }
         var firebaseRef = firebase.database().ref();
         var participatesRef = firebaseRef.child("participates");
-        var isRegister = false;
-        participatesRef.orderByChild("uid").equalTo(uid).once("value", snap => {
-            snap.forEach( childSnapshot =>{
-                if( raceId == childSnapshot.val().raceId )
-                    isRegister = true;
-            });
-
-            cb(isRegister);
-            
+        participatesRef.orderByChild("uid").equalTo(uid).on("child_added", snap => {
+            if( raceId == snap.val().raceId )
+                cb(snap);
           });
     }
 
