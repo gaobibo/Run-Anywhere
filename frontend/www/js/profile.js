@@ -10,11 +10,12 @@ homeButton.addEventListener("click", () => {
     location.href = "Profile_Main.html";
 })
 
-// const peopleButton = document.querySelector("#people-button");
 
-// peopleButton.addEventListener("click", () => {
-//     location.href = ".html";
-// })
+const peopleButton = document.querySelector("#people-button");
+
+ peopleButton.addEventListener("click", () => {
+     location.href = "searchpeople.html";
+ })
 
 // const editButton = document.querySelector("#edit-button");
 
