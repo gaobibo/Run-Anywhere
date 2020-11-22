@@ -677,10 +677,11 @@ function addRaceTest()
     var profileRef = firebaseRef.child("profiles");
     participatesRef.orderByChild("uid").equalTo(peopleId).once("value", snap => {
         snap.forEach( childSnapshot =>{
-            raceCount += 1;
-            raceDistance += parseFloat( childSnapshot.val().finisheddistance);
+            
             var arrTime = childSnapshot.val().finishedtime.split(":");
             if( arrTime.length > 2 ){
+                raceCount += 1;
+                raceDistance += parseFloat( childSnapshot.val().finisheddistance);
                 seconds += parseInt( arrTime[2] ) ;
                 minutes += parseInt(  arrTime[1] ) + (( seconds / 60 ) | 0) ;
                 hours += parseInt( arrTime[0] ) + (( minutes / 60) |0) ;
@@ -1086,7 +1087,7 @@ function addRaceTest()
         updatePanticipateInfo("-MMSiyETRt1RvCCZ8XZ9","-MMT6shfN4bTHRQY42p9","23:32:23","100");
 
         
-        updatePanticipateInfo("-MMSiyEVveUcmRZYbcYs","-MMT6shfN4bTHRQY42p9","33:43:12","100");
+        updatePanticipateInfo("-MMSiyEVveUcmRZYbcYs","-MMT6shfN4bTHRQY42p9","33:43:12","100");*/
         
         getStatInfo( "-MMT6shfN4bTHRQY42p9", function( count, distance, time, records) {
             console.log( count );
@@ -1094,7 +1095,7 @@ function addRaceTest()
             {
                 console.log(records["Marathon"] );
             }
-        } );*/
+        } );
 
 
 /*
