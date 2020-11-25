@@ -46,40 +46,37 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 
 <body onload="getCurrentRace()">
   <header>
-    <h1>Detail</h1>
+    <button style="width:15%; color:white;font-size: 48px;" class="w3-bar-item w3-button  w3-hover" onclick="goBack()">&#9756;</button>
+    <h1 style="width:80%;">Detail</h1>
 </header>
-<div class="header text-white">
-    <div class="left">
-      <button class="w3-bar-item w3-button w3-xxlarge w3-hover" onclick="goBack()">&#9756;</button>
-    </div>
-  </div>
+ <div class="content">
   <main>
   <div class="swiper-container swipper-gallery">
       <div class="swiper-wrapper">
           <!-- Add slide 1 -->
           <div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" >
-            <img src="../img/races/2.jpg" style="width:100%;height:100%;object-fit: cover;">
+            <img src="../img/2.jpg" style="width:100%;height:100%;object-fit: cover;">
             <div id="eventTime" class="bottom margin-bottom text-shadow padding">
               
             </div>
           </div>
           <!-- Add slide 2 -->
           <div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" >
-            <img src="../img/races/1.jpg" style="width:100%;height:100%;object-fit: cover;">
+            <img src="../img/1.jpg" style="width:100%;height:100%;object-fit: cover;">
             <div id="capactity" class="bottom margin-bottom text-shadow padding">
               
             </div>
           </div>
           <!-- Add slide 3 -->
           <div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" >
-            <img src="../img/races/3.jpg" style="width:100%;height:100%;object-fit: cover;">
+            <img src="../img/3.jpg" style="width:100%;height:100%;object-fit: cover;">
             <div id="distance" class="bottom margin-bottom text-shadow padding">
               
             </div>
           </div>
           <!-- Add slide 4 -->
           <div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" >
-            <img src="../img/races/4.jpg" style="width:100%;height:100%;object-fit: cover;">
+            <img src="../img/4.jpg" style="width:100%;height:100%;object-fit: cover;">
             <div  class="bottom margin-bottom text-shadow padding">
               Welcome to join us!
             </div>
@@ -101,9 +98,11 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
     </div>
     <div class="right">
       <h1 id="raceName" class="text-strong text-big">Loading</h1>
-      <button id="registerRace" class="w3-bar-item w3-button w3-large w3-hover w3-right text-white" onclick="registerRace()">&#128587;Register</button>
-      <button id="dropRace" class="w3-bar-item w3-button w3-large w3-hover w3-right text-white" onclick="dropRace()">&#128581;Drop</button>
-      <button id="inviteRace" class="w3-bar-item w3-button w3-large w3-hover w3-right text-white" onclick="document.location='../People/invites_list.html?id=' + raceId + ''">&#128588;Invites</button>
+      <button id="registerRace" class="w3-bar-item w3-button w3-large w3-hover text-white" onclick="registerRace()">&#128587;Register</button>
+      <button id="dropRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="dropRace()">&#128581;Drop</button>
+      <button id="inviteRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../people/invites_list.html?id=' + raceId + ''">&#128588;Invites</button>
+      <button id="resultRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../races/race_results.html?id=' + raceId + ''">&#127941;Results</button>
+
      
     </div>
     
@@ -112,7 +111,7 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
   <p class="text-white" id="raceDescription"></p>
 </div>
 </main>
-  
+</div>
   <script type="text/javascript">
     new Swiper('.swipper-gallery', {
         pagination: '.swiper-pagination'
@@ -148,17 +147,32 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
         console.log(raceId);
         getRace(raceId, function(snap){
             setContent( snap.val());
-        });
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
 
-        isMyRegisterRace(raceId, function(isRegister){
-          if( isRegister ){
-            document.getElementById("registerRace").style.display = "none";
-            document.getElementById("dropRace").style.display = "block";
-          }else{
-            document.getElementById("registerRace").style.display = "block";
-            document.getElementById("dropRace").style.display = "none";  
-          }
-           
+            today = yyyy + '-' + mm + '-' + dd;
+            if( snap.val().eventday > today ){
+              document.getElementById("resultRace").style.display = "none";
+              isMyRegisterRace(raceId, function(isRegister){
+                if( isRegister ){
+                  document.getElementById("registerRace").style.display = "none";
+                  document.getElementById("dropRace").style.display = "block";
+                }else{
+                  document.getElementById("registerRace").style.display = "block";
+                  document.getElementById("dropRace").style.display = "none";  
+                }
+                
+              });
+
+            }
+            else{
+              document.getElementById("registerRace").style.display = "none";
+              document.getElementById("dropRace").style.display = "none";
+              document.getElementById("inviteRace").style.display = "none";
+              document.getElementById("resultRace").style.display = "block";
+            }
         });
         
     }

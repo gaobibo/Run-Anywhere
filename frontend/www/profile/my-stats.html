@@ -9,15 +9,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-    <link rel="manifest" href="../favicon/site.webmanifest">
 
     <link rel="stylesheet" href="../css/my-stats.css">
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
+	
+    <!-- Custom JavaScript -->
+    <script src="auth.js"></script>
+    <script src="../js/data_opr.js"></script>
 </head>
 
-<body>
+<body onload="loadMyStat()">
     <header>
         <h1>My Stats</h1>
     </header>
@@ -32,39 +45,39 @@
         </section>
 
         <section id="pr-box">
+        
             <div class="pr-category">
-                <span class="distance">1,600 m:</span><span class="result">0:00</span>
+                <span class="distance">5K:</span><span class="result" id="fiveK">00:00:00</span>
+            </div>
+            <hr>
+
+            <div class="pr-category">
+                <span class="distance">Half Marathon:</span><span class="result" id="halfMarathon">00:00:00</span>
             </div>
 
             <hr>
 
             <div class="pr-category">
-                <span class="distance">5K:</span><span class="result">0:00</span>
-            </div>
-
-            <hr>
-
-            <div class="pr-category">
-                <span class="distance">10K:</span><span class="result">0:00</span>
+                <span class="distance">Marathon:</span><span class="result" id="marathon">00:00:00</span>
             </div>
         </section>
 
         <section id="totals-box">
             <div>
                 <div class="totals-category">
-                    <span class="black">Races completed:</span><span class="white">0</span>
+                    <span class="black">Races completed:</span><span class="white" id="raceCount">0</span>
                 </div>
 
                 <br>
 
                 <div class="totals-category">
-                    <span class="black">Total miles ran:</span><span class="white">0</span>
+                    <span class="black">Total miles ran:</span><span class="white" id="raceMiles">0</span>
                 </div>
 
                 <br>
 
                 <div class="totals-category">
-                    <span class="black">Average mile time:</span><span class="white">0:00</span>
+                    <span class="black">Total races time:</span><span class="white" id="raceTime">00:00:00</span>
                 </div>
             </div>
         </section>
@@ -86,5 +99,32 @@
 
     <script src="../js/my-stats.js"></script>
 </body>
+<script>
+    function loadMyStat()
+    {
 
+        //getMyStatInfo( function( count, distance, time, records) {
+        getStatInfo( "-MMT6shfN4bTHRQY42p9", function( count, distance, time, records) { //for test 
+            console.log( count );
+            document.getElementById("raceCount").textContent = count;
+            document.getElementById("raceMiles").textContent = distance;
+            document.getElementById("raceTime").textContent = time;
+            
+            if(records["Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
+            {
+                document.getElementById("marathon").textContent = records["Marathon"];
+            }
+
+            if(records["Half Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
+            {
+                document.getElementById("halfMarathon").textContent = records["Half Marathon"];
+            }
+
+            if(records["5K"] != null) //Half Marathon, 5K, 100Miles, 50Miles
+            {
+                document.getElementById("fiveK").textContent = records["5K"];
+            }
+        } );
+    }
+</script>
 </html>

@@ -189,27 +189,7 @@ function signOut(){
 }
 
 
-function addRaceTest()
-{
-    let raceName = document.getElementById("raceName").value;
-    let raceDescription = document.getElementById("raceDescription").value;
-    let imagePath = document.getElementById("imagePath").value;
-    let eventday = document.getElementById("eventday").value;
-    let startdttm = document.getElementById("startdttm").value;
-    let capactity = document.getElementById("capactity").value;
-    let distance = document.getElementById("distance").value;
-    let startLatLng = document.getElementById("startLatLng").value;
-    let gpxFile = document.getElementById("gpxFile");
-    console.log( raceName );
-    
-   addRace( raceName, raceDescription, 
-    imagePath, eventday,startdttm,capactity, distance, startLatLng, gpxFile, true);
-      
-    setTimeout(function(){
-        window.location.replace("../races/races_map.html");
-    }, 1000);
-
-  }
+ 
 
   function addUpdateRace(raceId, raceName, raceDescription, 
     imagePath, eventday,startdttm,capacity, distance, startLatLng, gpxFile, isOpen )
@@ -221,21 +201,6 @@ function addRaceTest()
         console.log(uid);
     }
 
-    var raceData = {
-        raceName:raceName,
-        raceDescription:raceDescription,
-        imagePath:imagePath,
-        eventday:eventday,
-        startdttm:startdttm,
-        capactity:capacity,
-        distance:distance,
-        regopendate :'',
-        regclosedate : '',  
-        startLatLng:startLatLng,
-        gpxFile: gpxFile,
-        uid:uid, 
-        isOpen:isOpen
-    };
     
     // Get a key for a new race.
     var firebaseRef2 = firebase.database().ref();
@@ -246,10 +211,39 @@ function addRaceTest()
     else{
         newRaceKey2 = raceId;
     }
-    //alert(newRaceKey2);
-    var updates2 = {};
-    updates2['/races/' + newRaceKey2] = raceData;
-    firebaseRef2.update(updates2);
+
+    
+        //uploadRaceKML( platformString, newRaceKey2, gpxFile, urlGpx =>{
+            
+            /*console.log( urlGpx );
+            if( urlGpx == "fail" )
+            {
+                urlGpx = "https://gaobibo.github.io/2017chickenrun.kml";
+            }*/
+           
+            var raceData = {
+                raceName:raceName,
+                raceDescription:raceDescription,
+                imagePath: imagePath,
+                eventday:eventday,
+                startdttm:startdttm,
+                capactity:capacity,
+                distance:distance,
+                regopendate :'',
+                regclosedate : '',  
+                startLatLng:startLatLng,
+                gpxFile: gpxFile,
+                uid:uid, 
+                isOpen:isOpen
+            };
+            //alert(newRaceKey2);
+            var updates2 = {};
+            updates2['/races/' + newRaceKey2] = raceData;
+            firebaseRef2.update(updates2);
+
+     //   }); 
+  
+    
   }
 
   function addProfileForTest( profileImg,
@@ -536,14 +530,7 @@ function addRaceTest()
 
   function getRaces(cb)
   {
-   
-    let user = firebase.auth().currentUser;
-    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
-    if(user != null){
-        uid = user.uid;
-        console.log(uid);
-    }
-    console.log(uid);
+
     var query = firebase.database().ref("races");
     query.once("value", function(snapshot) {
         snapshot.forEach(cb);
@@ -552,14 +539,6 @@ function addRaceTest()
 
   function getRaces3(cb)
   {
-    //testAPI();
-    let user = firebase.auth().currentUser;
-    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
-    if(user != null){
-        uid = user.uid;
-        console.log(uid);
-    }
-    console.log(uid);
     var query = firebase.database().ref("races");
     query.orderByChild("eventday").once("value", cb);
   }
@@ -578,13 +557,7 @@ function addRaceTest()
   
   function getRacesForShowing2()
   {
-    let user = firebase.auth().currentUser;
-    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
-    if(user != null){
-        uid = user.uid;
-        console.log(uid);
-    }
-    console.log(uid);
+
     var query = firebase.database().ref("races");
     query.once("value")
       .then(function(snapshot) {
@@ -599,13 +572,6 @@ function addRaceTest()
 
   function getRacesForMap()
   {
-    let user = firebase.auth().currentUser;
-    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
-    if(user != null){
-        uid = user.uid;
-        console.log(uid);
-    }
-    console.log(uid);
     var query = firebase.database().ref("races");
     query.once("value")
       .then(function(snapshot) {
@@ -634,12 +600,6 @@ function addRaceTest()
 
   function getRace(raceID, cb)
   {
-    let user = firebase.auth().currentUser;
-    let uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
-    if(user != null){
-        uid = user.uid;
-    }
-
     var query = firebase.database().ref("races/" + raceID);
     query.once("value", cb);
   }
@@ -657,6 +617,7 @@ function addRaceTest()
     if(user != null){
         uid = user.uid;
     }
+    console.log(uid);
     var query = firebase.database().ref("profiles/" + uid);
     query.once("value", cb);
   }
@@ -758,7 +719,7 @@ function addRaceTest()
             uid = user.uid;
             console.log("uid " + uid);
         }
-        uid="hAzCSU3lGVhj5hhGrdPrViIF22l1";
+
         var query = firebase.database().ref("invites");
         var invited = false;
         query.orderByChild("uid").equalTo(uid).once( "value", snap =>{
@@ -1093,7 +1054,7 @@ function addRaceTest()
         updatePanticipateInfo("-MMSiyETRt1RvCCZ8XZ9","-MMT6shfN4bTHRQY42p9","23:32:23","100");
 
         
-        updatePanticipateInfo("-MMSiyEVveUcmRZYbcYs","-MMT6shfN4bTHRQY42p9","33:43:12","100");*/
+        updatePanticipateInfo("-MMSiyEVveUcmRZYbcYs","-MMT6shfN4bTHRQY42p9","33:43:12","100");
         
         getStatInfo( "-MMT6shfN4bTHRQY42p9", function( count, distance, time, records) {
             console.log( count );
@@ -1102,7 +1063,7 @@ function addRaceTest()
                 console.log(records["Marathon"] );
             }
         } );
-
+*/
 
 /*
         searchRaceByName("Ke",snap => console.log(snap.val().raceName));

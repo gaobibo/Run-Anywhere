@@ -25,26 +25,28 @@
 
    
   </head>
-  <body onload="getMyRacesShowing()">
+  <body onload="onLoadMyInfo()">
     <header>
-        <button id = "stats"> My Stats </button>
+        <button id = "stats" onclick="document.location='my-stats.html'"> My Stats </button>
         <div id="header-spacer"></div>
-        <button id = "edit"> Edit Profile </button>
+        <button id = "edit" onclick="document.location='profile.html'"> Edit Profile </button>
       
     </header>  
     <main>
         <div class="column-layout">
-            <div class="dot"></div>
+            <div class="dot">
+              <img class="w3-circle" id="runnerImg" src="../img/default-profile.png" style="width:100px;height:100px;">
+            </div>
             <div class="two">
                <p>Name:</p> 
                <p>Email:</p> 
             </div>
             <div class="three">
-               <p>Person McRunner</p>
-               <p>personmcr@gmail.com</p>
+               <p id="runnerName"> Person McRunner</p>
+               <p id="runnerEmail">personmcr@gmail.com</p>
             </div>
         </div>
-        <h2> Your Races:
+        <h2> My Latest Races:
         <!-- <a class="article-title" href="race_list.html?id=' + childSnapshot.key + raceData.raceName + "></a> -->
         <div id = "latest_races_list" class="w3-container" style="background-color: #4bbf6e;">
           <hr>
@@ -94,7 +96,22 @@
   </body>
   ​
   <script>
-    
+    function onLoadMyInfo(){    
+      //getProfile(  "-MMT6shfN4bTHRQY42p9", snapshot =>{
+      getMyProfile(  snapshot =>{
+        console.log( snapshot.val());
+        var runnerName = document.getElementById('runnerName');
+        var runnerEmail = document.getElementById('runnerEmail');
+        var runnerImg = document.getElementById('runnerImg');
+
+        runnerName.textContent = snapshot.val().firstName + ' ' + snapshot.val().lastName;   
+        runnerEmail.textContent = snapshot.val().email;   
+        runnerImg.setAttribute( "src", snapshot.val().profileImg );
+
+      });
+      getMyRacesShowing();
+    }
+
     var latest_races_list = document.getElementById('latest_races_list');
     var latest_races_html = '';
     var latest_races_count = 2; //define the count you want to show

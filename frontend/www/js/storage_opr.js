@@ -13,10 +13,93 @@
   
   firebase.initializeApp(firebaseConfig);*/
 
-  function handleUploadProcess( filePath, file, cb ){
+  function handleUploadImgProcess( platformId, filePath, file, cb ){
 
-    var uploadTask = firebase.storage().ref(filePath).put(file);
+    //var uploadTask;
+    if( platformId == "browser" ){
+        var uploadTask = firebase.storage().ref(filePath).putString( file, firebase.storage.StringFormat.DATA_URL);
+        uploadTask.on('state_changed', function(snapshot){
+        
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+          }, function(error) {
+            // Handle unsuccessful uploads
+            //default url
+            cb( "fail");
+          }, function() {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+              console.log('File available at', downloadURL);
+              alert(downloadURL);
+              cb(downloadURL);
+            });
+          });
+    }else{
+        var uploadTask;
+        alert(platformId);
+        window.resolveLocalFileSystemURL(file, function (fileEntry) {
+            fileEntry.file(function (f) {
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                         // This blob object can be saved to firebase
+                         var blob = new Blob([new Uint8Array(this.result)], { type: "image/jpeg" });                  
+                         uploadTask = firebase.storage().ref(filePath).put(blob);
+                };
+                reader.readAsArrayBuffer(f);
+             });
+         }, function (error) {
+            cb( "fail");
+         });
+         uploadTask.on('state_changed', function(snapshot){
+        
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+          }, function(error) {
+            // Handle unsuccessful uploads
+            //default url
+            cb( "fail");
+          }, function() {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+              console.log('File available at', downloadURL);
+              alert(downloadURL);
+              cb(downloadURL);
+            });
+          });
+    }
+    
+}
 
+/*
+function handleUploadGpxProcess( platformId, filePath, file, cb ){
+
+    var uploadTask;
+    if( platformId == "browser" ){
+        alert( file);
+        uploadTask = firebase.storage().ref(filePath).put(file);
+    }else{
+        window.resolveLocalFileSystemURL(file, function (fileEntry) {
+            fileEntry.file(function (f) {
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                         // This blob object can be saved to firebase
+                         var blob = new Blob([new Uint8Array(this.result)], { type: "xml" });                  
+                         uploadTask = firebase.storage().ref(filePath).put(blob);
+                };
+                reader.readAsArrayBuffer(f);
+             });
+         }, function (error) {
+            cb( "fail");
+         });
+    }
+    
+   
     uploadTask.on('state_changed', function(snapshot){
         // Observe state change events such as progress, pause, and resume
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -24,6 +107,8 @@
         console.log('Upload is ' + progress + '% done');
       }, function(error) {
         // Handle unsuccessful uploads
+        //default url
+        cb( "fail");
       }, function() {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
@@ -34,6 +119,7 @@
       });
 }
 
+*/
 
 function handleDownloadProcess( filePath ){
 
@@ -60,30 +146,29 @@ function handleDownloadProcess( filePath ){
 }
 
 
-function uploadProfilePicture(profileId, file, cb){
+function uploadProfilePicture(platformId, profileId, file,  cb){
     
-    handleUploadProcess('profiles_pic/' + profileId + '.jpg', file, cb);
+    handleUploadImgProcess(platformId, 'profiles_pic/' + profileId + '.jpg', file, cb);
 
 }
 
-function uploadRaceLogo(raceId, file, cb){
-
-    handleUploadProcess('races_logo/' + raceId + '.jpg', file, cb);
-
-}
-
-function uploadRaceKML(raceId, file, cb){
-
-    handleUploadProcess('races_kml/' + raceId + '.jpg', file, cb);
+function uploadRaceLogo(platformId, raceId, file, cb){
+    handleUploadImgProcess(platformId, 'races_logo/' + raceId + '.jpg', file, cb);
 
 }
 
-function uploadRacePictures(raceId, files, cb){
+function uploadRaceKML(platformId, platformId, raceId, file, cb){
+
+   // handleUploadGpxProcess(platformId, 'races_kml/' + raceId + '.kml', file, cb);
+
+}
+
+function uploadRacePictures(platformId, raceId, files, cb){
 
     var index = 0;
     files.forEach( file => {
         index += 1;
-        handleUploadProcess('races_pics/' + raceId + '/' + index + '.jpg', file, cb );
+        handleUploadProcess(platformId, 'races_pics/' + raceId + '/' + index + '.jpg', file, cb );
     });
     
 
