@@ -33,13 +33,11 @@
             // For instance, get the download URL: https://firebasestorage.googleapis.com/...
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
               console.log('File available at', downloadURL);
-              alert(downloadURL);
               cb(downloadURL);
             });
           });
     }else{
         var uploadTask;
-        alert(platformId);
         window.resolveLocalFileSystemURL(file, function (fileEntry) {
             fileEntry.file(function (f) {
                 var reader = new FileReader();
