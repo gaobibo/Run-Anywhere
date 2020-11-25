@@ -214,7 +214,8 @@
 
 
 	function onSuccess(imageData) {
-		console.log('success - js call');
+        console.log('success - js call');
+        imgChanged = true;
 		//console.log(device.platform);
 		var captureDataUrl = imageData;
 		if( platformString == "browser")
