@@ -1,11 +1,6 @@
 html, body, main, header
 {
     font-family: 'Sen', sans-serif;
-    
-    /* min-width: 50px;
-    max-width: 376px; */
-    /* margin-left: auto;
-    margin-right: auto; */
     margin: 0;
     padding: 0;
     overflow:auto;
@@ -70,27 +65,16 @@ button
     background-color: #21e3ec;
     font-family: 'Sen', sans-serif;
     font-weight: bold;
-    /* margin-top: 5px; */
     color:  white;
     border: 1px solid #21e3ec;
     border-radius: 4px;
 
 }
 
-
-/* #stats, #edit
-{
-    display: flex;
-    /* margin-bottom: 20px; 
-    text-align: center;
-} */
-
 #stats
 {
-    /* margin-left: 16px; */
     width: 20%;
     height: 100%
-    /* padding: 5px 10px; */
 }
 #header-spacer
 {
@@ -100,15 +84,12 @@ button
 
 #edit
 {
-    /* margin-left: 180px; */
     width: 20%;
     height: 100%
 }
 
 .column-layout{
-    /* margin: 35px 10px; */
     display:flex;
-    /* height: 10vh; */
 }
 .dot {
     height: 100px;
@@ -116,9 +97,6 @@ button
     background-color: #bbb;
     border-radius: 50%;
     margin: 20px 18px; 
-    /* margin-top: 16px;
-    margin-left: 20px;
-    margin-right: 18px; */
     align-items: center;
   
 }     
@@ -165,6 +143,28 @@ img
 {
     width: 35px;
     height: 35px;
+}
+#inviteButton, #requestButton{
+
+    background-color:white;
+    font-size: 12px;
+    font-family: 'Sen', sans-serif;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px 50px; 
+    margin-inline-start: 8%;
+    margin-block-end: 8%;
+    display: inline-block
+    
+}
+#inviteButton{
+    color: black; 
+}
+#requestButton{
+    color: black; 
+
 }
 
 #races-button, #home-button, #people-button

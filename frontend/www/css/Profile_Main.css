@@ -1,11 +1,6 @@
 html, body, main, header
 {
     font-family: 'Sen', sans-serif;
-    
-    /* min-width: 50px;
-    max-width: 376px; */
-    /* margin-left: auto;
-    margin-right: auto; */
     margin: 0;
     padding: 0;
     overflow:auto;
@@ -57,7 +52,6 @@ h3{
     color: white;
     font-size: 14px;
     font-family: 'Sen', sans-serif;  
-    
 }
 
 p{
@@ -70,27 +64,15 @@ button
     background-color: #21e3ec;
     font-family: 'Sen', sans-serif;
     font-weight: bold;
-    /* margin-top: 5px; */
     color:  white;
     border: 1px solid #21e3ec;
     border-radius: 4px;
-
 }
-
-
-/* #stats, #edit
-{
-    display: flex;
-    /* margin-bottom: 20px; 
-    text-align: center;
-} */
 
 #stats
 {
-    /* margin-left: 16px; */
     width: 20%;
     height: 100%
-    /* padding: 5px 10px; */
 }
 #header-spacer
 {
@@ -100,15 +82,12 @@ button
 
 #edit
 {
-    /* margin-left: 180px; */
     width: 20%;
     height: 100%
 }
 
 .column-layout{
-    /* margin: 35px 10px; */
     display:flex;
-    /* height: 10vh; */
 }
 .dot {
     height: 100px;
@@ -116,9 +95,6 @@ button
     background-color: #bbb;
     border-radius: 50%;
     margin: 20px 18px; 
-    /* margin-top: 16px;
-    margin-left: 20px;
-    margin-right: 18px; */
     align-items: center;
   
 }     
@@ -175,7 +151,6 @@ img
     outline: none;
     cursor: pointer;
 
-    /* Removes unwanted border radius on buttons */
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
     border-radius: 0px;
