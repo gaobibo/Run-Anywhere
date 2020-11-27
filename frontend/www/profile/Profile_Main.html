@@ -1,112 +1,121 @@
 <!DOCTYPE html>
-<html lang = "en">
-  <head>
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
-    <link href = "https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel = "stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
-    <link rel = "stylesheet" href = "../css/Profile_Main.css">
-    <title>Profile</title>
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-​
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-    https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
-​
-    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
-    
-    <script src="../js/data_opr.js"></script>
-    <!-- <script type="text/javascript" src="../js/footer.js"></script> -->
+<html lang="en">
 
-   
-  </head>
-  <body onload="onLoadMyInfo()">
-    <header>
-        <button id = "stats" onclick="document.location='my-stats.html'"> My Stats </button>
-        <div id="header-spacer"></div>
-        <button id = "edit" onclick="document.location='profile.html'"> Edit Profile </button>
-      
-    </header>  
-    <main>
-        <div class="column-layout">
-            <div class="dot">
-              <img class="w3-circle" id="runnerImg" src="../img/default-profile.png" style="width:100px;height:100px;">
-            </div>
-            <div class="two">
-               <p>Name:</p> 
-               <p>Email:</p> 
-            </div>
-            <div class="three">
-               <p id="runnerName"> anonymous</p>
-               <p id="runnerEmail">(anonymous)</p>
-               <i  style="color:white;font-size: 16px;" class="material-icons" onclick="signOut()">&#9755;Logout</i>
-            </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+  <link rel="stylesheet" href="../css/Profile_Main.css">
+  <title>Profile</title>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+  ​
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+  ​
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+  <script src="../js/data_opr.js"></script>
+  <!-- <script type="text/javascript" src="../js/footer.js"></script> -->
+
+
+</head>
+
+<body onload="onLoadMyInfo()">
+  <header>
+    <button id="stats" onclick="document.location='my-stats.html'"> My Stats </button>
+    <div id="header-spacer"></div>
+    <button id="edit" onclick="document.location='profile.html'"> Edit Profile </button>
+
+  </header>
+  <main>
+    <div class="column-layout">
+      <div class="dot">
+        <img class="w3-circle" id="runnerImg" src="../img/default-profile.png" style="width:100px;height:100px;">
+      </div>
+      <div class="two">
+        <p>Name:</p>
+        <p>Email:</p>
+      </div>
+      <div class="three">
+        <p id="runnerName"> anonymous</p>
+        <p id="runnerEmail">(anonymous)</p>
+        <i style="color:white;font-size: 16px;" class="material-icons" onclick="signOut()">&#9755;Logout</i>
+      </div>
+    </div>
+    <h2> My Latest Races:
+      <div id="latest_races_list" class="w3-container" style="background-color: #4bbf6e;">
+        <hr>
+        <div class="w3-cell-row">
+          <div class="w3-cell" style="width:30%">
+            <img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">
+          </div>
+          <div class="w3-cell w3-container">
+            <h3>Loading</h3>
+            <p>Loading</p>
+          </div>
         </div>
-        <h2> My Latest Races:
-        <div id = "latest_races_list" class="w3-container" style="background-color: #4bbf6e;">
-          <hr>
-          <div class="w3-cell-row">
-            <div class="w3-cell" style="width:30%">
-              <img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">
-            </div>
-            <div class="w3-cell w3-container">
-              <h3>Loading</h3>
-              <p>Loading</p>
-            </div>
-          </div>  
-          <hr>
+        <hr>
+      </div>
+    </h2>
+    <h2> Upcoming Races:
+      <div id="upcoming_races_list" class="w3-container" style="background-color: #4bbf6e;">
+        <hr>
+        <div class="w3-cell-row">
+          <div class="w3-cell" style="width:30%">
+            <img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">
           </div>
-      </h2>
-        <h2> Upcoming Races: 
-          <div id = "upcoming_races_list" class="w3-container" style="background-color: #4bbf6e;">
-            <hr>
-            <div class="w3-cell-row">
-              <div class="w3-cell" style="width:30%">
-                <img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">
-              </div>
-              <div class="w3-cell w3-container">
-                <h3>Loading</h3>
-                <p>Loading</p>
-              </div>
-            </div>  
-            <hr>
-            </div>
-        </h2>
-        <h2> Past Races: 
-        <div id = "past_races_list" class="w3-container" style="background-color: #4bbf6e;">
-          <hr>
-          <div class="w3-cell-row">
-            <div class="w3-cell" style="width:30%">
-              <img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">
-            </div>
-            <div class="w3-cell w3-container">
-              <h3>Loading</h3>
-              <p>Loading</p>
-            </div>
-          </div>  
-          <hr>
+          <div class="w3-cell w3-container">
+            <h3>Loading</h3>
+            <p>Loading</p>
           </div>
-        </h2>
-    </main>
-  </body>​
-  
+        </div>
+        <hr>
+      </div>
+    </h2>
+    <h2> Past Races:
+      <div id="past_races_list" class="w3-container" style="background-color: #4bbf6e;">
+        <hr>
+        <div class="w3-cell-row">
+          <div class="w3-cell" style="width:30%">
+            <img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">
+          </div>
+          <div class="w3-cell w3-container">
+            <h3>Loading</h3>
+            <p>Loading</p>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </h2>
+  </main>
+</body>​
+
 <footer>
   <button id="races-button">
-      <img src="../img/logo.webp" alt="Logo">
+    <img src="../img/logo.webp" alt="Logo">
   </button>
 
   <button id="home-button">
-      <img src="../img/home-icon.png" alt="Home icon">
+    <img src="../img/home-icon.png" alt="Home icon">
   </button>
 
   <button id="people-button">
-      <img src="../img/people-icon.png" alt="People icon">
+    <img src="../img/people-icon.png" alt="People icon">
   </button>
 </footer>
 
