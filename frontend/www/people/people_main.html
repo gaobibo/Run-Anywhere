@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-    <link rel="manifest" href="../favicon/site.webmanifest">
+    <!--<link rel="manifest" href="../favicon/site.webmanifest">-->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=[API_KEY]&callback=initMap&libraries=places&v=weekly"
         defer></script>
@@ -29,7 +29,6 @@
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
 
     <script type="text/javascript" src="../js/data_opr.js"></script>
-    <script type="text/javascript" src="../js/map_opr.js"></script>
 
     <!-- Footer css file -->
     <link rel="stylesheet" href="../css/footer.css">
@@ -38,20 +37,36 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color:#4bbf6e;">
 
-    <header class="w3-top w3-bar w3-theme">
-        <div class="w3-bar-item w3-padding-8" style="width:85%">
-            <input class="w3-bar-item w3-round-xxlarge w3-padding-small" style="width:100%" id="mapSearch" type="text"
-                placeholder="Search..." name="search" />
-        </div>
-        <button style="width:15%; color:white; font-size:35px" class="w3-bar-item w3-button w3-small w3-hover "
-            onclick="goBack()">
-            <i class="material-icons nav__icon">settings</i>
-        </button>
+    <!-- Search bar and settings button -->
+    <div class="w3-bar w3-theme">
+            <div class="w3-bar-item w3-button w3-padding-small w3-padding-16" style="width:85%">
+                <input
+                        class="w3-border-0 w3-round-xlarge"
+                        id="peopleSearch"
+                        type="text"
+                        placeholder="Search..."
+                        style="width:100%;font-size:18px"
+                        name="search"
+                />
+            </div>
 
-    </header>
+            <button
+                    class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-right w3-padding-8"
+                    onclick="window.location.href='./people_settings.html'"
+                    style="width:15%"
+            >
+                <i class="material-icons nav__icon" style="font-size:47.5px">settings</i>
 
+            </button>
+    </div>
+
+    <!-- Activity and Friends menu options -->
+    <div class="w3-bar w3-card" style="background-color:#4bbf6e;">
+        <p class="w3-col w3-center w3-border w3-padding-small w3-hover-opacity" style="margin:0px;color:white;width:50%">Activity</p>
+        <p class="w3-col w3-center w3-border w3-padding-small w3-hover-opacity" style="margin:0px;color:white;width:50%">Friends</p>
+    </div>
 
 
 
@@ -68,8 +83,8 @@
             <i class="material-icons nav__icon">settings</i>
             <span class="nav__text">Profile</span>
         </a>
-        <a class="nav__link nav__link--active">
-            <i class="material-icons nav__icon">group</i>
+        <a class="w3-theme-dark nav__link">
+            <i class="material-icons nav__icon nav__link--active">group</i>
             <span class="nav__text">People</span>
         </a>
     </nav>
