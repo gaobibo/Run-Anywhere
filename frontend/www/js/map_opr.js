@@ -74,9 +74,9 @@ function initMap()
   {
     //loadGPXFileIntoGoogleMap(map, "https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml");
     //'https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml'
-    var ctaLayer = new google.maps.KmlLayer(kmlPath);
+    var kmlLayer = new google.maps.KmlLayer(kmlPath);
 
-    ctaLayer.setMap(map);
+    kmlLayer.setMap(map);
   }
 
   function  setRacesMarker(raceId, raceData)
@@ -179,7 +179,7 @@ function initMap()
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener("places_changed", () => {
-      var iconShowingMode = document.getElementById("showingMode");
+      
 
       
         const places = searchBox.getPlaces();
