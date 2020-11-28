@@ -136,9 +136,11 @@
                 <span id="ageRange" class="w3-col" style="color:white;width:50%;text-align:right;font-size:16px">18-100</span>
             </header>
 
+            <!-- min level -->
             <div class="w3-container" style="background-color:GhostWhite;">
                 <div class="w3-row w3-padding-16">
-                    <input class="w3-col" type="range" multiple min="18" max="100" step="1" data-values="18 100" onChange="" list="ageTicks">
+                    <span class="w3-left" style="width=10%">Min:</span>
+                    <input id="minRange" class="w3-bar-item w3-right" style="width:90%" type="range" multiple min="18" max="100" step="1" value="18" onChange="updateAgeInput(this.id);" list="ageTicks">
                 </div>
             </div>
             <datalist id="ageTicks">
@@ -152,6 +154,15 @@
                 <option>90</option>
                 <option>100</option>
             </datalist>
+
+
+            <!-- max level -->
+            <div class="w3-container" style="background-color:GhostWhite;">
+                <div class="w3-row w3-padding-16">
+                    <span class="w3-left" style="width=10%">Max:</span>
+                    <input id="maxRange" class="w3-bar-item w3-right" style="width:90%" type="range" multiple min="18" max="100" step="1" value="100" onChange="updateAgeInput(this.id);" list="ageTicks">
+                </div>
+            </div>
 
         </div>
     </div>
