@@ -103,8 +103,8 @@
     function loadMyStat()
     {
 
-        //getMyStatInfo( function( count, distance, time, records) {
-        getStatInfo( "-MMT6shfN4bTHRQY42p9", function( count, distance, time, records) { //for test 
+        getMyStat( function( count, distance, time, records) {
+        //getStatInfo( "-MMT6shfN4bTHRQY42p9", function( count, distance, time, records) { //for test 
             console.log( count );
             document.getElementById("raceCount").textContent = count;
             document.getElementById("raceMiles").textContent = distance;

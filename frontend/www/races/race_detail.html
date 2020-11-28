@@ -102,14 +102,32 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
       <button id="dropRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="dropRace()">&#128581;Drop</button>
       <button id="inviteRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../people/invites_list.html?id=' + raceId + ''">&#128588;Invites</button>
       <button id="resultRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../races/race_results.html?id=' + raceId + ''">&#127941;Results</button>
-
-     
+      
     </div>
+    
     
   </div>
   <div class="padding">
   <p class="text-white" id="raceDescription"></p>
 </div>
+<!--
+<div id="myResult" class="w3-row">
+ <div class="w3-third w3-container">
+  <h2 class="text-white">My Result:</h2> 
+  </div>
+  <div class="w3-third w3-container">
+  <input type="text" style="font-size: large;" class="w3-col" id="myResultEdit" value="00:00:00"  disabled /></div>
+  <div class="w3-third w3-container"><i id="setMyResult" style="color:white;font-size: 16px;" class="w3-col" onclick="onSetMyResult()">&#9997;Edit</i></div>
+</div>
+-->
+<div id="myResult" >
+  
+  <span style="display: inline-block;margin-right: 10px;"><label class="text-white">My Result:</label> </span>
+   
+   <span style="display: inline-block;"><input type="text" style="font-size: 16px;"  id="myResultEdit" value="00:00:00"  disabled /></span>
+  <span style="display: inline-block;"><i id="setMyResult" style="color:white;font-size: 16px;"  onclick="onSetMyResult()">&#9997;Edit</i></span>
+ 
+ </div>
 </main>
 </div>
   <script type="text/javascript">
@@ -139,6 +157,8 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 </body>
 <script>
     var raceId;
+    var raceDistance="";
+    var editMode = false;
     function getCurrentRace()
     {
         var parameters = location.search.substring(1).split("&"); 
@@ -153,28 +173,64 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
             var yyyy = today.getFullYear();
 
             today = yyyy + '-' + mm + '-' + dd;
-            if( snap.val().eventday > today ){
-              document.getElementById("resultRace").style.display = "none";
-              isMyRegisterRace(raceId, function(isRegister){
-                if( isRegister ){
+          
+              
+              isMyRegisterRace(raceId, function(isRegister, result){
+                console.log( result );
+                if(  snap.val().eventday > today ){
+                  document.getElementById("resultRace").style.display = "none";
+                  document.getElementById("myResult").style.display = "none";
+                  document.getElementById("inviteRace").style.display = "block";
+                  if( isRegister ){
+                    document.getElementById("registerRace").style.display = "none";
+                    document.getElementById("dropRace").style.display = "block";
+                  }else{
+                    document.getElementById("registerRace").style.display = "block";
+                    document.getElementById("dropRace").style.display = "none";  
+                  }
+                }
+                else{
                   document.getElementById("registerRace").style.display = "none";
-                  document.getElementById("dropRace").style.display = "block";
-                }else{
-                  document.getElementById("registerRace").style.display = "block";
-                  document.getElementById("dropRace").style.display = "none";  
+                  document.getElementById("dropRace").style.display = "none";
+                  document.getElementById("inviteRace").style.display = "none";
+                  document.getElementById("resultRace").style.display = "block";
+                  if( isRegister)
+                  {
+                    document.getElementById("myResult").style.display = "block";
+                    document.getElementById("myResultEdit").value = result;
+                  }
+                  else
+                  {
+                    document.getElementById("myResult").style.display = "none";
+                  }
+                    
                 }
                 
-              });
-
-            }
-            else{
-              document.getElementById("registerRace").style.display = "none";
-              document.getElementById("dropRace").style.display = "none";
-              document.getElementById("inviteRace").style.display = "none";
-              document.getElementById("resultRace").style.display = "block";
-            }
+              });  
         });
         
+    }
+
+    function onSetMyResult()
+    {
+      setMyResult = document.getElementById("setMyResult");
+      console.log(setMyResult.innerHTML);
+      if( !editMode )
+      {
+        editMode = true;
+        document.getElementById("myResultEdit").disabled = false;
+        setMyResult.innerHTML = "&#9997;Set";
+      }
+      else
+      {
+        editMode = false;
+        updateMyResultInfo( raceId,  document.getElementById("myResultEdit").value, raceDistance);
+        document.getElementById("myResultEdit").disabled = true;
+        setMyResult.innerHTML == "&#9997;Edit";
+      }
+      
+      
+
     }
 
     function registerRace()
@@ -221,6 +277,7 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
         document.getElementById("distance").innerHTML = "Distance:" + distance + "Miles";
         document.getElementById("eventTime").innerHTML = "Race Day: " + eventday + "  " + startdttm;
         document.getElementById("raceDescription").innerHTML = raceDescription;
+        raceDistance = distance;
 
         setRoute( gpxFile );
     }

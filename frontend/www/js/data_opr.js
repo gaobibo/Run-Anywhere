@@ -450,6 +450,17 @@ function addUpdateRace(raceId, raceName, raceDescription,
         
   }
 
+  function updateMyResultInfo(raceId, finishedtime, finisheddistance)
+  {
+    getCurrentUser( firebase.auth() ).then(function(user){
+        if(user) {
+            let uid = user.uid;
+            console.log( raceId + uid + finishedtime + finisheddistance );
+            updatePanticipateInfo(raceId, uid, finishedtime, finisheddistance);
+        }
+        else redirectToLogIn();
+        });
+    }
 
   function inviteRace(raceId, peopleId)
   {
@@ -839,13 +850,16 @@ function addUpdateRace(raceId, raceName, raceDescription,
             var firebaseRef = firebase.database().ref();
             var participatesRef = firebaseRef.child("participates");
             var isRegister = false;
+            var result = "00:00:00";
             participatesRef.orderByChild("uid").equalTo(uid).once("value", snap => {
                 snap.forEach( childSnapshot =>{
-                    if( raceId == childSnapshot.val().raceId )
+                    if( raceId == childSnapshot.val().raceId ){
                         isRegister = true;
+                        result = childSnapshot.val().finishedtime;
+                    }
                 });
 
-                cb(isRegister);
+                cb(isRegister, result);
                 
             });
         }
