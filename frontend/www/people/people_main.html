@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Run Anywhere</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,14 +8,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-    <link rel="manifest" href="../favicon/site.webmanifest">
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=[API_KEY]&callback=initMap&libraries=places&v=weekly"
-        defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=[API_KEY]&callback=initMap&libraries=places&v=weekly" defer></script>
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
@@ -32,25 +24,22 @@
     <script type="text/javascript" src="../js/map_opr.js"></script>
 
     <!-- Footer css file -->
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel = "stylesheet" href = "../css/footer.css">
 
     <!-- Icons used in footer -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-
 <body>
 
-    <header class="w3-top w3-bar w3-theme">
-        <div class="w3-bar-item w3-padding-8" style="width:85%">
-            <input class="w3-bar-item w3-round-xxlarge w3-padding-small" style="width:100%" id="mapSearch" type="text"
-                placeholder="Search..." name="search" />
-        </div>
-        <button style="width:15%; color:white; font-size:35px" class="w3-bar-item w3-button w3-small w3-hover "
-            onclick="goBack()">
-            <i class="material-icons nav__icon">settings</i>
-        </button>
+<header class="w3-top w3-bar w3-theme">
+    <div class="w3-bar-item w3-padding-8" style="width:85%">
+        <input class="w3-bar-item w3-round-xxlarge w3-padding-small" style="width:100%" id="mapSearch" type="text" placeholder="Search..." name="search"  />
+    </div>
+    <button style="width:15%; color:white; font-size:35px" class="w3-bar-item w3-button w3-small w3-hover " onclick="goBack()">
+        <i class="material-icons nav__icon">settings</i>
+    </button>
 
-    </header>
+</header>
 
 
 
@@ -59,18 +48,18 @@
 
 
 
-    <nav class="nav">
-        <a href="../races/races_map.html" class="nav__link">
-            <i class="material-icons nav__icon">directions_run</i>
-            <span class="nav__text">Race</span>
-        </a>
-        <a href="../profile/Profile_Main.html" class="nav__link">
-            <i class="material-icons nav__icon">settings</i>
-            <span class="nav__text">Profile</span>
-        </a>
-        <a class="nav__link nav__link--active">
-            <i class="material-icons nav__icon">group</i>
-            <span class="nav__text">People</span>
-        </a>
-    </nav>
+<nav class="nav">
+    <a href="../races/races_map.html" class="nav__link">
+        <i class="material-icons nav__icon">directions_run</i>
+        <span class="nav__text">Race</span>
+    </a>
+    <a href="../profile/Profile_Main.html" class="nav__link">
+        <i class="material-icons nav__icon">settings</i>
+        <span class="nav__text">Profile</span>
+    </a>
+    <a class="nav__link nav__link--active">
+        <i class="material-icons nav__icon">group</i>
+        <span class="nav__text">People</span>
+    </a>
+</nav>
 </body>

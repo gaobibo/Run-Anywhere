@@ -9,22 +9,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-    <link rel="manifest" href="../favicon/site.webmanifest">
-
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
-    <!--
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+	<!--
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel = "stylesheet" href = "../mobileui/style.css"> 
     <link rel="stylesheet" href="../css/common.css"> -->
     <link rel="stylesheet" href="../css/profile.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
@@ -37,12 +31,12 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
-
-
-    <script type="text/javascript" src="../cordova.js"></script>
-    <script type="text/javascript" src="../js/storage_opr.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
+	
+	
+	<script type="text/javascript" src="../cordova.js"></script>
+	<script type="text/javascript" src="../js/storage_opr.js"></script>
     <!-- Custom JavaScript -->
 
     <script src="../js/data_opr.js"></script>
@@ -50,35 +44,32 @@
 
 <body onload="loadProfile()">
     <header>
-        <i style="width: 15%;color:white;font-size: 48px;" class="material-icons" onclick="goBack()">&#9756;</i>
+        <i  style="width: 15%;color:white;font-size: 48px;"  class="material-icons" onclick="goBack()">&#9756;</i>
         <h1 style="width: 60%;"> My Profile </h1>
-        <i style="width: 10%;color:white;font-size: 48px;" class="material-icons" onclick="editProfile()">&#9997;</i>
+        <i  style="width: 10%;color:white;font-size: 48px;" class="material-icons" onclick="editProfile()">&#9997;</i>
     </header>
 
     <main>
         <section id="profile-picture">
-            <div class="w3-container">
-                <img class="w3-circle" style="width: 128px;height: 128px;" id="profileImg"
-                    src="../img/default-profile.png" />
-            </div>
-            <div>
-                <i id="selectPicture" style="color:white;font-size: 48px;" class="material-icons"
-                    onclick="getPhoto(false);">photo_library</i>
-                <i id="takePhoto" style="color:white;font-size: 48px;" class="material-icons"
-                    onclick="getPhoto(true);">add_a_photo</i>
-            </div>
+            <div class="w3-container" >
+			<img class="w3-circle" style="width: 128px;height: 128px;" id="profileImg" src="../img/default-profile.png"/>
+			</div>
+			<div >
+			<i  id="selectPicture" style="color:white;font-size: 48px;" class="material-icons" onclick="getPhoto(false);">photo_library</i>
+			<i  id="takePhoto" style="color:white;font-size: 48px;" class="material-icons" onclick="getPhoto(true);">add_a_photo</i>
+			</div>
         </section>
 
         <section id="profile-info">
-            <form>
+            <form >
                 <div class="info">
                     <label for="first-name">First name:</label>
-                    <input type="text" id="firstName" placeholder="anonymous">
+                    <input type="text" id="firstName" placeholder="anonymous" >
                 </div>
 
                 <div class="info">
                     <label for="last-name">Last name:</label>
-                    <input type="text" id="lastName" placeholder="anonymous">
+                    <input type="text" id="lastName" placeholder="anonymous" >
                 </div>
 
                 <div class="info">
@@ -92,18 +83,18 @@
 
                 <div class="info">
                     <label for="last-name">Date of birth:</label>
-                    <input type="date" id="birthdate" style="font:white;width:100%;" value="1998-08-09" required />
-                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" id="birthdate" style="font:white;width:100%;" value="1998-08-09" required/> 
+					<i class="fas fa-calendar-alt"></i>
                 </div>
 
                 <div class="info">
                     <label for="phone-number">Phone number:</label>
-                    <input type="text" id="phone" placeholder="123-456-7890">
+                    <input type="text" id="phone" placeholder="123-456-7890" >
                 </div>
 
                 <div class="info">
                     <label for="email">Email address:</label>
-                    <input type="text" id="email" placeholder="yourmail@gmail.com">
+                    <input type="text" id="email" placeholder="yourmail@gmail.com" >
                 </div>
                 <!--
                 <div class="info">
@@ -155,21 +146,22 @@
 </body>
 
 <script>
-    document.addEventListener("deviceready", onDeviceReady, false);
+	document.addEventListener("deviceready", onDeviceReady, false);
     var platformString = "";
-    var imgChanged = false;
+    var imgChanged=false;
 
     // Cordova is ready
     function onDeviceReady() {
 
-        console.log(cordova);
-        platformString = cordova.platformId;
+		console.log(cordova);
+		platformString = cordova.platformId;
     }
+    
 
-
-    function loadProfile() {
-        getMyProfile(snap => {
-            console.log(snap.val());
+    function loadProfile()
+    {
+        getMyProfile( snap =>{
+            console.log( snap.val() );
             document.getElementById('profileImg').src = snap.val().profileImg;
             document.getElementById("firstName").value = snap.val().firstName;
             document.getElementById("lastName").value = snap.val().lastName;
@@ -178,87 +170,89 @@
             document.getElementById("phone").value = snap.val().phone;
             document.getElementById("gender").value = snap.val().gender;
         });
-
+        
     }
 
-    var imgFilename = Math.floor(Date.now() / 1000);
-    function editProfile() {
-        let firstName = document.getElementById("firstName").value;
+	var imgFilename = Math.floor(Date.now() / 1000);
+	function editProfile()
+	{
+		let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
-
-        var image = document.getElementById('profileImg');
-        let imagePath = image.src;
-
-        let email = document.getElementById("email").value;
-        let birthdate = document.getElementById("birthdate").value;
-        let phone = document.getElementById("phone").value;
-        let gender = document.getElementById("gender").value;
-
-        if (imgChanged) {
-            uploadProfilePicture(platformString, imgFilename, image.src, urlImg => {
-                if (urlImg == "fail") {
+        
+		var image = document.getElementById('profileImg');
+		let imagePath = image.src;
+		
+		let email = document.getElementById("email").value;
+		let birthdate = document.getElementById("birthdate").value;
+		let phone = document.getElementById("phone").value;
+		let gender = document.getElementById("gender").value;
+		
+		if( imgChanged ){
+            uploadProfilePicture( platformString, imgFilename, image.src, urlImg =>{ 
+                if(urlImg == "fail")
+                {
                     urlImg = "../img/default-profile.png";
                 }
-
-                addUpdateProfile(urlImg,
-                    firstName, lastName, email, gender, birthdate, phone);
-
-                setTimeout(function () {
+            
+                addUpdateProfile( urlImg,
+                    firstName, lastName, email, gender, birthdate, phone );
+                
+                setTimeout(function(){
                     window.location.replace("Profile_Main.html");
                 }, 1000);
             });
         }
-        else {
-            addUpdateProfile(imagePath,
-                firstName, lastName, email, gender, birthdate, phone);
-
-            setTimeout(function () {
+        else{
+            addUpdateProfile( imagePath,
+                    firstName, lastName, email, gender, birthdate, phone );
+                
+            setTimeout(function(){
                 window.location.replace("Profile_Main.html");
             }, 1000);
         }
-    }
+	}
 
 
-    function onSuccess(imageData) {
+	function onSuccess(imageData) {
         console.log('success - js call');
         imgChanged = true;
-        //console.log(device.platform);
-        var captureDataUrl = imageData;
-        if (platformString == "browser") {
-            captureDataUrl = 'data:image/jpeg;base64,' + imageData;
-        }
+		//console.log(device.platform);
+		var captureDataUrl = imageData;
+		if( platformString == "browser")
+		{
+			captureDataUrl = 'data:image/jpeg;base64,' + imageData;
+		}
+		
+		//JS selector call is slightly faster...
+		var image = document.getElementById('profileImg');
+		image.src = captureDataUrl;//imageData;
+		
+	}
 
-        //JS selector call is slightly faster...
-        var image = document.getElementById('profileImg');
-        image.src = captureDataUrl;//imageData;
+	function onFail(message) {
+		alert('Failed because: ' + message);
+	}
 
-    }
-
-    function onFail(message) {
-        alert('Failed because: ' + message);
-    }
-
-    function getPhoto(camera) {
-        if (camera === true) {
-            //Use from Camera
-            navigator.camera.getPicture(onSuccess, onFail, {
-                quality: 50,
-                correctOrientation: true,
-                sourceType: Camera.PictureSourceType.CAMERA,
-                destinationType: Camera.DestinationType.FILE_URI
-            });
-        }
-        else {
-            navigator.camera.getPicture(onSuccess, onFail, {
-                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                destinationType: Camera.DestinationType.FILE_URI
-            });
-        }
-    }
+	function getPhoto(camera) {
+		if (camera === true) {
+			//Use from Camera
+				navigator.camera.getPicture(onSuccess, onFail, {
+					quality: 50,
+					correctOrientation: true,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					destinationType: Camera.DestinationType.FILE_URI
+				});
+		}
+		else {
+			navigator.camera.getPicture(onSuccess, onFail, {
+				sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+				destinationType: Camera.DestinationType.FILE_URI
+			});
+		}
+	}
 
     function goBack() {
         window.history.back();
     }
-</script>
-
+	</script>
 </html>

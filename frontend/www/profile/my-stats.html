@@ -9,11 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-    <link rel="manifest" href="../favicon/site.webmanifest">
 
     <link rel="stylesheet" href="../css/my-stats.css">
 
@@ -27,9 +22,9 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
-
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
+	
     <!-- Custom JavaScript -->
     <script src="auth.js"></script>
     <script src="../js/data_opr.js"></script>
@@ -50,7 +45,7 @@
         </section>
 
         <section id="pr-box">
-
+        
             <div class="pr-category">
                 <span class="distance">5K:</span><span class="result" id="fiveK">00:00:00</span>
             </div>
@@ -105,31 +100,31 @@
     <script src="../js/my-stats.js"></script>
 </body>
 <script>
-    function loadMyStat() {
+    function loadMyStat()
+    {
 
         //getMyStatInfo( function( count, distance, time, records) {
-        getStatInfo("-MMT6shfN4bTHRQY42p9", function (count, distance, time, records) { //for test 
-            console.log(count);
+        getStatInfo( "-MMT6shfN4bTHRQY42p9", function( count, distance, time, records) { //for test 
+            console.log( count );
             document.getElementById("raceCount").textContent = count;
             document.getElementById("raceMiles").textContent = distance;
             document.getElementById("raceTime").textContent = time;
-
-            if (records["Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
+            
+            if(records["Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
             {
                 document.getElementById("marathon").textContent = records["Marathon"];
             }
 
-            if (records["Half Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
+            if(records["Half Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
             {
                 document.getElementById("halfMarathon").textContent = records["Half Marathon"];
             }
 
-            if (records["5K"] != null) //Half Marathon, 5K, 100Miles, 50Miles
+            if(records["5K"] != null) //Half Marathon, 5K, 100Miles, 50Miles
             {
                 document.getElementById("fiveK").textContent = records["5K"];
             }
-        });
+        } );
     }
 </script>
-
 </html>
