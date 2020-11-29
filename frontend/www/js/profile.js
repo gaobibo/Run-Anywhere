@@ -13,12 +13,6 @@ homeButton.addEventListener("click", () => {
 
 const peopleButton = document.querySelector("#people-button");
 
- peopleButton.addEventListener("click", () => {
-     location.href = "searchpeople.html";
- })
-
-// const editButton = document.querySelector("#edit-button");
-
-// editButton.addEventListener("click", () => {
-
-// })
+peopleButton.addEventListener("click", () => {
+    location.href = "searchpeople.html";
+})

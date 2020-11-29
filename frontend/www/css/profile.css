@@ -35,12 +35,13 @@ header
 
 h1
 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60%;
+    width: 75%;
+
+    font-family: 'Sen', sans-serif;
     color: white;
     font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
 }
 
 #edit-button
@@ -79,10 +80,11 @@ main
 #profile-picture
 {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    height: 25vh;
+    height: 30vh;
 }
 
 #picture
@@ -94,6 +96,11 @@ main
     background-color: silver;
 }
 
+hr
+{
+    color: white;
+}
+
 #profile-info
 {
     display: flex;
@@ -101,7 +108,7 @@ main
     justify-content: center;
 
     width: 80%;
-    height: 50vh;
+    height: 45vh;
 }
 
 .info
@@ -117,6 +124,17 @@ main
 label
 {
     color: white;
+}
+
+#edit-header
+{
+    margin-bottom: 20px;
+
+    font-family: 'Sen', sans-serif;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
 }
 
 input
