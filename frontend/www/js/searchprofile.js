@@ -56,18 +56,13 @@ function getRacesShowing(runnerId)
           
 }
 
-function change()
-{
-    var elem = document.getElementById("inviteButton");
-    if (elem.value=="Invite to Race") elem.value = "Invite Sent";
-    else elem.value = "Invite to Race";
-}
-
 function change2()
 {
     var elem = document.getElementById("requestButton");
     if (elem.value=="Friend Request") elem.value = "Request Sent";
-    else elem.value = "Friend Request";
+    else elem.value = "Friend Request"
+    addFollow( peopleId );
+
 }
 
 
