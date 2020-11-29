@@ -91,7 +91,7 @@
 </div>
 
 <div id = "races_list" class="w3-container" style="margin-top:10px">
-<hr>
+
 <div class="w3-cell-row">
   <div class="w3-cell" style="width:30%">
     <img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">
@@ -147,8 +147,20 @@ function getRacesForList()
                             '</div>' +
                             '</div>' +
                             '<hr>';
+
        });
+       races_list_html += '<div class="w3-cell-row">' +
+                           '<div class="w3-cell" style="width:30%">' +
+                            '<img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">' +
+                            '</div>' +
+                            '<div class="w3-cell w3-container">' +
+                            '<h3>Loading</h3>' +
+                            '<p>Loading</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '<hr>';
        races_list.innerHTML = races_list_html;
+      
     });
   }
 
