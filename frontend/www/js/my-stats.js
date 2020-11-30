@@ -1,7 +1,7 @@
 const racesButton = document.querySelector("#races-button");
 
 racesButton.addEventListener("click", () => {
-    location.href = "/races/races_map.html";
+    location.href = "../races/races_map.html";
 })
 
 const homeButton = document.querySelector("#home-button");

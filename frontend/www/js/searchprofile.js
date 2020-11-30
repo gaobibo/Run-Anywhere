@@ -67,7 +67,7 @@ function getRacesShowing(runnerId)
             '<img class="w3-circle" src="' + raceData.imagePath + '" style="width:64px;height:64px;">' +
             '</div>' +
             '<div class="w3-cell w3-container">' +
-            '<h3><a class="article-title" href="/races/race_detail.html?id=' + raceSnap.key + '">' + raceData.raceName + '</a></h3>' +
+            '<h3><a class="article-title" href="../races/race_detail.html?id=' + raceSnap.key + '">' + raceData.raceName + '</a></h3>' +
             '<p>'+ participantSnap.val().finisheddistance +' Miles: '+ participantSnap.val().finishedtime +'</p>' +
             '</div>' +
             '</div>' +
@@ -87,7 +87,7 @@ function getRacesShowing(runnerId)
               '<img class="w3-circle" src="' + raceData.imagePath + '" style="width:64px;height:64px;">' +
               '</div>' +
               '<div class="w3-cell w3-container">' +
-              '<h3><a class="article-title" href="/races/race_detail.html?id=' + raceSnap.key + '">' + raceData.raceName + '</a></h3>' +
+              '<h3><a class="article-title" href="../races/race_detail.html?id=' + raceSnap.key + '">' + raceData.raceName + '</a></h3>' +
               '<p>'+ raceData.eventday +'</p>' +
               '</div>' +
               '</div>' +
@@ -122,7 +122,6 @@ function onMoreLessPast(){
 
 }
 
-<<<<<<< HEAD
 function onMoreLessUpcomming(){
 
   var morelessupcomming = document.getElementById("morelessupcomming");
@@ -161,28 +160,19 @@ function change2()
       Unfollow( runnerId );
       elem.value = "Follow";
     }
-=======
-function change2()
-{
-    var elem = document.getElementById("requestButton");
-    if (elem.value=="Friend Request") elem.value = "Request Sent";
-    else elem.value = "Friend Request"
-    addFollow( peopleId );
-
->>>>>>> e18b473b6ec9d165f9322096d984dd5cd5cce544
 }
 
 
 const racesButton = document.querySelector("#races-button");
 
 racesButton.addEventListener("click", () => {
-    location.href = "/races/races_map.html";
+    location.href = "../races/races_map.html";
 })
 
 const homeButton = document.querySelector("#home-button");
 
 homeButton.addEventListener("click", () => {
-    location.href = "/profile/Profile_Main.html";
+    location.href = "../profile/Profile_Main.html";
 })
 var button = document.querySelector('button');
 

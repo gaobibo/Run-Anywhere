@@ -53,7 +53,7 @@ function onLoadMyInfo(){
             '<img class="w3-circle" src="' + raceData.imagePath + '" style="width:64px;height:64px;">' +
             '</div>' +
             '<div class="w3-cell w3-container">' +
-            '<h3><a class="article-title" href="/races/race_detail.html?id=' + raceSnap.key + '">' + raceData.raceName + '</a></h3>' +
+            '<h3><a class="article-title" href="../races/race_detail.html?id=' + raceSnap.key + '">' + raceData.raceName + '</a></h3>' +
             '<p>'+ participantSnap.val().finisheddistance +' Miles: '+ participantSnap.val().finishedtime +'</p>' +
             '</div>' +
             '</div>' +
@@ -73,7 +73,7 @@ function onLoadMyInfo(){
               '<img class="w3-circle" src="' + raceData.imagePath + '" style="width:64px;height:64px;">' +
               '</div>' +
               '<div class="w3-cell w3-container">' +
-              '<h3><a class="article-title" href="/races/race_detail.html?id=' + raceSnap.key + '">' + raceData.raceName + '</a></h3>' +
+              '<h3><a class="article-title" href="../races/race_detail.html?id=' + raceSnap.key + '">' + raceData.raceName + '</a></h3>' +
               '<p>'+ raceData.eventday +'</p>' +
               '</div>' +
               '</div>' +
@@ -127,17 +127,17 @@ function onLoadMyInfo(){
 const racesButton = document.querySelector("#races-button");
 
 racesButton.addEventListener("click", () => {
-    location.href = "/races/races_map.html";
+    location.href = "../races/races_map.html";
 })
 
 const homeButton = document.querySelector("#home-button");
 
 homeButton.addEventListener("click", () => {
-    location.href = "/profile/Profile_Main.html";
+    location.href = "../profile/Profile_Main.html";
 })
 
 const peopleButton = document.querySelector("#people-button");
 
 peopleButton.addEventListener("click", () => {
-    location.href = "/people/follows_main.html";
+    location.href = "../people/follows_main.html";
 })

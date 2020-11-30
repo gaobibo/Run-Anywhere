@@ -200,13 +200,12 @@
                 if (urlImg == "fail") {
                     urlImg = "../img/default-profile.png";
                 }
-<<<<<<< HEAD
             
                 addUpdateProfile( urlImg,
                     firstName, lastName, email, gender, birthdate, phone );
                 
                 setTimeout(function(){
-                    window.location.replace("/profile/Profile_Main.html");
+                    window.location.replace("../profile/Profile_Main.html");
                 }, 1000);
             });
         }
@@ -215,28 +214,14 @@
                     firstName, lastName, email, gender, birthdate, phone );
                 
             setTimeout(function(){
-                window.location.replace("/profile/Profile_Main.html");
-=======
-
-                addUpdateProfile(urlImg,
-                    firstName, lastName, email, gender, birthdate, phone);
-
-                setTimeout(function () {
-                    window.location.replace("Profile_Main.html");
-                }, 1000);
-            });
-        }
-        else {
-            addUpdateProfile(imagePath,
-                firstName, lastName, email, gender, birthdate, phone);
-
-            setTimeout(function () {
-                window.location.replace("Profile_Main.html");
->>>>>>> e18b473b6ec9d165f9322096d984dd5cd5cce544
+                window.location.replace("../profile/Profile_Main.html");
             }, 1000);
         }
     }
 
+    function goBack() {
+        window.history.back();
+    }
 
     function onSuccess(imageData) {
         console.log('success - js call');

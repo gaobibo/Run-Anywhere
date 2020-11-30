@@ -134,7 +134,7 @@ function initMapForId(controlId, kmlFile)
           });
           google.maps.event.addListener(marker2, 'click', ()=>{
             setTimeout(function(){
-              window.location.replace("/races/race_detail.html?id=" + raceId );
+              window.location.replace("../races/race_detail.html?id=" + raceId );
               }, 1000);
           });
         }      

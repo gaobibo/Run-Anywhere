@@ -117,7 +117,7 @@ function signUp(){
             alert("success signup")
             addUpdateProfile();
             setTimeout(function(){
-                window.location.replace("/races/race_map.html");
+                window.location.replace("../races/race_map.html");
             }, 1000);
             
         }).catch((error) => {
@@ -156,7 +156,7 @@ function signIn(){
         }
         alert("Succesfully signed in");
         setTimeout(function(){
-            window.location.replace("/races/races_map.html");
+            window.location.replace("../races/races_map.html");
         }, 1000);
         }).catch((error) => {
             // Handle Errors here.
@@ -176,7 +176,7 @@ function signIn(){
         // New sign-in will be persisted with session persistence.
         firebase.auth().signInWithEmailAndPassword(userSIEmail, userSIPassword).then((success) => {
             alert("xxxxxxxxxxx");
-            document.location = "/races/addrace.html";
+            document.location = "../races/addrace.html";
         });        
     })
     .catch(function(error) {
@@ -191,7 +191,7 @@ function signIn(){
 function redirectToLogIn()
 {
     setTimeout(function(){
-        window.location.replace("/auth/LoginApp.html");
+        window.location.replace("../auth/LoginApp.html");
     });
 }
 

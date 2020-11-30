@@ -23,7 +23,7 @@ function doSearch()
     var gender = document.getElementById('gender').value;
     
     setTimeout(function(){
-            window.location.replace("/people/search_list.html?gender=" +  gender +
+            window.location.replace("../people/search_list.html?gender=" +  gender +
             "&ageMin=" + ageMin + "&ageMax=" +  ageMax);
     }, 1000);
 }

@@ -20,11 +20,11 @@
                 '<div class="left">' + 
                 '    <img class="avatar circle" src="' + profileData.profileImg + '">' +
                 '</div>' + 
-                '<h2 class="text-strong"><a class="article-title" href="/people/searchprofile.html?id=' + snapProfile.key + '">' + followName + '</a></h2>' +
+                '<h2 class="text-strong"><a class="article-title" href="../people/searchprofile.html?id=' + snapProfile.key + '">' + followName + '</a></h2>' +
                 '<p class="text-grey">Invite you</p>' + 
                 '</div>' + 
 
-                '<div class="item no-border cover radius" style="background-image:url(' + raceData.imagePath + ')" onclick="document.location=\'/races/race_detail.html?id=' + snapRace.key + '\'"  >' + 
+                '<div class="item no-border cover radius" style="background-image:url(' + raceData.imagePath + ')" onclick="document.location=\'../races/race_detail.html?id=' + snapRace.key + '\'"  >' + 
                 '<div class="text-small gradient bottom padding text-white text-light radius">' + 
                 '<span class="amber-300 radius padding text-big text-strong">' + raceData.raceName + '</span>' + raceData.eventday +
                 '</div>' + 

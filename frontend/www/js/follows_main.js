@@ -11,7 +11,7 @@
                              '<div class="left">' +
                              '    <img class="avatar circle" style="width:64px;height:64px;" src="' + profileData.profileImg + '">' +
                              '</div>' +
-                             '<h2 class="text-strong"><a class="article-title text-white" href="/people/searchprofile.html?id=' + snapshot.key + '">' + profileData.firstName + ' ' + profileData.lastName + '</a></h2>' +
+                             '<h2 class="text-strong"><a class="article-title text-white" href="../people/searchprofile.html?id=' + snapshot.key + '">' + profileData.firstName + ' ' + profileData.lastName + '</a></h2>' +
                              '<p class="text-grey-700 ellipsis">' + profileData.gender + '</p>' +
                              '</div>';
         console.log(follows_list_html);                    
@@ -64,14 +64,14 @@ function openFollows(){
                 '<div class="left">' + 
                 '    <img class="avatar circle" src="' + profileData.profileImg + '">' +
                 '</div>' + 
-                '<h2 class="text-strong"><a class="article-title" href="/people/searchprofile.html?id=' + snapProfile.key + '">' + followName + '</a></h2>' +
+                '<h2 class="text-strong"><a class="article-title" href="../people/searchprofile.html?id=' + snapProfile.key + '">' + followName + '</a></h2>' +
                 '<p class="text-grey">'+ resultData.finisheddistance + 'Miles </p>' + 
                 '<div class="right text-grey text-small">' + resultData.finishedtime + 
                 '     <i class="icon ion-android-time"></i>' + 
                 '</div>' + 
                 '</div>' + 
 
-                '<div class="item no-border cover radius" style="background-image:url(' + raceData.imagePath + ')" onclick="document.location=\'/races/race_detail.html?id=' + childSnapshotRace.key + '\'"  >' + 
+                '<div class="item no-border cover radius" style="background-image:url(' + raceData.imagePath + ')" onclick="document.location=\'../races/race_detail.html?id=' + childSnapshotRace.key + '\'"  >' + 
                 '<div class="text-small gradient bottom padding text-white text-light radius">' + 
                 '<span class="amber-300 radius padding text-big text-strong">' + raceData.raceName + '</span>' + raceData.eventday +
                 '</div>' + 
@@ -105,7 +105,7 @@ function openFollows(){
 
     var a = document.createElement("a");
     a.appendChild(document.createTextNode(profileData.firstName + ' ' + profileData.lastName));
-    a.setAttribute("href", "/people/searchprofile.html?id=" + profileId);
+    a.setAttribute("href", "../people/searchprofile.html?id=" + profileId);
     div.appendChild(a);
 }
 
