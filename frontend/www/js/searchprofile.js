@@ -122,6 +122,7 @@ function onMoreLessPast(){
 
 }
 
+<<<<<<< HEAD
 function onMoreLessUpcomming(){
 
   var morelessupcomming = document.getElementById("morelessupcomming");
@@ -160,6 +161,15 @@ function change2()
       Unfollow( runnerId );
       elem.value = "Follow";
     }
+=======
+function change2()
+{
+    var elem = document.getElementById("requestButton");
+    if (elem.value=="Friend Request") elem.value = "Request Sent";
+    else elem.value = "Friend Request"
+    addFollow( peopleId );
+
+>>>>>>> e18b473b6ec9d165f9322096d984dd5cd5cce544
 }
 
 

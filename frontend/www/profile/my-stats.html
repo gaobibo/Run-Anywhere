@@ -22,9 +22,9 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
 
-	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
-	
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
+
     <!-- Custom JavaScript -->
     <script src="auth.js"></script>
     <script src="../js/data_opr.js"></script>
@@ -32,7 +32,10 @@
 
 <body onload="loadMyStat()">
     <header>
-        <h1>My Stats</h1>
+        <span style="width: 15%; padding-left: 25px; color:white; font-size: 3em;" class="material-icons"
+            onclick="goBack()">&#9756;</span>
+        <h1 style="padding-right: 25px;">My Stats</h1>
+        <div style="width: 15%;"></div>
     </header>
 
     <main>
@@ -45,7 +48,7 @@
         </section>
 
         <section id="pr-box">
-        
+
             <div class="pr-category">
                 <span class="distance">5K:</span><span class="result" id="fiveK">00:00:00</span>
             </div>
@@ -100,31 +103,35 @@
     <script src="../js/my-stats.js"></script>
 </body>
 <script>
-    function loadMyStat()
-    {
+    function loadMyStat() {
 
-        getMyStat( function( count, distance, time, records) {
-        //getStatInfo( "-MMT6shfN4bTHRQY42p9", function( count, distance, time, records) { //for test 
-            console.log( count );
+        getMyStat(function (count, distance, time, records) {
+            //getStatInfo( "-MMT6shfN4bTHRQY42p9", function( count, distance, time, records) { //for test 
+            console.log(count);
             document.getElementById("raceCount").textContent = count;
             document.getElementById("raceMiles").textContent = distance;
             document.getElementById("raceTime").textContent = time;
-            
-            if(records["Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
+
+            if (records["Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
             {
                 document.getElementById("marathon").textContent = records["Marathon"];
             }
 
-            if(records["Half Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
+            if (records["Half Marathon"] != null) //Half Marathon, 5K, 100Miles, 50Miles
             {
                 document.getElementById("halfMarathon").textContent = records["Half Marathon"];
             }
 
-            if(records["5K"] != null) //Half Marathon, 5K, 100Miles, 50Miles
+            if (records["5K"] != null) //Half Marathon, 5K, 100Miles, 50Miles
             {
                 document.getElementById("fiveK").textContent = records["5K"];
             }
-        } );
+        });
+    }
+
+    function goBack() {
+        window.history.back();
     }
 </script>
+
 </html>

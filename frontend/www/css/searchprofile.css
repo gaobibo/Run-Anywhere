@@ -144,27 +144,20 @@ img
     width: 35px;
     height: 35px;
 }
-#inviteButton, #requestButton{
-
-    background-color:white;
-    font-size: 12px;
-    font-family: 'Sen', sans-serif;
-    border-radius: 4px;
-    border: 1px solid #d3d3d3;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding: 5px 50px; 
-    margin-inline-start: 8%;
-    margin-block-end: 8%;
-    display: inline-block
-    
-}
-#inviteButton{
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     color: black; 
 }
 #requestButton{
     color: black; 
-
+    background-color:white;
+    font-size: 14px;
+    font-family: 'Sen', sans-serif;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
 }
 
 #races-button, #home-button, #people-button
