@@ -14,3 +14,17 @@ function updateAgeInput(id){
 
     document.getElementById('ageRange').innerHTML = minVal.value + "-" + maxVal.value;
 }
+
+function doSearch()
+{
+    
+    var ageMin = document.getElementById('minRange').value;
+    var ageMax = document.getElementById('maxRange').value;
+    var gender = document.getElementById('gender').value;
+    
+    setTimeout(function(){
+            window.location.replace("/people/search_list.html?gender=" +  gender +
+            "&ageMin=" + ageMin + "&ageMax=" +  ageMax);
+    }, 1000);
+}
+

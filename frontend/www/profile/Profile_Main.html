@@ -23,14 +23,15 @@
     
     <script src="../js/data_opr.js"></script>
     <!-- <script type="text/javascript" src="../js/footer.js"></script> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
    
   </head>
   <body onload="onLoadMyInfo()">
     <header>
-        <button id = "stats" onclick="document.location='my-stats.html'"> My Stats </button>
+        <button id = "stats" onclick="document.location='/profile/my-stats.html'"> My Stats </button>
         <div id="header-spacer"></div>
-        <button id = "edit" onclick="document.location='profile.html'"> Edit Profile </button>
+        <button id = "edit" onclick="document.location='/profile/profile.html'"> Edit Profile </button>
       
     </header>  
     <main>
@@ -45,10 +46,12 @@
             <div class="three">
                <p id="runnerName"> anonymous</p>
                <p id="runnerEmail">(anonymous)</p>
-               <i  style="color:white;font-size: 16px;" class="material-icons" onclick="signOut()">&#9755;Logout</i>
+               <button  style="color:white;font-size: 16px;"  onclick="document.location='/profile/invite_races.html'">&#9829;Invited List</button>
+               <p ></p>
+               <button  style="color:white;font-size: 16px;"  onclick="signOut()">&#9755;Logout</button>
             </div>
         </div>
-        <h2> My Latest Races:
+        <h2> My Recent Races:</h2>
         <div id = "latest_races_list" class="w3-container" style="background-color: #4bbf6e;">
           <hr>
           <div class="w3-cell-row">
@@ -62,8 +65,10 @@
           </div>  
           <hr>
           </div>
-      </h2>
-        <h2> Upcoming Races: 
+          <i class="material-icons nav__icon" onclick="onMoreLessPast()" id="morelesspast" style="font-size:30px">expand_more</i>
+          
+      
+        <h2> My Upcoming Races: </h2>
           <div id = "upcoming_races_list" class="w3-container" style="background-color: #4bbf6e;">
             <hr>
             <div class="w3-cell-row">
@@ -77,22 +82,8 @@
             </div>  
             <hr>
             </div>
-        </h2>
-        <h2> Past Races: 
-        <div id = "past_races_list" class="w3-container" style="background-color: #4bbf6e;">
-          <hr>
-          <div class="w3-cell-row">
-            <div class="w3-cell" style="width:30%">
-              <img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">
-            </div>
-            <div class="w3-cell w3-container">
-              <h3>Loading</h3>
-              <p>Loading</p>
-            </div>
-          </div>  
-          <hr>
-          </div>
-        </h2>
+            <i class="material-icons nav__icon" onclick="onMoreLessUpcomming()" id="morelessupcomming" style="font-size:30px">expand_more</i>     
+       
     </main>
   </body>​
   

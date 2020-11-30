@@ -117,7 +117,7 @@ function signUp(){
             alert("success signup")
             addUpdateProfile();
             setTimeout(function(){
-                window.location.replace("../races/race_map.html");
+                window.location.replace("/races/race_map.html");
             }, 1000);
             
         }).catch((error) => {
@@ -156,7 +156,7 @@ function signIn(){
         }
         alert("Succesfully signed in");
         setTimeout(function(){
-            window.location.replace("../races/races_map.html");
+            window.location.replace("/races/races_map.html");
         }, 1000);
         }).catch((error) => {
             // Handle Errors here.
@@ -191,7 +191,7 @@ function signIn(){
 function redirectToLogIn()
 {
     setTimeout(function(){
-        window.location.replace("../auth/LoginApp.html");
+        window.location.replace("/auth/LoginApp.html");
     });
 }
 
@@ -486,6 +486,9 @@ function addUpdateRace(raceId, raceName, raceDescription,
     });
    }
 
+
+  
+
    function deleteRace(raceId){
     getCurrentUser( firebase.auth() ).then(function(user){
         if(user) {
@@ -538,9 +541,9 @@ function addUpdateRace(raceId, raceName, raceDescription,
             let uid = user.uid;
             var firebaseRef = firebase.database().ref();
             var invitesRef = firebaseRef.child("invites");
-            invitesRef.orderByChild("uid").equalTo(uid).once("value", function(snapshot) {
+            invitesRef.orderByChild("followId").equalTo(uid).once("value", function(snapshot) {
                 snapshot.forEach( childSnapshot => {
-                    if( childSnapshot.val().followId == peopleId )
+                    if( childSnapshot.val().uid == peopleId )
                     fellowsRef.child("invites/" + childSnapshot.key).remove();
                     });
                 }); 
@@ -762,6 +765,64 @@ function addUpdateRace(raceId, raceName, raceDescription,
     }
 
 
+    function getFollowsActivities(cb)
+    {
+        getCurrentUser( firebase.auth() ).then(function(user){
+            if(user) {
+                let uid = user.uid;
+
+                firebase.database().ref("races").orderByChild("eventday").once("value", snapshot =>{
+                    snapshot.forEach( childSnapshotRace=>{
+
+                        firebase.database().ref("follows").orderByChild("uid").equalTo(uid).once("value", snapFollow => {
+                            snapFollow.forEach( childSnapshotFollow =>{
+                                firebase.database().ref("participates").orderByChild("raceId").equalTo(childSnapshotRace.key).once("value", snapParticipate => {
+                                    snapParticipate.forEach( childSnapshotParticipate =>{
+                                        if( childSnapshotFollow.val().followId == childSnapshotParticipate.val().uid )
+                                        {
+                                            firebase.database().ref("profiles/" + childSnapshotFollow.val().followId ).once("value",function(snapProfile){
+                                                
+                                                cb(childSnapshotRace, snapProfile, childSnapshotParticipate);
+                                            });
+                                        }
+                                    });
+                                });        
+                            });
+                        });
+                    });
+                });
+            }
+            else redirectToLogIn();
+
+        });
+    }
+
+    function getInviteRaces( cb )
+    {
+     getCurrentUser( firebase.auth() ).then(function(user){
+         if(user) {
+             let uid = user.uid;
+             var query = firebase.database().ref("invites");
+             var profilesRef = firebase.database().ref("profiles");
+             var racesRef = firebase.database().ref("races");
+             query.orderByChild("followId").equalTo(uid).once( "value", snap =>{
+                snap.forEach(childSnapshot=>{
+                    if( !childSnapshot.val().isAccept){
+                        racesRef.child( childSnapshot.val().raceId).once( "value", snapRace =>{
+                            profilesRef.child( childSnapshot.val().uid).once( "value", snapProfile=>{
+                                cb(snapRace, snapProfile );
+                            });
+                        });
+                    }
+                });
+            });
+        }
+     else redirectToLogIn();
+     });
+    }
+
+
+
     function isInvited( raceId, followId, cb){
         getCurrentUser( firebase.auth() ).then(function(user){
             if(user) {
@@ -784,6 +845,29 @@ function addUpdateRace(raceId, raceName, raceDescription,
             });
         
     }
+
+    function isFollowed( followId, cb){
+        getCurrentUser( firebase.auth() ).then(function(user){
+            if(user) {
+                let uid = user.uid;
+
+                var query = firebase.database().ref("follows");
+                var followed = false;
+                query.orderByChild("uid").equalTo(uid).once( "value", snap =>{
+                    snap.forEach(childSnapshot=>{
+                        if( childSnapshot.val().followId == followId ){
+                            console.log("invited");
+                            followed = true;
+                        }
+                    });
+                    cb(followed);
+                });
+            }
+            else redirectToLogIn();
+            });
+        
+    }
+
 
 
     function getUninvitedFollows(raceId, cb)
@@ -875,11 +959,11 @@ function addUpdateRace(raceId, raceName, raceDescription,
         var participatesRef = firebaseRef.child("participates");
         var racesRef = firebaseRef.child("races");
         racesRef.orderByChild("eventday").once("value", function(snapshot) {
-            snapshot.forEach( childSnapshot => {
+            snapshot.forEach( childSnapshotRace => {
                 participatesRef.orderByChild("uid").equalTo(peopleId).once("value", function(snapshot2){
-                    snapshot2.forEach( childSnapshot2 => {
-                        if( childSnapshot.key == childSnapshot2.val().raceId )
-                            cb(childSnapshot);
+                    snapshot2.forEach( childSnapshotParticipate => {
+                        if( childSnapshotRace.key == childSnapshotParticipate.val().raceId )
+                            cb(childSnapshotRace,childSnapshotParticipate);
                     })
                     
                 });
@@ -964,10 +1048,27 @@ function addUpdateRace(raceId, raceName, raceDescription,
         
         racesRef.orderByChild("distance").startAt(raceDistanceMin).endAt(raceDistanceMax).once("value", function(snapshot) {
             snapshot.forEach(childSnapshot => {
+                console.log( childSnapshot.val() );
                 var arr = childSnapshot.val().eventday.split("-");
                 var month = parseInt(arr[1], 10);
                 console.log( month );
                 if( month > raceMonthMin && month < raceMonthMax ){
+                    
+                    cb(childSnapshot);
+                }
+            });
+        });   
+    }
+
+    function searchRaceByDistanceDate( raceDistanceMin, raceDistanceMax, raceDateFrom, raceDateTo,cb ){
+        var firebaseRef = firebase.database().ref();
+        var racesRef = firebaseRef.child("races");
+        
+        racesRef.orderByChild("distance").startAt(raceDistanceMin).endAt(raceDistanceMax).once("value", function(snapshot) {
+            snapshot.forEach(childSnapshot => {
+           
+                if( childSnapshot.val().eventday > raceDateFrom && raceDateTo > childSnapshot.val().eventday ){
+                    
                     cb(childSnapshot);
                 }
             });
@@ -985,6 +1086,10 @@ function addUpdateRace(raceId, raceName, raceDescription,
         });   
 
     } 
+
+    function searchFollowByName(peopleName,  cb){
+
+    }
 
     function searchPeopleByName( peopleName,  cb ){
         var firebaseRef = firebase.database().ref();
@@ -1019,10 +1124,24 @@ function addUpdateRace(raceId, raceName, raceDescription,
         var profilesRef = firebaseRef.child("profiles");
         
         profilesRef.orderByChild("birthdate").startAt(peopleBirthMin).endAt(peopleBirthMax).on("child_added", snap => {
-            if( snap.val().gender == peopleGender){
+            if( peopleGender=="" || snap.val().gender == peopleGender){
                 cb(snap);   
             };
           });
+    }
+
+
+    function searchPeopleByGenderAge(  gender,  ageMin, ageMax, cb ){
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear() ;
+
+        var peopleBirthMin = yyyy - ageMax + '-' + mm + '-' + dd;
+        var peopleBirthMax = yyyy - ageMin + '-' + mm + '-' + dd;
+        searchPeopleByFilter( gender, peopleBirthMin, peopleBirthMax, cb );
+        
     }
 
    

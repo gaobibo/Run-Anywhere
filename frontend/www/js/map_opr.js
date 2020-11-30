@@ -26,6 +26,7 @@
 
 var isSearchRace = false;
 var map;
+
 function initMap()
 {
     map = new google.maps.Map(document.getElementById("map-canvas"), {
@@ -36,22 +37,7 @@ function initMap()
   
     const image =
               "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
-    /*for (let i = 0; i < races.length; i++) {
-          const race = races[i];
-          new google.maps.Marker({
-              position: { lat: race[1], lng: race[2] },
-              map:map,
-              icon: image,
-              //shape: shape,
-              animation: google.maps.Animation.BOUNCE,
-              title: race[0],
-              label: {
-                  fontWeight: "bold",
-                  color: "#4bbf6e",
-                  text:race[0]
-                  }
-          });
-      }*/
+   
       markCurrentLocation();
       //setRoute("https://gaobibo.github.io/2017chickenrun.kml");
 
@@ -59,6 +45,20 @@ function initMap()
 
       searchOnMap();
 }
+
+function initMapForId(controlId, kmlFile)
+{
+    map = new google.maps.Map(document.getElementById(controlId), {
+      center: { lat: -33.8688, lng: 151.2195 },
+      zoom: 13,
+      mapTypeId: "roadmap",
+    });
+  
+    console.log("initMapForId");
+   
+    setRouteWithMap(map, kmlFile);
+}
+
 
   
 
@@ -70,6 +70,15 @@ function initMap()
     });
   }
 
+  function setRouteWithMap(map, kmlPath)
+  {
+    //loadGPXFileIntoGoogleMap(map, "https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml");
+    //'https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml'
+    var kmlLayer = new google.maps.KmlLayer(kmlPath);
+
+    kmlLayer.setMap(map);
+  }
+
   function setRoute(kmlPath)
   {
     //loadGPXFileIntoGoogleMap(map, "https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml");
@@ -79,7 +88,7 @@ function initMap()
     kmlLayer.setMap(map);
   }
 
-  function  setRacesMarker(raceId, raceData)
+  function  setRacesMarker( raceId, raceData)
   {   
         const image =
             "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";    
@@ -125,7 +134,7 @@ function initMap()
           });
           google.maps.event.addListener(marker2, 'click', ()=>{
             setTimeout(function(){
-              window.location.replace("../races/race_detail.html?id=" + raceId );
+              window.location.replace("/races/race_detail.html?id=" + raceId );
               }, 1000);
           });
         }      
@@ -228,14 +237,14 @@ function initMap()
 
   }
 
-  function showRacesMap()
+  function showRacesMap(map)
   {
-      setRacesMarker();
+      setRacesMarker(map);
   }
 
-  function showRoute()
+  function showRoute(map)
   {
-    setRoute('https://gaobibo.github.io/2017chickenrun.kml');
+    setRoute(map, "https://gaobibo.github.io/2017chickenrun.kml");
   }
     
   
