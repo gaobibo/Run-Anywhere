@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -169,6 +169,8 @@
 
 
     function loadProfile() {
+        var isLoading = true; 
+        loading('Please wait...');
         getMyProfile(snap => {
             console.log(snap.val());
             document.getElementById('profileImg').src = snap.val().profileImg;
@@ -178,7 +180,17 @@
             document.getElementById("birthdate").value = snap.val().birthdate;
             document.getElementById("phone").value = snap.val().phone;
             document.getElementById("gender").value = snap.val().gender;
+            if( isLoading ){
+                closeLoading();
+                isLoading = false;
+            }
         });
+        setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
 
     }
 

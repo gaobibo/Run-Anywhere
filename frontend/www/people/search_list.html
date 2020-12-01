@@ -9,7 +9,7 @@
     <link rel = "stylesheet" href = "../mobileui/style.css">
     <link rel = "stylesheet" href = "../css/common.css">
     
-
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
      <!-- Firebase -->
      <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
      <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -110,6 +110,8 @@
    function getFellowList()
     {     
         var container = {};
+        var isLoading = true; 
+        loading('Please wait...');
    
         var parameters = location.search.substring(1).split("&").forEach( item =>{
         container[item.split("=")[0]] = item.split("=")[1];
@@ -154,12 +156,22 @@
                 
                 }
                 people_list.innerHTML = people_list_html;
+                if( isLoading ){
+                  closeLoading();
+                  isLoading = false;
+                }
                 
 
             });
             
             
         });
+        setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
         
     }
 

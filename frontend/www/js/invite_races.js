@@ -7,6 +7,8 @@
 
  function getInvitesInfo()
  {
+    var isLoading = true; 
+    loading('Please wait...');
     getInviteRaces( function(snapRace, snapProfile) {
          var profileData = snapProfile.val();
          var followName = profileData.firstName + ' ' + profileData.lastName ;
@@ -41,8 +43,18 @@
 
               
                 invites_list.innerHTML = invites_list_html;
+                if( isLoading ){
+                    closeLoading();
+                    isLoading = false;
+                   }
                
      });
+     setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
  }
 
 

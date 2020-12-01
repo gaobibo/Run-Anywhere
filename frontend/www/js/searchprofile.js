@@ -57,6 +57,8 @@ function onLoadRunnerInfo(){
 
 function getRacesShowing(runnerId)
 {
+    var isLoading = true; 
+    loading('Please wait...');
     getRegisterRacesByEventDay( runnerId, function(raceSnap, participantSnap){
       var raceData = raceSnap.val();
       console.log( raceData.eventday );
@@ -76,6 +78,10 @@ function getRacesShowing(runnerId)
             latest_races_index += 1;
             latest_races_html += pastrace_html;
             latest_races_list.innerHTML = latest_races_html;
+            if( isLoading ){
+              closeLoading();
+              isLoading = false;
+            }
         }
         else{
           latest_more_races_html += pastrace_html;  
@@ -97,6 +103,10 @@ function getRacesShowing(runnerId)
           upcoming_races_index += 1;
           upcoming_races_html += upcomingrace_html;
           upcoming_races_list.innerHTML = upcoming_races_html;
+          if( isLoading ){
+            closeLoading();
+            isLoading = false;
+          }
         }
         else{
           upcoming_more_races_html += upcomingrace_html;
@@ -104,6 +114,12 @@ function getRacesShowing(runnerId)
       }
          
     });
+    setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
     
 }
 
@@ -176,3 +192,9 @@ homeButton.addEventListener("click", () => {
 })
 var button = document.querySelector('button');
 
+
+const peopleButton = document.querySelector("#people-button");
+
+ peopleButton.addEventListener("click", () => {
+     location.href = "../people/follows_main.html";
+ })

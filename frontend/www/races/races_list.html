@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
 <link rel = "stylesheet" href = "../mobileui/style.css">
 <link rel = "stylesheet" href = "../css/common.css">
+<script type="text/javascript" src="../mobileui/mobileui.js"></script>
 
      <!-- Firebase -->
      <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
@@ -118,16 +119,6 @@
 
 <div id = "races_list" class="w3-container" style="margin-top:10px">
 
-<div class="w3-cell-row">
-  <div class="w3-cell" style="width:30%">
-    <img class="w3-circle" src="../img/marathon-running.jpg" style="width:64px;height:64px;">
-  </div>
-  <div class="w3-cell w3-container">
-    <h3>Loading</h3>
-    <p>Loading</p>
-  </div>
-</div>  
-<hr>
 </div>
 <div class="space"></div>
 <div class="space"></div>
@@ -167,7 +158,9 @@ var races_list = document.getElementById('races_list');
 var races_list_html = '';
 function getRacesForList()
   {
-    
+    var isLoading = true; 
+      
+    loading('Please wait...');
     getRaces3( snapshot => {
         snapshot.forEach(function(childSnapshot) {
           var raceData = childSnapshot.val();
@@ -186,8 +179,20 @@ function getRacesForList()
        });
        
        races_list.innerHTML = races_list_html;
+       if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+       
       
     });
+    
+    setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
   }
 
 function setDropList(raceId, raceData )
@@ -225,6 +230,8 @@ function filterFunction() {
   { 
     var container = {};
     var numParam = 0;
+
+    
     
     var parameters = location.search.substring(1).split("&").forEach( item =>{
       container[item.split("=")[0]] = item.split("=")[1];
@@ -243,6 +250,8 @@ function filterFunction() {
 
       var raceFrom = unescape(container["from"]); 
       var raceTo = unescape(container["to"]); 
+      var isLoading = true; 
+      loading('Please wait...');
 
       //searchRaceByFilter( raceDistanceMin, raceDistanceMax, raceMonthMin, raceMonthMax,  snapshot => {
         searchRaceByDistanceDate( raceDistanceMin, raceDistanceMax, raceFrom, raceTo,  snapshot => {
@@ -261,10 +270,22 @@ function filterFunction() {
                               '<hr>';
         
         races_list.innerHTML = races_list_html;
+        if( isLoading ){
+            closeLoading();
+            isLoading = false;
+        }
           
       });
+      setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
 
     }   
+
+    
   }
 </script>
 

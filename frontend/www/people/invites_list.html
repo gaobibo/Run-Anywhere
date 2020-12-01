@@ -9,6 +9,7 @@
     <link rel = "stylesheet" href = "../mobileui/style.css">
     <link rel = "stylesheet" href = "../css/common.css">
     
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
 
      <!-- Firebase -->
      <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
@@ -114,6 +115,8 @@
 
    function getFellowList()
     {     
+       var isLoading = true; 
+        loading('Please wait...');
         getFollows(  snapshot => {
             var profileData = snapshot.val();
            
@@ -154,12 +157,23 @@
                 
                 }
                 follows_list.innerHTML = follows_list_html;
+                if( isLoading ){
+                  closeLoading();
+                  isLoading = false;
+                }
                 
 
             });
             
             
         });
+
+        setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
         
     }
 

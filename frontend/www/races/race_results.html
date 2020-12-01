@@ -9,6 +9,7 @@
     <link rel = "stylesheet" href = "../mobileui/style.css">
     <link rel = "stylesheet" href = "../css/common.css">
     
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
 
      <!-- Firebase -->
      <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
@@ -109,6 +110,8 @@
 
    function getResultList()
     {     
+      var isLoading = true; 
+      loading('Please wait...');
         getRaceResults(  raceId, function( resultInfo, profileSnap ) {
             var profileData = profileSnap.val();
             console.log( resultInfo.val());     
@@ -128,9 +131,19 @@
         
             
             results_list.innerHTML = results_list_html;
+            if( isLoading ){
+              closeLoading();
+              isLoading = false;
+            }
             
             
         });
+        setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
         
     }
 

@@ -10,7 +10,7 @@
 
 <link rel="stylesheet" type="text/css" href="../css/race_map.css" />
 <link rel = "stylesheet" href = "../css/common.css">
-
+<script type="text/javascript" src="../mobileui/mobileui.js"></script>
 <script type="text/javascript" src="codova.js"></script>
 
 <script
@@ -60,7 +60,9 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
       Race Detail
     </div>
   </div>
- <div class="content" style="background-color: #4bbf6e ;">
+ 
+ <div class="content" style="background-color: #4bbf6e;">
+
 
   <div class="swiper-container swipper-gallery">
       <div class="swiper-wrapper">
@@ -104,35 +106,38 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
       <div class="swiper-pagination swiper-pagination-white"></div>
       
   </div>
+
   <div class="padding">
     <div class="left">
-      <img class="w3-circle" style="width: 128px;height: 128px;" id="raceLogo" src="../img/header.png"/>
+      <img class="w3-circle" style="width: 128px;height: 128px;" id="raceLogo"  />
     </div>
     <div class="">
-      <h1 id="raceName" class="text-strong text-big">Loading</h1>
-      <button id="registerRace" class="w3-bar-item w3-button w3-large w3-hover text-white" onclick="registerRace()">&#128587;Register</button>
-      <button id="dropRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="dropRace()">&#128581;Drop</button>
-      <button id="inviteRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../people/invites_list.html?id=' + raceId + ''">&#128588;Invites</button>
-      <button id="resultRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../races/race_results.html?id=' + raceId + ''">&#127941;Results</button>
+      <h1 id="raceName" class="text-strong text-big"></h1>
+      <button id="registerRace" class="w3-bar-item w3-button w3-large w3-hover text-white" onclick="registerRace()" style="display: none;">&#128587;Register</button>
+      <button id="dropRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="dropRace()" style="display: none;">&#128581;Drop</button>
+      <button id="inviteRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../people/invites_list.html?id=' + raceId + ''" style="display: none;">&#128588;Invites</button>
+      <button id="resultRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../races/race_results.html?id=' + raceId + ''" style="display: none;">&#127941;Results</button>
       
     </div>
     
     
   </div>
+  <main>
   <div class="padding">
    <p class="text-white" id="raceDescription"></p>
  </div>
 
- <div id="myResult" class="padding">
+ <div id="myResult" class="padding" style="display: none;">
   
   <span style="display: inline-block;margin-right: 10px;"><label class="text-white">My Result:</label> </span>
    
    <span style="display: inline-block;"><input type="text" style="font-size: 16px;"  id="myResultEdit" value="00:00:00"  disabled /></span>
-  <span style="display: inline-block;"><i id="setMyResult" style="color:white;font-size: 16px;"  onclick="onSetMyResult()">&#9997;Edit</i></span>
+  <span style="display: inline-block;"><i id="setMyResult" style="color:white;font-size: 16px;"  onclick="onSetMyResult()" >&#9997;Edit</i></span>
  
  </div>
-
+</main>
 </div>
+
   <script type="text/javascript">
     new Swiper('.swipper-gallery', {
         pagination: '.swiper-pagination'
@@ -164,8 +169,10 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
     var editMode = false;
     function getCurrentRace()
     {
+        var isLoading = true; 
+        loading('Please wait...');
         var parameters = location.search.substring(1).split("&"); 
-      var temp = parameters[0].split("="); 
+        var temp = parameters[0].split("="); 
         raceId = unescape(temp[1]); 
         console.log(raceId);
         getRace(raceId, function(snap){
@@ -208,9 +215,21 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
                   }
                     
                 }
+
+                if( isLoading ){
+                  closeLoading();
+                  isLoading = false;
+                }
                 
               });  
         });
+
+        setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
         
     }
 
@@ -279,7 +298,7 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
         document.getElementById("capactity").innerHTML = "Ruuners: " + capactity;
         document.getElementById("distance").innerHTML = "Distance:" + distance + "Miles";
         document.getElementById("eventTime").innerHTML = "Race Day: " + eventday + "  " + startdttm;
-        document.getElementById("raceDescription").innerHTML = raceDescription;
+        document.getElementById("raceDescription").innerHTML = raceDescription ;
         raceDistance = distance;
 
         setRoute( gpxFile );

@@ -50,6 +50,8 @@ function openFollows(){
  var divIndex = 0;
  function getActivityList()
  {
+    var isLoading = true; 
+    loading('Please wait...');
      getFollowsActivities( function(childSnapshotRace, snapProfile, childSnapshotParticipate){
          var profileData = snapProfile.val();
          var followName = profileData.firstName + ' ' + profileData.lastName ;
@@ -94,9 +96,20 @@ function openFollows(){
 
                 console.log(activities_list_html);
                 activities_list.innerHTML = activities_list_html;
+                if( isLoading ){
+                    closeLoading();
+                    isLoading = false;
+                   }
                
                // initMapForId("map-canvas" + divIndex, raceData.gpxFile );
      });
+
+     setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
  }
 
  function setDropList(profileId, profileData )

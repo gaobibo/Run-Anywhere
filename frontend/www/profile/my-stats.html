@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="../css/my-stats.css">
 
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
@@ -104,7 +106,8 @@
 </body>
 <script>
     function loadMyStat() {
-
+        var isLoading = true; 
+        loading('Please wait...');
         getMyStat(function (count, distance, time, records) {
             //getStatInfo( "-MMT6shfN4bTHRQY42p9", function( count, distance, time, records) { //for test 
             console.log(count);
@@ -126,7 +129,17 @@
             {
                 document.getElementById("fiveK").textContent = records["5K"];
             }
+            if( isLoading ){
+                closeLoading();
+                isLoading = false;
+            }
         });
+        setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
     }
 
     function goBack() {

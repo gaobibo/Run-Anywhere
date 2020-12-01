@@ -42,7 +42,8 @@ function onLoadMyInfo(){
 
   function getMyRacesShowing()
     {   
-
+      var isLoading = true; 
+      loading('Please wait...');
       getMyRacesByEventday( function(raceSnap, participantSnap){
         var raceData = raceSnap.val();
       console.log( raceData.eventday );
@@ -62,6 +63,10 @@ function onLoadMyInfo(){
             latest_races_index += 1;
             latest_races_html += pastrace_html;
             latest_races_list.innerHTML = latest_races_html;
+            if( isLoading ){
+              closeLoading();
+              isLoading = false;
+             }
         }
         else{
           latest_more_races_html += pastrace_html;  
@@ -83,6 +88,10 @@ function onLoadMyInfo(){
           upcoming_races_index += 1;
           upcoming_races_html += upcomingrace_html;
           upcoming_races_list.innerHTML = upcoming_races_html;
+          if( isLoading ){
+            closeLoading();
+            isLoading = false;
+           }
         }
         else{
           upcoming_more_races_html += upcomingrace_html;
@@ -90,6 +99,13 @@ function onLoadMyInfo(){
       }
          
     });
+
+    setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
   }
 
   function onMoreLessPast(){
