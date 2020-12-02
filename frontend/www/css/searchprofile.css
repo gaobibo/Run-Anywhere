@@ -21,7 +21,7 @@ header
     align-items: center;
     background-color: #21e3ec;
     display: flex;
-
+    margin-top: -24px;
     width: 100%;
     height: 10vh;
 }
