@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
     <link rel = "stylesheet" href = "../css/searchprofile.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <title>Search People</title>
 
     <script type="text/javascript" src="../mobileui/mobileui.js"></script>
@@ -29,24 +30,14 @@
   </head>
   <body onload="onLoadRunnerInfo()">
     <header>
-      <div class="w3-bar w3-theme">
-        <button
-                class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8"
-                onclick="goBack()"
-                style="width:20%"
-        >
-            <i class="material-icons nav__icon" style="font-size:55.5px">chevron_left</i>
-      
+      <button class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8" onclick="goBack()"
+            style="width:20%">
+            <i class="material-icons nav__icon" style="color: white; font-size:45.5px">chevron_left</i>
         </button>
-      
-      
-      
-        <div class="w3-bar-item w3-button w3-padding-small w3-padding-16" style="width:70%;font-weight: bold;">
-            Race Search
-        </div>
-       
-      </div>
-      
+    
+        <h1 style="margin-right: 25px; margin-left: 25px;">Details</h1>
+        <div id="header-spacer"></div>
+    
     </header>  
     <main>
         <div class="column-layout">
@@ -81,18 +72,21 @@
     </main>
   </body>
   ​
-<footer>
-  <button id="races-button">
-      <img src="../img/logo.webp" alt="Logo">
-  </button>
-
-  <button id="home-button">
-      <img src="../img/home-icon.png" alt="Home icon">
-  </button>
-
-  <button id="people-button">
-      <img src="../img/people-icon.png" alt="People icon">
-  </button>
+  <footer>
+    <nav class="nav">
+        <a href="../races/races_map.html" class="nav__link">
+            <i class="material-icons nav__icon">directions_run</i>
+            <span class="nav__text">Race</span>
+        </a>
+        <a href="../profile/Profile_Main.html" class="w3-theme-dark nav__link">
+            <i class="material-icons nav__icon nav__link--active">settings</i>
+            <span class="nav__text">Profile</span>
+        </a>
+        <a href="../people/follows_main.html" class="nav__link">
+            <i class="material-icons nav__icon">group</i>
+            <span class="nav__text">People</span>
+        </a>
+    </nav>
 </footer>
 
 <script src="../js/searchprofile.js"></script>
