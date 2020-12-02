@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
     <link rel = "stylesheet" href = "../css/Profile_Main.css">
     <link rel="stylesheet" href="../css/footer.css">
+​
+    <link rel = "stylesheet" href = "../mobileui/style.css">
    
     <title>Profile</title>
-
+​
     <script type="text/javascript" src="../mobileui/mobileui.js"></script>
-
+​
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -37,15 +39,24 @@
             style="width:20%">
             <i class="material-icons nav__icon" style="color: white; font-size:45.5px">chevron_left</i>
         </button>
-        <button id = "stats" onclick="document.location='../profile/my-stats.html'"> My Stats </button>
-       
-        <h1 style="margin-right: 25px; margin-left: 25px;">My Profile</h1>
-        <!-- <h1>My Profile</h1> -->
-
-        <div id="header-spacer"></div>
-        <button id = "edit" onclick="document.location='../profile/profile.html'"> Edit Profile </button>
+        <h1 style="padding-right: 25px; padding-left: 25px;font-size:1.5em; font-weight: bold;">My Profile</h1>
+        
+        <button class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-right w3-padding-8"
+            onclick="openPopover('popover1')" style="width:20%">
+            <i class="material-icons nav__icon" style="color: white; font-size:45.5px">read_more</i>
+        </button>
+        
       
+        <div class="popover" id="popover1">
+          <div class="list">
+            <div class="item" onclick="document.location='../profile/my-stats.html'"><p class="text-green">My Stats</p></div>
+            <div class="item" onclick="document.location='../profile/invite_races.html'"><p class="text-green">Invited List</p></div>
+            <div class="item"  onclick="document.location='../profile/profile.html'"><p class="text-green">Edit Profile</p></div>
+            <div class="item" onclick="signOut()"><p class="text-green">Logout</p></div>
+          </div>
+        </div>
     </header>  
+​
     <main>
         <div class="column-layout">
             <div class="dot">
@@ -58,9 +69,9 @@
             <div class="three">
                <p id="runnerName"> anonymous</p>
                <p id="runnerEmail">(anonymous)</p>
-               <button  style="color:white;font-size: 16px;"  onclick="document.location='../profile/invite_races.html'">&#9829;Invited List</button>
+               <!-- <button  style="color:white;font-size: 16px;"  onclick="document.location='../profile/invite_races.html'">&#9829;Invited List</button>
                <p ></p>
-               <button  style="color:white;font-size: 16px;"  onclick="signOut()">&#9755;Logout</button>
+               <button  style="color:white;font-size: 16px;"  onclick="signOut()">&#9755;Logout</button> -->
             </div>
         </div>
         <h2> My Recent Races:</h2>
@@ -80,15 +91,15 @@
   </body>​
   
 <!-- <footer>
-
+​
   <button id="races-button">
       <img src="../img/logo.webp" alt="Logo">
   </button>
-
+​
   <button id="home-button">
       <img src="../img/home-icon.png" alt="Home icon">
   </button>
-
+​
   <button id="people-button">
       <img src="../img/people-icon.png" alt="People icon">
   </button>
@@ -109,7 +120,7 @@
       </a>
   </nav>
 </footer>
-
+​
 <script src="../js/Profile_Main.js"></script>
-
+​
 </html>
