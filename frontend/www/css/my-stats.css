@@ -50,7 +50,7 @@ main
     align-items: center;
 
     width: 100%;
-    height: 83vh;
+    height: 90vh;
 
     background-color: #4bbf6e;
 }
@@ -157,7 +157,6 @@ footer
     align-items: center;
 
     width: 100%;
-    height: 7vh;
 
     background-color: #21e3ec;
 }
@@ -168,23 +167,12 @@ img
     height: 35px;
 }
 
-#races-button, #home-button, #people-button
+button
 {
-    width: 33.3%;
-    height: 7vh;
-    border: none;
-    outline: none;
-    cursor: pointer;
+    background-color: white;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
 
-    /* Removes unwanted border radius on buttons */
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-
-    background-color: #21e3ec;
-}
-
-#races-button:hover, #home-button:hover, #people-button:hover
-{
-    background-color: #0d98ba;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
 }

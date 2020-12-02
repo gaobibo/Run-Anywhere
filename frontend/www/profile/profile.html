@@ -16,6 +16,7 @@
     <link rel = "stylesheet" href = "../mobileui/style.css"> 
     <link rel="stylesheet" href="../css/common.css"> -->
     <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/footer.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -44,11 +45,17 @@
 
 <body onload="loadProfile()">
     <header>
-        <i style="width: 15%; color:white; font-size: 3em; padding-left: 25px; font-weight: bold;"
-            class="material-icons" onclick="goBack()">&#9756;</i>
+        <button class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8" onclick="goBack()"
+            style="width:20%">
+            <i class="material-icons nav__icon" style="color: white; font-size:45.5px">chevron_left</i>
+        </button>
+
         <h1 style="padding-right: 25px; padding-left: 25px;">My Profile</h1>
-        <i style="width: 15%;color:white; padding-right: 25px; font-size: 2em;" class="material-icons"
-            onclick="editProfile()">&#9997;</i>
+
+        <button class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-right w3-padding-8"
+            onclick="editProfile()" style="width:20%">
+            <i class="material-icons nav__icon" style="color: white; font-size:45.5px">check</i>
+        </button>
     </header>
 
     <main>
@@ -139,17 +146,20 @@
     </main>
 
     <footer>
-        <button id="races-button">
-            <img src="../img/logo.webp" alt="Logo">
-        </button>
-
-        <button id="home-button">
-            <img src="../img/home-icon.png" alt="Home icon">
-        </button>
-
-        <button id="people-button">
-            <img src="../img/people-icon.png" alt="People icon">
-        </button>
+        <nav class="nav">
+            <a href="../races/races_map.html" class="w3-theme-dark nav__link">
+                <i class="material-icons nav__icon nav__link--active">directions_run</i>
+                <span class="nav__text">Race</span>
+            </a>
+            <a href="../profile/Profile_Main.html" class="nav__link">
+                <i class="material-icons nav__icon">settings</i>
+                <span class="nav__text">Profile</span>
+            </a>
+            <a href="../people/follows_main.html" class="nav__link">
+                <i class="material-icons nav__icon">group</i>
+                <span class="nav__text">People</span>
+            </a>
+        </nav>
     </footer>
 
     <script src="../js/profile.js"></script>
@@ -169,7 +179,7 @@
 
 
     function loadProfile() {
-        var isLoading = true; 
+        var isLoading = true;
         loading('Please wait...');
         getMyProfile(snap => {
             console.log(snap.val());
@@ -180,17 +190,17 @@
             document.getElementById("birthdate").value = snap.val().birthdate;
             document.getElementById("phone").value = snap.val().phone;
             document.getElementById("gender").value = snap.val().gender;
-            if( isLoading ){
+            if (isLoading) {
                 closeLoading();
                 isLoading = false;
             }
         });
-        setTimeout( function(){
-      if( isLoading ){
-        closeLoading();
-        isLoading = false;
-       }
-      }, 3000);
+        setTimeout(function () {
+            if (isLoading) {
+                closeLoading();
+                isLoading = false;
+            }
+        }, 3000);
 
     }
 
@@ -212,20 +222,20 @@
                 if (urlImg == "fail") {
                     urlImg = "../img/default-profile.png";
                 }
-            
-                addUpdateProfile( urlImg,
-                    firstName, lastName, email, gender, birthdate, phone );
-                
-                setTimeout(function(){
+
+                addUpdateProfile(urlImg,
+                    firstName, lastName, email, gender, birthdate, phone);
+
+                setTimeout(function () {
                     window.location.replace("../profile/Profile_Main.html");
                 }, 1000);
             });
         }
-        else{
-            addUpdateProfile( imagePath,
-                    firstName, lastName, email, gender, birthdate, phone );
-                
-            setTimeout(function(){
+        else {
+            addUpdateProfile(imagePath,
+                firstName, lastName, email, gender, birthdate, phone);
+
+            setTimeout(function () {
                 window.location.replace("../profile/Profile_Main.html");
             }, 1000);
         }
