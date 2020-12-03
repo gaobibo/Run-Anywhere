@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
     <link rel = "stylesheet" href = "../css/Profile_Main.css">
     <link rel="stylesheet" href="../css/footer.css">
+
+    <link rel = "stylesheet" href = "../mobileui/style.css">
    
     <title>Profile</title>
 
@@ -34,19 +36,32 @@
   <body onload="onLoadMyInfo()">
     <header>
         <button class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8" onclick="goBack()"
-            style="width:20%">
+            style="width:30%">
             <i class="material-icons nav__icon" style="color: white; font-size:45.5px">chevron_left</i>
         </button>
-        <button id = "stats" onclick="document.location='../profile/my-stats.html'"> My Stats </button>
        
-        <h1 style="margin-right: 25px; margin-left: 25px;">My Profile</h1>
+        <h1 style="margin-right: 30px; margin-left: 30px;font-size:1.5em;font-weight: bold;">My Profile</h1>
         <!-- <h1>My Profile</h1> -->
 
         <div id="header-spacer"></div>
-        <button id = "edit" onclick="document.location='../profile/profile.html'"> Edit Profile </button>
+        <button class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-right w3-padding-8"
+            onclick="openPopover('popover1')" style="width:30%">
+            <i class="material-icons nav__icon" style="color: white; font-size:45.5px">read_more</i>
+        </button>
+        
       
+        <div class="popover" id="popover1">
+          <div class="list">
+            <div class="item" onclick="document.location='../profile/my-stats.html'"><h1 class="text-green">My Stats</h1></div>
+            <div class="item" onclick="document.location='../profile/invite_races.html'"><h1 class="text-green">Invitation</h1></div>
+            <div class="item"  onclick="document.location='../profile/profile.html'"><h1 class="text-green">Edit Profile</h1></div>
+            <div class="item" onclick="signOut()"><h1 class="text-green">Logout</h1></div>
+          </div>
+        </div>
     </header>  
+
     <main>
+      <div class="content">
         <div class="column-layout">
             <div class="dot">
               <img class="w3-circle" id="runnerImg" src="../img/default-profile.png" style="width:100px;height:100px;">
@@ -58,9 +73,9 @@
             <div class="three">
                <p id="runnerName"> anonymous</p>
                <p id="runnerEmail">(anonymous)</p>
-               <button  style="color:white;font-size: 16px;"  onclick="document.location='../profile/invite_races.html'">&#9829;Invited List</button>
+               <!-- <button  style="color:white;font-size: 16px;"  onclick="document.location='../profile/invite_races.html'">&#9829;Invited List</button>
                <p ></p>
-               <button  style="color:white;font-size: 16px;"  onclick="signOut()">&#9755;Logout</button>
+               <button  style="color:white;font-size: 16px;"  onclick="signOut()">&#9755;Logout</button> -->
             </div>
         </div>
         <h2> My Recent Races:</h2>
@@ -75,7 +90,14 @@
           
             </div>
             <i class="material-icons nav__icon" onclick="onMoreLessUpcomming()" id="morelessupcomming" style="font-size:30px">expand_more</i>     
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+            <div class="space"></div>
+           
        
+      </div>
+      
     </main>
   </body>​
   

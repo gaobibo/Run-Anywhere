@@ -60,17 +60,22 @@ function openFollows(){
          var raceData = childSnapshotRace.val();
          divIndex += 1;
          console.log( divIndex);
+         var info = '<p class="text-grey">Registered</p>';
+         if( resultData.finisheddistance != "" || resultData.finisheddistance != "0" )
+         {
+             info  = '<p class="text-grey">'+ resultData.finisheddistance + 'Miles </p>' + 
+                '<div class="right text-grey text-small">' + resultData.finishedtime + 
+                '     <i class="icon ion-android-time"></i>' + 
+                '</div>';
+         }
 
          activities_list_html = '<div class="list radius shadow">' + 
                 '<div class="item no-border">' + 
                 '<div class="left">' + 
-                '    <img class="avatar circle" src="' + profileData.profileImg + '">' +
+                '    <img class="avatar circle" style="width:64px;height:64px;" src="' + profileData.profileImg + '">' +
                 '</div>' + 
                 '<h2 class="text-strong"><a class="article-title" href="../people/searchprofile.html?id=' + snapProfile.key + '">' + followName + '</a></h2>' +
-                '<p class="text-grey">'+ resultData.finisheddistance + 'Miles </p>' + 
-                '<div class="right text-grey text-small">' + resultData.finishedtime + 
-                '     <i class="icon ion-android-time"></i>' + 
-                '</div>' + 
+                info + 
                 '</div>' + 
 
                 '<div class="item no-border cover radius" style="background-image:url(' + raceData.imagePath + ')" onclick="document.location=\'../races/race_detail.html?id=' + childSnapshotRace.key + '\'"  >' + 

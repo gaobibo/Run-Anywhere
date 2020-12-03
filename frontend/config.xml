@@ -32,11 +32,11 @@
         <splash src="www/logo/app-icon-48-mdpi.png" density="port-mdpi"/>
         <splash src="www/logo/app-icon-96-xhdpi.png" density="port-xhdpi"/> -->
         <!-- icons -->
-        <icon src="www/logo/app-icon-96-xhdpi.png" />
+        <!-- <icon src="www/logo/app-icon-96-xhdpi.png" />
         <icon src="www/logo/app-icon-36-ldpi.png" density="ldpi" />
         <icon src="www/logo/app-icon-48-mdpi.png" density="mdpi" />
         <icon src="www/logo/app-icon-72-hdpi.png" density="hdpi" />
-        <icon src="www/logo/app-icon-96-xhdpi.png" density="xhdpi" />
+        <icon src="www/logo/app-icon-96-xhdpi.png" density="xhdpi" /> -->
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

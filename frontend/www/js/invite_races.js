@@ -20,7 +20,7 @@
          invites_list_html += '<div class="list radius shadow" id="invite' + divIndex + '">'  +
                 '<div class="item no-border">' + 
                 '<div class="left">' + 
-                '    <img class="avatar circle" src="' + profileData.profileImg + '">' +
+                '    <img class="avatar circle" style="width:64px;height:64px;" src="' + profileData.profileImg + '">' +
                 '</div>' + 
                 '<h2 class="text-strong"><a class="article-title" href="../people/searchprofile.html?id=' + snapProfile.key + '">' + followName + '</a></h2>' +
                 '<p class="text-grey">Invite you</p>' + 

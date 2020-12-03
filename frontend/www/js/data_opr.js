@@ -1087,9 +1087,7 @@ function addUpdateRace(raceId, raceName, raceDescription,
 
     } 
 
-    function searchFollowByName(peopleName,  cb){
-
-    }
+   
 
     function searchPeopleByName( peopleName,  cb ){
         var firebaseRef = firebase.database().ref();

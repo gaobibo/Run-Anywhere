@@ -141,6 +141,25 @@ function initMapForId(controlId, kmlFile)
 
   }
 
+  function setMapCenter(startLatLng){
+    var arr = startLatLng.split(",");
+    if( arr.length >= 2 ){
+      var lat = parseFloat(arr[0]);
+      var lang = parseFloat(arr[1]);
+      console.log(lat);
+      console.log(lang);
+      var latLng = new google.maps.LatLng(lat, lang);
+  
+      map.center = latLng;
+      new google.maps.Marker({
+              position: latLng,
+              map: map,
+              draggable: true,
+              animation: google.maps.Animation.DROP
+          });
+    }
+  }
+
   function markCurrentLocation() 
   {
     navigator.geolocation.getCurrentPosition(onSuccess, onError, {
