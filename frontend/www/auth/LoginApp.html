@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
+    <link rel = "stylesheet" href = "../mobileui/style.css">
+    
+
+     <!-- Firebase -->
+     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+     <!-- Add Firebase products that you want to use -->
+     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+     <!-- Custom JavaScript -->
+     <script src="auth.js"></script>
+     <script src="../js/data_opr.js"></script>
+    <title> Signin </title>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: '../races/races_map.html',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+        ],
+        // tosUrl and privacyPolicyUrl accept either url string or a callback
+        // function.
+        // Terms of service url/callback.
+        tosUrl: '<your-tos-url>',
+        // Privacy policy url/callback.
+        privacyPolicyUrl: function() {
+          window.location.assign('<your-privacy-policy-url>');
+        }
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+
+      
+
+    </script>
+</head>
+<style>
+    #titleDiscoveryNow {
+      font-family: 'Chewy', cursive;
+      font-size: 45px;
+      line-height: 24px;
+      z-index: 33;
+      position: relative;
+    }
+  </style>
+  <body class="cover vertical-align-center green-200 align-center blend-soft-light" >
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <p class="text-white">WELCOME TO</p>
+    <h1 id="titleDiscoveryNow" class="text-cyan">Run Anywhere</h1>
+    <p class="text-grey-500"> Finding runners and races near you.</p>
+    
+    <div class="row">
+        <div id="firebaseui-auth-container"></div>
+        <!--
+      <div class="col-90 col-center">
+        <div class="list no-border opacity-60">
+          <div class="item icon ion-android-mail border-grey border-bottom">
+            <input class="placeholder-white text-white" id = "userSIEmail" type="email" placeholder="Enter your email">
+          </div>
+          <div class="item icon ion-android-lock border-grey border-bottom">
+            <input class="placeholder-white text-white" id ="userSIPassword" type="password" placeholder="Enter your password">
+          </div>
+        </div>
+        <div class="space"></div>
+        <div class="space"></div>
+        <button class="border-blue text-blue full" onclick="signIn()">Sign In</button>
+      </div> -->
+    </div>
+    <div class="header bottom gradient">
+      <img  src="../img/runner.jpg" />
+    </div>
+  </body>
+</html>

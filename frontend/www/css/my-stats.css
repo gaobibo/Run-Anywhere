@@ -1,0 +1,181 @@
+html, body
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100vh;
+
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+}
+
+header
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 10vh;
+
+    background-color: #21e3ec;
+}
+
+h1
+{
+    width: 75%;
+
+    font-family: 'Sen', sans-serif;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#title-box
+{
+    height: 30vh;
+}
+
+main
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    height: 90vh;
+
+    background-color: #4bbf6e;
+}
+
+h2
+{
+    margin-top: 25px;
+
+    font-family: 'Sen', sans-serif;
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+#ribbon-box
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 50px auto;
+}
+
+#ribbon
+{
+    width: 100px;
+    height: 100px;
+}
+
+#pr-box
+{
+    width: 85%;
+    padding: 10px;
+    border-radius: 5px;
+
+    background-color: white;
+}
+
+.distance
+{
+    display:inline-block;
+
+    width: 50%;
+}
+
+.result
+{
+    display:inline-block;
+
+    width: 50%;
+}
+
+hr
+{
+    width: 95%;
+    height: 0;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.pr-category
+{
+    width: 95%;
+    margin: 0 auto;
+}
+
+#totals-box
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 70%;
+    height: 30vh;
+}
+
+.totals-category
+{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.black
+{
+    display: inline-block;
+
+    width: 75%;
+
+    color: black;
+}
+
+.white
+{
+    display: inline-block;
+
+    width: 25%;
+
+    color: white;
+}
+
+footer
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+
+    background-color: #21e3ec;
+}
+
+img
+{
+    width: 35px;
+    height: 35px;
+}
+
+button
+{
+    background-color: white;
+    font-family: 'Sen', sans-serif;
+    font-weight: bold;
+
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+}

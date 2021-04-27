@@ -1,0 +1,390 @@
+{
+  "follows" : {
+    "-MMaqaRneNDx3XOvi24f" : {
+      "followId" : "-MMT6shfN4bTHRQY42p9",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMaqaRrUo09bd5O1VdZ" : {
+      "followId" : "-MMT6shiFADkhtHjkYTb",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMaqaRsutiMGH9RVxAY" : {
+      "followId" : "-MMT6shjkrTgYAw7TupK",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    }
+  },
+  "invites" : {
+    "-MMbNIHOl4dCdb9Opozb" : {
+      "followId" : "-MMT6shfN4bTHRQY42p9",
+      "isAccept" : false,
+      "raceId" : "-MMSiyEWVINOa3FION1O",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMbdrOnaLa_KZJLIFnk" : {
+      "followId" : "-MMT6shiFADkhtHjkYTb",
+      "isAccept" : false,
+      "raceId" : "-MMSiyEWVINOa3FION1O",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMbdtge8AAg0YaT4UyZ" : {
+      "followId" : "-MMT6shjkrTgYAw7TupK",
+      "isAccept" : false,
+      "raceId" : "-MMSiyEWVINOa3FION1O",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMbeXQ9gD2IAEGfHHt7" : {
+      "followId" : "-MMT6shfN4bTHRQY42p9",
+      "isAccept" : false,
+      "raceId" : "-MMSiyEVveUcmRZYbcYs",
+      "uid" : "kbZmTqdxoXci14mKqdQZU8rFIMl2"
+    },
+    "-MMbxE7ml9-nbO9STQdj" : {
+      "followId" : "-MMT6shfN4bTHRQY42p9",
+      "isAccept" : false,
+      "raceId" : "-MMSfXIm8AQx03QN_8HO",
+      "uid" : "kbZmTqdxoXci14mKqdQZU8rFIMl2"
+    }
+  },
+  "participates" : {
+    "-MMT8JisrmkzGb3deWMJ" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 26,
+      "finishedtime" : "3:00:51",
+      "raceId" : "-MMSfXIm8AQx03QN_8HO",
+      "tshirtsize" : "",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMT8OKrzgartZWeinp9" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyEQo0jxGPUGsumi",
+      "tshirtsize" : "",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMT8QzTDQvEajTQxkIt" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 100,
+      "finishedtime" : "20:00:54",
+      "raceId" : "-MMSiyETRt1RvCCZ8XZ9",
+      "tshirtsize" : "",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMT8SB4F7-PlVevzU6O" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyEVveUcmRZYbcYs",
+      "tshirtsize" : "",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMT8TdjD4uhtG6wRlbz" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyEVveUcmRZYbcYt",
+      "tshirtsize" : "",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMT8VC3X6wcazSfZK1c" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyEVveUcmRZYbcYu",
+      "tshirtsize" : "",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMT8Y3_UsPjPoGUTBSr" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyEWVINOa3FION1O",
+      "tshirtsize" : "",
+      "uid" : "hAzCSU3lGVhj5hhGrdPrViIF22l1"
+    },
+    "-MMcjuXFnN9S6OwvgfMw" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyETRt1RvCCZ8XZ9",
+      "tshirtsize" : "",
+      "uid" : "dgBZZWmTpjMTc2ggMDZjHjHwqul1"
+    },
+    "-MMcjvUrWxpbEl46Q8LY" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyETRt1RvCCZ8XZ9",
+      "tshirtsize" : "",
+      "uid" : "dgBZZWmTpjMTc2ggMDZjHjHwqul1"
+    },
+    "-MMcjvdakGjPj9xybwf6" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyETRt1RvCCZ8XZ9",
+      "tshirtsize" : "",
+      "uid" : "dgBZZWmTpjMTc2ggMDZjHjHwqul1"
+    },
+    "-MMcjviCgoTfSHCkdtAw" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyETRt1RvCCZ8XZ9",
+      "tshirtsize" : "",
+      "uid" : "dgBZZWmTpjMTc2ggMDZjHjHwqul1"
+    },
+    "-MMgXsmKS8Eho2Ew7Z1E" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : "26.2",
+      "finishedtime" : "3:45:10",
+      "raceId" : "-MMSfXIm8AQx03QN_8HO",
+      "tshirtsize" : "",
+      "uid" : "-MMT6shfN4bTHRQY42p9"
+    },
+    "-MMgXsmR3sr6XlDx0WUj" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyEQo0jxGPUGsumi",
+      "tshirtsize" : "",
+      "uid" : "-MMT6shfN4bTHRQY42p9"
+    },
+    "-MMgXsmTxFz89zY2j3wX" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : "100",
+      "finishedtime" : "23:32:23",
+      "raceId" : "-MMSiyETRt1RvCCZ8XZ9",
+      "tshirtsize" : "",
+      "uid" : "-MMT6shfN4bTHRQY42p9"
+    },
+    "-MMgXsmVxsioC6PZWzkW" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : "100",
+      "finishedtime" : "33:43:12",
+      "raceId" : "-MMSiyEVveUcmRZYbcYs",
+      "tshirtsize" : "",
+      "uid" : "-MMT6shfN4bTHRQY42p9"
+    },
+    "-MMgcXELGqo-mu_Asp-S" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyEVveUcmRZYbcYu",
+      "tshirtsize" : "",
+      "uid" : "LcxWnPwx9ech9H4YeYFjRMVp6qr2"
+    },
+    "-MMgoHBNsvE8A1CpoNP-" : {
+      "bibnumber" : "",
+      "chipnumber" : "",
+      "finisheddistance" : 0,
+      "finishedtime" : "",
+      "raceId" : "-MMSiyEVveUcmRZYbcYu",
+      "tshirtsize" : "",
+      "uid" : "87zWbLQSVwPzkcUSACfbyl6mb5w1"
+    }
+  },
+  "profiles" : {
+    "-MMT6shfN4bTHRQY42p9" : {
+      "address1" : "",
+      "address2" : "",
+      "birthdate" : "1989-04-08",
+      "city" : "",
+      "club" : "",
+      "email" : "test3@test.com",
+      "emergName" : "",
+      "emergPhone" : "",
+      "firstName" : "Robert",
+      "gender" : "M",
+      "lastName" : "Jimmy",
+      "organization" : "",
+      "phone" : "1234567890",
+      "profileImg" : "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+      "records" : {
+        "26" : "3:45:10",
+        "100" : "23:32:23",
+        "100Miles" : "23:32:23",
+        "Marathon" : "3:45:10"
+      },
+      "state" : "",
+      "zipcode" : ""
+    },
+    "-MMT6shiFADkhtHjkYTb" : {
+      "address1" : "",
+      "address2" : "",
+      "birthdate" : "1990-08-08",
+      "city" : "",
+      "club" : "",
+      "email" : "test3@test.com",
+      "emergName" : "",
+      "emergPhone" : "",
+      "firstName" : "James",
+      "gender" : "M",
+      "lastName" : "Kenny",
+      "organization" : "",
+      "phone" : "8888888888",
+      "profileImg" : "https://i.pinimg.com/originals/2e/2f/ac/2e2fac9d4a392456e511345021592dd2.jpg",
+      "state" : "",
+      "zipcode" : ""
+    },
+    "-MMT6shjkrTgYAw7TupK" : {
+      "address1" : "",
+      "address2" : "",
+      "birthdate" : "1995-08-18",
+      "city" : "",
+      "club" : "",
+      "email" : "test3@test.com",
+      "emergName" : "",
+      "emergPhone" : "",
+      "firstName" : "Mikki",
+      "gender" : "F",
+      "lastName" : "Shao",
+      "organization" : "",
+      "phone" : "54546556656",
+      "profileImg" : "https://storage.pixteller.com/designs/designs-images/2016-11-19/02/thumbs/img_page_1_58305b35ebf5e.png",
+      "state" : "",
+      "zipcode" : ""
+    },
+    "dKNyWQ5BfDUhw91Ru0tDJ36ir4I2" : {
+      "address1" : "",
+      "address2" : "",
+      "birthdate" : "1999-12-08",
+      "city" : "",
+      "club" : "",
+      "email" : "test3@test.com",
+      "emergName" : "",
+      "emergPhone" : "",
+      "firstName" : "Bibo",
+      "gender" : "F",
+      "lastName" : "Gao",
+      "organization" : "",
+      "phone" : "1111111111",
+      "profileImg" : "https://storage.pixteller.com/designs/designs-images/2016-11-19/02/thumbs/img_page_1_58305b35ebf5e.png",
+      "state" : "",
+      "zipcode" : ""
+    }
+  },
+  "races" : {
+    "-MMSfXIm8AQx03QN_8HO" : {
+      "capactity" : "60000",
+      "distance" : "26.2",
+      "eventday" : "2020-10-14",
+      "gpxFile" : "https://gaobibo.github.io/2017chickenrun.kml",
+      "imagePath" : "https://pbs.twimg.com/profile_images/1113547086664957959/KdgxWKUj.jpg",
+      "isOpen" : true,
+      "raceDescription" : "The Chicago Marathon is a marathon held every October in Chicago, Illinois. It is one of the six World Marathon Majors. Thus, it is also an IAAF Gold Label race. The Chicago Marathon is the fourth-largest race by number of finishers worldwide.",
+      "raceName" : "Chicago Marathon",
+      "regclosedate" : "",
+      "regopendate" : "",
+      "startLatLng" : "42.189, -87.93",
+      "startdttm" : "08:00 AM",
+      "uid" : "dKNyWQ5BfDUhw91Ru0tDJ36ir4I2"
+    },
+    "-MMSiyEQo0jxGPUGsumi" : {
+      "capactity" : "400",
+      "distance" : "100",
+      "eventday" : "2021-06-01",
+      "gpxFile" : "https://gaobibo.github.io/2017chickenrun.kml",
+      "imagePath" : "https://static1.squarespace.com/static/5b8d4be355b02c6a091b6760/t/5bc913418165f53f52c6c553/1598318875267/?format=1500w",
+      "isOpen" : true,
+      "raceDescription" : "",
+      "raceName" : "Kettle Moraine",
+      "regclosedate" : "",
+      "regopendate" : "",
+      "startLatLng" : "42.191, -87.92",
+      "startdttm" : "06:00 AM",
+      "uid" : "dKNyWQ5BfDUhw91Ru0tDJ36ir4I2"
+    },
+    "-MMSiyETRt1RvCCZ8XZ9" : {
+      "capactity" : "1000",
+      "distance" : "100",
+      "eventday" : "2020-04-30",
+      "gpxFile" : "https://gaobibo.github.io/2017chickenrun.kml",
+      "imagePath" : "https://d368g9lw5ileu7.cloudfront.net/races/race20140-social382x200.bz78G1.jpg",
+      "isOpen" : true,
+      "raceDescription" : "",
+      "raceName" : "Indiana100",
+      "regclosedate" : "",
+      "regopendate" : "",
+      "startLatLng" : "42.192, -87.91",
+      "startdttm" : "06:00 AM",
+      "uid" : "dKNyWQ5BfDUhw91Ru0tDJ36ir4I2"
+    },
+    "-MMSiyEVveUcmRZYbcYs" : {
+      "capactity" : "345",
+      "distance" : "100",
+      "eventday" : "2020-07-01",
+      "gpxFile" : "https://gaobibo.github.io/2017chickenrun.kml",
+      "imagePath" : "https://pbs.twimg.com/profile_images/2419623856/5pnd61mlmf4lspptaudc.gif",
+      "isOpen" : true,
+      "raceDescription" : "The Hardrock Hundred Mile Endurance Run is an ultramarathon 100.5 miles in length, with 33,000 feet of climb at an average elevation of over 11,000 feet. The race is held on a loop course on 4WD roads, dirt trails, and cross country in Southern Colorado's San Juan Range, USA. ",
+      "raceName" : "Hard Rock 100",
+      "regclosedate" : "",
+      "regopendate" : "",
+      "startLatLng" : "42.188, -87.89",
+      "startdttm" : "06:00 AM",
+      "uid" : "dKNyWQ5BfDUhw91Ru0tDJ36ir4I2"
+    },
+    "-MMSiyEVveUcmRZYbcYt" : {
+      "capactity" : "234",
+      "distance" : "100",
+      "eventday" : "2020-06-14",
+      "gpxFile" : "https://gaobibo.github.io/2017chickenrun.kml",
+      "imagePath" : "https://upload.wikimedia.org/wikipedia/en/4/42/Western_States_Endurance_Run_patch.png",
+      "isOpen" : true,
+      "raceDescription" : "",
+      "raceName" : "Western 100",
+      "regclosedate" : "",
+      "regopendate" : "",
+      "startLatLng" : "42.188, -87.90",
+      "startdttm" : "05:00 AM",
+      "uid" : "dKNyWQ5BfDUhw91Ru0tDJ36ir4I2"
+    },
+    "-MMSiyEVveUcmRZYbcYu" : {
+      "capactity" : "2000",
+      "distance" : "100",
+      "eventday" : "2020-07-14",
+      "gpxFile" : "https://gaobibo.github.io/2017chickenrun.kml",
+      "imagePath" : "https://runningoffthebeatenpath.files.wordpress.com/2014/09/vermont-logo.jpg",
+      "isOpen" : true,
+      "raceDescription" : "",
+      "raceName" : "Vermont 100",
+      "regclosedate" : "",
+      "regopendate" : "",
+      "startLatLng" : "42.189, -87.89",
+      "startdttm" : "04:00 AM",
+      "uid" : "dKNyWQ5BfDUhw91Ru0tDJ36ir4I2"
+    },
+    "-MMSiyEWVINOa3FION1O" : {
+      "capactity" : "5000",
+      "distance" : "26.2",
+      "eventday" : "2020-04-14",
+      "gpxFile" : "https://gaobibo.github.io/2017chickenrun.kml",
+      "imagePath" : "https://raceraves.com/wp-content/uploads/2016/05/Boston-Marathon-logo.jpg",
+      "isOpen" : true,
+      "raceDescription" : "",
+      "raceName" : "Boston Marathon",
+      "regclosedate" : "",
+      "regopendate" : "",
+      "startLatLng" : "42.189, -87.88",
+      "startdttm" : "08:00 AM",
+      "uid" : "dKNyWQ5BfDUhw91Ru0tDJ36ir4I2"
+    }
+  }
+}

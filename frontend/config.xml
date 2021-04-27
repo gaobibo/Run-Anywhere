@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.runanywhere.frontend" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>RunAnywhere</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <preference name="DisallowOverscroll" value="true" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="SplashScreen" value="screen" />
+        <preference name="SplashScreenDelay" value="6000" />
+        <!-- splashscreens - you can use any density that exists in the Android project -->
+        <!-- landscape splashscreens 
+        <splash src="www/logo/app-icon-72-hdpi.png" density="land-hdpi"/>
+        <splash src="www/logo/app-icon-36-ldpi.png" density="land-ldpi"/>
+        <splash src="www/logo/app-icon-48-mdpi.png" density="land-mdpi"/>
+        <splash src="www/logo/app-icon-96-xhdpi.png" density="land-xhdpi"/>-->
+        <!-- portrait splashscreens
+        <splash src="www/logo/app-icon-72-hdpi.png" density="port-hdpi"/>
+        <splash src="www/logo/app-icon-36-ldpi.png" density="port-ldpi"/>
+        <splash src="www/logo/app-icon-48-mdpi.png" density="port-mdpi"/>
+        <splash src="www/logo/app-icon-96-xhdpi.png" density="port-xhdpi"/> -->
+        <!-- icons -->
+        <!-- <icon src="www/logo/app-icon-96-xhdpi.png" />
+        <icon src="www/logo/app-icon-36-ldpi.png" density="ldpi" />
+        <icon src="www/logo/app-icon-48-mdpi.png" density="mdpi" />
+        <icon src="www/logo/app-icon-72-hdpi.png" density="hdpi" />
+        <icon src="www/logo/app-icon-96-xhdpi.png" density="xhdpi" /> -->
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>

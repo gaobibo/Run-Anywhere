@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+    <link href = "https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel = "stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+    <link rel = "stylesheet" href = "../css/searchprofile.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <title>Search People</title>
+
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+​
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+​
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script type="text/javascript" src="../js/data_opr.js"></script>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
+  </head>
+  <body onload="onLoadRunnerInfo()">
+    <header>
+      <button class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8" onclick="goBack()"
+            style="width:20%">
+            <i class="material-icons nav__icon" style="color: white; font-size:45.5px">chevron_left</i>
+        </button>
+    
+        <h1 style="margin-right: 25px; margin-left: 25px;">Details</h1>
+        <div id="header-spacer"></div>
+    
+    </header>  
+    <main>
+        <div class="column-layout">
+            <div class="dot">
+              <img class="w3-circle" id="runnerImg" src="../img/default-profile.png" style="width:100px;height:100px;">
+            </div>
+            <div class="two">
+               <p>Name:</p> 
+               <p>Email:</p> 
+            </div>
+            <div class="three">
+               <p id="runnerName">Robert Jimmy</p>
+               <p id="runnerEmail">rjimmy@gmail.com</p>
+            </div>
+        </div>
+        
+        <h2> Recent Activity: </h2>
+        <div id = "latest_races_list" class="w3-container" style="background-color: #4bbf6e;">
+          
+          </div>
+          <i class="material-icons nav__icon" onclick="onMoreLessPast()" id="morelesspast" style="font-size:30px">expand_more</i>
+
+        <h2> Registered Races: </h2>
+        <div id = "upcoming_races_list" class="w3-container" style="background-color: #4bbf6e;">
+           
+        </div>
+        <i class="material-icons nav__icon" onclick="onMoreLessUpcomming()" id="morelessupcomming" style="font-size:30px">expand_more</i>
+        <div>
+          <input onclick="change2()" type="button" value="Friend Request" id="requestButton"></input>
+         </div>
+      </div>
+    </main>
+  </body>
+  ​
+  <footer>
+    <nav class="nav">
+        <a href="../races/races_map.html" class="nav__link">
+            <i class="material-icons nav__icon">directions_run</i>
+            <span class="nav__text">Race</span>
+        </a>
+        <a href="../profile/Profile_Main.html" class="w3-theme-dark nav__link">
+            <i class="material-icons nav__icon nav__link--active">settings</i>
+            <span class="nav__text">Profile</span>
+        </a>
+        <a href="../people/follows_main.html" class="nav__link">
+            <i class="material-icons nav__icon">group</i>
+            <span class="nav__text">People</span>
+        </a>
+    </nav>
+</footer>
+
+<script src="../js/searchprofile.js"></script>
+
+</html>

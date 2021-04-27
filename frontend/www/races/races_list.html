@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<title>Run Anywhere</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+<link rel = "stylesheet" href = "../mobileui/style.css">
+<link rel = "stylesheet" href = "../css/common.css">
+<script type="text/javascript" src="../mobileui/mobileui.js"></script>
+
+     <!-- Firebase -->
+     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+ 
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+     <!-- Add Firebase products that you want to use -->
+     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+ 
+     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+    <script type="text/javascript" src="../js/data_opr.js"></script>
+
+    <style>
+       .myInput {
+        width: 88%;
+        box-sizing: border-box;
+        background-position: 14px 12px;
+        background-repeat: no-repeat;
+        font-size: 16px;
+        padding: 14px 20px 12px 45px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .myInput:focus {outline: 3px solid #ddd;}
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f6f6f6;
+        min-width: 230px;
+        overflow: auto;
+        border: 1px solid #ddd;
+        z-index: 1;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .dropdown a:hover {background-color: #ddd;}
+      
+      .show {display: block;}
+      </style>
+
+<body onload="getShowingList()">
+<!--
+  <header>
+    <button style="width:15%;color:white;" class="w3-bar-item w3-button w3-xxlarge w3-hover" onclick="goBack()">&#9756;</button>
+    <h1 style="width:40%;color:white;">Races</h1>
+    
+    <button style="width:20%;color:white;" class="w3-bar-item w3-button w3-xlarge w3-hover " onclick="document.location='../races/race_add.html'">&#10010;</button>
+    <button style="width:20%;color:white;" class="w3-bar-item w3-button w3-xlarge w3-hover " onclick="document.location='../races/races_map.html'">&#127760;</button>
+</header>
+-->
+<div class="w3-bar w3-theme">
+  <button
+          class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8"
+          onclick="goBack()"
+          style="width:20%"
+  >
+      <i class="material-icons nav__icon" style="font-size:45.5px">chevron_left</i>
+
+  </button>
+
+
+
+  <div class="w3-bar-item w3-button w3-padding-small w3-padding-16" style="width:40%;font-size:1.5em;font-weight: bold;">
+    Races
+  </div>
+
+  <button
+          class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-right w3-padding-8"
+          onclick="document.location='../races/races_map.html'"
+          style="width:20%"
+  >
+      <i class="material-icons nav__icon" style="font-size:45.5px">location_on</i>
+
+  </button>
+  <button
+          class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-right w3-padding-8"
+          onclick="document.location='../races/race_add.html'"
+          style="width:20%"
+  >
+      <i class="material-icons nav__icon" style="font-size:45.5px">playlist_add</i>
+
+  </button>
+</div>
+
+<div  class="content" style="background-color:#4bbf6e;">
+<div  class="w3-container" style="margin-top:0px">
+<input class="myInput" id="listSearch" type="text" placeholder="&#128269;Search..." name="search" onkeyup="filterFunction()" />
+<i class="material-icons nav__icon" style="color:white;font-size:32px" onclick="document.location='../races/race_search.html'">settings</i>
+<div id="myDropdown" class="dropdown-content">
+  <a href="#search">Search...</a>
+</div>
+</div>
+
+<div id = "races_list" class="w3-container" style="margin-top:10px">
+
+</div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+</div>
+
+<link rel = "stylesheet" href = "../css/footer.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<nav class="nav">
+    <a href="../races/races_map.html" class="w3-theme-dark nav__link">
+        <i class="material-icons nav__icon nav__link--active">directions_run</i>
+        <span class="nav__text">Race</span>
+    </a>
+    <a href="../profile/Profile_Main.html" class="nav__link">
+        <i class="material-icons nav__icon">settings</i>
+        <span class="nav__text">Profile</span>
+    </a>
+    <a href="../people/follows_main.html" class="nav__link">
+        <i class="material-icons nav__icon">group</i>
+        <span class="nav__text">People</span>
+    </a>
+</nav>
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+var races_list = document.getElementById('races_list');
+var races_list_html = '';
+function getRacesForList()
+  {
+    var isLoading = true; 
+      
+    loading('Please wait...');
+    getRaces3( snapshot => {
+        snapshot.forEach(function(childSnapshot) {
+          var raceData = childSnapshot.val();
+        
+         races_list_html += '<div class="w3-cell-row">' +
+                           '<div class="w3-cell" style="width:30%">' +
+                            '<img class="w3-circle" src="' + raceData.imagePath + '" style="width:64px;height:64px;">' +
+                            '</div>' +
+                            '<div class="w3-cell w3-container">' +
+                            '<h3><a class="article-title" href="../races/race_detail.html?id=' + childSnapshot.key + '">' + raceData.raceName + '</a></h3>' +
+                            '<p>'+ raceData.eventday +'</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '<hr>';
+
+       });
+       
+       races_list.innerHTML = races_list_html;
+       if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+       
+      
+    });
+    
+    setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
+  }
+
+function setDropList(raceId, raceData )
+{
+    div = document.getElementById("myDropdown");
+
+    var a = document.createElement("a");
+    a.appendChild(document.createTextNode(raceData.raceName));
+    a.setAttribute("href", "../races/race_detail.html?id=" + raceId);
+    div.appendChild(a);
+}
+
+
+
+function filterFunction() {
+    div = document.getElementById("myDropdown");
+    div.innerHTML = "";
+    div.style.display = "block";
+
+    //div.classList.toggle("show");
+    
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("listSearch");
+    filter = input.value;//.toUpperCase(); 
+    console.log(filter);
+    searchRaceByName(filter, childSnapshot => {
+        setDropList( childSnapshot.key ,childSnapshot.val());
+    });
+    
+  }
+
+
+
+  function getShowingList()
+  { 
+    var container = {};
+    var numParam = 0;
+
+    
+    
+    var parameters = location.search.substring(1).split("&").forEach( item =>{
+      container[item.split("=")[0]] = item.split("=")[1];
+      numParam += 1;
+    }); 
+    
+    if( numParam < 4 ){
+      getRacesForList();
+    }else{
+      //http://localhost:8000/browser/www/races/races_list.html?distanceMin=20&distanceMax=40&from=2020-06-12&to=2020-10-15
+      var raceDistanceMin = unescape(container["distanceMin"]); 
+      var raceDistanceMax = unescape(container["distanceMax"]); 
+      //var raceMonthMin = unescape(container["from"]); 
+      //var raceMonthMax = unescape(container["to"]); 
+      //console.log( raceDistanceMin + ' ' + raceDistanceMax + ' ' +raceMonthMin + ' ' + raceMonthMax);
+
+      var raceFrom = unescape(container["from"]); 
+      var raceTo = unescape(container["to"]); 
+      var isLoading = true; 
+      loading('Please wait...');
+
+      //searchRaceByFilter( raceDistanceMin, raceDistanceMax, raceMonthMin, raceMonthMax,  snapshot => {
+        searchRaceByDistanceDate( raceDistanceMin, raceDistanceMax, raceFrom, raceTo,  snapshot => {
+            var raceData = snapshot.val();
+            console.log( raceData );
+
+            races_list_html += '<div class="w3-cell-row">' +
+                            '<div class="w3-cell" style="width:30%">' +
+                              '<img class="w3-circle" src="' + raceData.imagePath + '" style="width:64px;height:64px;">' +
+                              '</div>' +
+                              '<div class="w3-cell w3-container">' +
+                              '<h3><a class="article-title" href="../races/race_detail.html?id=' + snapshot.key + '">' + raceData.raceName + '</a></h3>' +
+                              '<p>'+ raceData.eventday +'</p>' +
+                              '</div>' +
+                              '</div>' +
+                              '<hr>';
+        
+        races_list.innerHTML = races_list_html;
+        if( isLoading ){
+            closeLoading();
+            isLoading = false;
+        }
+          
+      });
+      setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
+
+    }   
+
+    
+  }
+</script>
+
+</body>

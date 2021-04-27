@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Run Anywhere</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- W3css styles -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=[API_KEY]&callback=initMap&libraries=places&v=weekly" defer></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+    <script type="text/javascript" src="../js/data_opr.js"></script>
+
+    <!-- Footer css file -->
+    <link rel = "stylesheet" href = "../css/footer.css">
+
+    <!-- Icons used in footer -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body style="background-color:#4bbf6e;">
+
+    <!-- Search bar and settings button -->
+    <div class="w3-bar w3-theme">
+            <div class="w3-bar-item w3-button w3-padding-small w3-padding-16" style="width:85%">
+                <input
+                        class="w3-border-0 w3-round-xlarge"
+                        id="peopleSearch"
+                        type="text"
+                        placeholder="Search..."
+                        style="width:100%;font-size:18px"
+                        name="search"
+                />
+            </div>
+
+            <button
+                    class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-right w3-padding-8"
+                    onclick="window.location.href='../people/people_settings.html'"
+                    style="width:15%"
+            >
+                <i class="material-icons nav__icon" style="font-size:47.5px">settings</i>
+
+            </button>
+    </div>
+
+    <!-- Activity and Friends menu options -->
+    <div class="w3-bar w3-card" style="background-color:#4bbf6e;">
+        <p class="w3-col w3-center w3-border w3-padding-small w3-hover-opacity" style="margin:0px;color:white;width:50%">Activity</p>
+        <p class="w3-col w3-center w3-border w3-padding-small w3-hover-opacity" style="margin:0px;color:white;width:50%">Friends</p>
+    </div>
+
+
+
+
+
+
+
+    <nav class="nav">
+        <a href="../races/races_map.html" class="nav__link">
+            <i class="material-icons nav__icon">directions_run</i>
+            <span class="nav__text">Race</span>
+        </a>
+        <a href="../profile/Profile_Main.html" class="nav__link">
+            <i class="material-icons nav__icon">settings</i>
+            <span class="nav__text">Profile</span>
+        </a>
+        <a class="w3-theme-dark nav__link">
+            <i class="material-icons nav__icon nav__link--active">group</i>
+            <span class="nav__text">People</span>
+        </a>
+    </nav>
+</body>

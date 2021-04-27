@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
+    <link rel = "stylesheet" href = "../mobileui/style.css">
+    <link rel = "stylesheet" href = "../css/common.css">
+    
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
+
+     <!-- Firebase -->
+     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+     <!-- Add Firebase products that you want to use -->
+     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+     <!-- Custom JavaScript -->
+     <script src="../js/index.js"></script>
+     <script src="../js/data_opr.js"></script>
+    <title> Results </title>
+   
+</head>
+
+  <body onload="getResultList()">
+    <!-- <header>
+      <button style="width:15%; color:white;font-size: 48px;" class="w3-bar-item w3-button  w3-hover" onclick="goBack()">&#9756;</button>
+        <h1 style="width:80%;">Rssults</h1>
+    </header> -->
+
+    <div class="w3-bar w3-theme">
+        <button
+                class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8"
+                onclick="goBack()"
+                style="width:20%"
+        >
+            <i class="material-icons nav__icon" style="font-size:45.5px">chevron_left</i>
+      
+        </button>
+      
+      
+        <div class="w3-bar-item w3-button w3-padding-small w3-padding-16" style="width:70%;font-size:1.5em;font-weight: bold;">
+          Race Result
+        </div>
+      </div>
+
+    <main>
+    <div class="content">
+      <div class="cover padding align-center" style="background-image:url(../img/runner.jpg)">
+        <div class="space"></div>
+        <img id="raceImg" class="avatar circle border-white shadow" style="height: 128px;width: 128px;" src="../img/people-icon.png">
+        <h1 id="raceName" class="text-green" ></h1>
+      </div>
+      
+      <div id="results_list" class="list">
+        No Result...
+      </div>
+      <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    
+    </div>
+    </main>
+    <link rel = "stylesheet" href = "../css/footer.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <nav class="nav">
+        <a href="../races/races_map.html" class="w3-theme-dark nav__link">
+            <i class="material-icons nav__icon nav__link--active">directions_run</i>
+            <span class="nav__text">Race</span>
+        </a>
+        <a href="../profile/Profile_Main.html" class="nav__link">
+            <i class="material-icons nav__icon">settings</i>
+            <span class="nav__text">Profile</span>
+        </a>
+        <a href="../people/follows_main.html" class="nav__link">
+            <i class="material-icons nav__icon">group</i>
+            <span class="nav__text">People</span>
+        </a>
+    </nav>
+  </body>
+  <script type="text/javascript">
+
+   var results_list = document.getElementById('results_list');
+   var results_list_html = '';
+   var parameters = location.search.substring(1).split("&"); 
+   var temp = parameters[0].split("="); 
+   var raceId = unescape(temp[1]); 
+   getRace(raceId, snap=>{
+        var raceImg = document.getElementById('raceImg');
+        var raceName = document.getElementById('raceName');
+        raceImg.setAttribute( "src", snap.val().imagePath );
+        raceName.textContent = snap.val().raceName;   
+   });
+   var index = 0;
+
+   function getResultList()
+    {     
+      var isLoading = true; 
+      loading('Please wait...');
+        getRaceResults(  raceId, function( resultInfo, profileSnap ) {
+            var profileData = profileSnap.val();
+            console.log( resultInfo.val());     
+            index += 1;
+            
+            results_list_html += '<div class="item">' +
+                            '<div class="left">' +
+                            '   <img class="avatar circle" style="width:64px;height:64px;" src="' + profileData.profileImg + '">' +
+                            '</div> ' + //<h2 class="text-white">' + index + '. ' + '</h2>' + 
+                            '<h2 class="text-white"><a class="article-title" href="../people/searchprofile.html?id=' + profileSnap.key + '">' + profileData.firstName + ' ' + profileData.lastName + '</a></h2>' +
+                            '<p class="text-white">' + profileData.gender + '</p>' +
+                            '<div class="right" >' +
+                            '   <small class="text-white"> ' + resultInfo.val().finishedtime + 
+                            '   </small>' +
+                            '</div>' +
+                            '</div>';
+        
+            
+            results_list.innerHTML = results_list_html;
+            if( isLoading ){
+              closeLoading();
+              isLoading = false;
+            }
+            
+            
+        });
+        setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
+        
+    }
+
+    
+  </script>
+
+</html>

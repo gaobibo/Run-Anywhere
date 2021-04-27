@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
+    <link rel = "stylesheet" href = "../mobileui/style.css">
+    <link rel = "stylesheet" href = "../css/common.css">
+    <script type="text/javascript" src="../mobileui/mobileui.js"></script>
+   
+     <!-- Firebase -->
+     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+     <!-- Add Firebase products that you want to use -->
+     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+     <!-- Custom JavaScript -->
+     <script src="../js/index.js"></script>
+     <script src="../js/data_opr.js"></script>
+   
+ 
+    <title> Invitation </title>
+    <style>
+       
+       </style>
+</head>
+
+<body onload="getInvitesInfo()" class="grey-50 ">
+
+    <div class="w3-bar w3-theme">
+        <button
+                class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8"
+                onclick="goBack()"
+                style="width:20%"
+        >
+            <i class="material-icons nav__icon" style="font-size:45.5px">chevron_left</i>
+
+        </button>
+
+
+
+        <div class="w3-bar-item w3-button w3-padding-small w3-padding-16" style="width:60%;font-size:1.5em;font-weight: bold;">
+            Invitation
+        </div>
+
+    </div>
+
+    <div class="content">
+       
+       
+      <div class="list" id="invites_list">
+        No Race Invited.
+      </div>
+
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+
+      </div>
+    
+    
+   
+        <link rel = "stylesheet" href = "../css/footer.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <nav class="nav">
+            <a href="../races/races_map.html" class="nav__link">
+                <i class="material-icons nav__icon">directions_run</i>
+                <span class="nav__text">Race</span>
+            </a>
+            <a href="../profile/Profile_Main.html" class="w3-theme-dark  nav__link">
+                <i class="material-icons nav__icon">settings</i>
+                <span class="nav__text">Profile</span>
+            </a>
+            <a href="../people/follows_main.html" class="nav__link">
+                <i class="material-icons nav__icon nav__link--active">group</i>
+                <span class="nav__text">People</span>
+            </a>
+        </nav>
+  </body>
+  <script type="text/javascript" src="../js/invite_races.js"></script>
+</html>

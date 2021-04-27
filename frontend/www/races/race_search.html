@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+	<link href = "https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel = "stylesheet">
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+
+	<link rel = "stylesheet" href = "../mobileui/style.css"> 
+	<link rel = "stylesheet" href = "../css/common.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
+	
+    <script src="../js/data_opr.js"></script>
+	<title> Race Search </title>
+
+</head>
+
+	<body style="background-color:#4bbf6e;">
+		
+        <div class="w3-bar w3-theme">
+            <button
+                    class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8"
+                    onclick="goBack()"
+                    style="width:20%"
+            >
+                <i class="material-icons nav__icon" style="font-size:45.5px">chevron_left</i>
+          
+            </button>
+          
+          
+          
+            <div class="w3-bar-item w3-button w3-padding-small w3-padding-16" style="width:60%;font-size:1.5em;font-weight: bold;">
+                Race Search
+            </div>
+          
+            <button
+                    class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-right w3-padding-8"
+                    onclick="doSearch()"
+                    style="width:20%"
+            >
+                <i class="material-icons nav__icon" style="font-size:45.5px">check</i>
+          
+            </button>
+           
+          </div>
+		
+		
+            <div class="w3-container" style="max-width:600px;margin:auto;width:90%;">   
+                <div class="space"></div>
+                <div class="space"></div>
+                        <!-- distance card -->
+                        <div class="w3-card-2 w3-margin-bottom">
+                            <header class="w3-container">
+                                <span class="w3-col" style="color:white;width:50%;font-size:16px">Distance:</span>
+                                <span id="distanceRange" class="w3-col" style="color:white;width:50%;text-align:right;font-size:16px">10-100 Miles</span>
+                            </header>
+
+                            <div class="w3-container" style="background-color:GhostWhite;">
+                                <div class="w3-row w3-padding-16">
+                                    <span class="w3-left" style="width:10%">Min:</span>
+                                    <input id="minRange" class="w3-bar-item w3-right" style="width:90%" type="range" multiple min="1" max="120" step="1" value="10" onChange="updateDistanceInput(this.id);" list="distanceTicks">
+                                </div>
+                            </div>
+                            <datalist id="distanceTicks">
+                                <option>1</option>
+                                <option>10</option>
+                                <option>26.2</option>
+                                <option>31</option>
+                                <option>40</option>
+                                <option>50</option>
+                                <option>60</option>
+                                <option>70</option>
+                                <option>80</option>
+                                <option>100</option>
+                                <option>120</option>
+                            </datalist>
+
+                            <div class="w3-container" style="background-color:GhostWhite;">
+                                <div class="w3-row w3-padding-16">
+                                    <span class="w3-left" style="width:10%">Max:</span>
+                                    <input id="maxRange" class="w3-bar-item w3-right" style="width:90%" type="range" multiple min="1" max="120" step="1" value="100" onChange="updateDistanceInput(this.id);" list="distanceTicks">
+                                </div>
+                            </div>
+
+                        </div>
+                    
+
+                    <div class="w3-card-2 w3-margin-bottom">
+                        <header class="w3-container">
+                            <span class="w3-col" style="color:white;font-size:16px">Date:</span>
+                            
+                        </header>
+
+                      
+                     <div>
+                        <p style="color:white;"> From<span class = "required">*</span> </p><br>
+                        <input type="date" id="eventdayFrom" style="font:white;width:90%;" value="2019-10-12" required/> 
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div>
+                        <p style="color:white;"> To<span class = "required">*</span> </p><br>
+                        <input type="date" id="eventdayTo" style="font:white;width:90%;" value="2020-10-12" required/> 
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+                
+             </div>
+                   
+                
+			
+		
+
+             <link rel = "stylesheet" href = "../css/footer.css"/>
+             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+             <nav class="nav">
+                 <a href="../races/races_map.html" class="w3-theme-dark nav__link">
+                     <i class="material-icons nav__icon nav__link--active">directions_run</i>
+                     <span class="nav__text">Race</span>
+                 </a>
+                 <a href="../profile/Profile_Main.html" class="nav__link">
+                     <i class="material-icons nav__icon">settings</i>
+                     <span class="nav__text">Profile</span>
+                 </a>
+                 <a href="../people/follows_main.html" class="nav__link">
+                     <i class="material-icons nav__icon">group</i>
+                     <span class="nav__text">People</span>
+                 </a>
+             </nav>
+	</body>
+
+	<script>
+
+    function updateDistanceInput(id){
+        var minVal = document.getElementById('minRange');
+        var maxVal = document.getElementById('maxRange');
+
+        if ((id.localeCompare("minRange") === 0) && (parseInt(minVal.value) > parseInt(maxVal.value) )){
+            maxVal.value = minVal.value
+        } else if (id.localeCompare("maxRange") === 0 && parseInt(minVal.value) > parseInt(maxVal.value) ){
+            minVal.value = maxVal.value
+        }
+
+        document.getElementById('distanceRange').innerHTML = minVal.value + "-" + maxVal.value + " Miles";
+    }
+
+    function doSearch()
+    {
+        
+        var raceDistanceMin = document.getElementById('minRange').value;
+        var raceDistanceMax = document.getElementById('maxRange').value;
+        var raceFrom= document.getElementById('eventdayFrom').value;
+        var raceTo = document.getElementById('eventdayTo').value;
+        setTimeout(function(){
+                window.location.replace("../races/races_list.html?distanceMin=" + raceDistanceMin +
+                "&distanceMax=" + raceDistanceMax + "&from=" + raceFrom + "&to=" +  raceTo);
+        }, 1000);
+    }
+	
+	</script>
+</html> 

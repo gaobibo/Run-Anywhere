@@ -1,0 +1,42 @@
+html, body
+{
+    margin: 0;
+    padding: 0;
+}
+
+h1
+{
+    height: 20vh;
+
+    font-family: 'Sen', sans-serif;
+    color: white;
+    font-size: 2.8em;
+    text-align: center;
+}
+
+img
+{
+    display: block;
+
+    width: 85px;
+    height: 85px;
+    margin: 0 auto;
+}
+
+#top-half
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    height: 50vh;
+
+    background-color: #21e3ec;
+}
+
+#bottom-half
+{
+    height: 50vh;
+    
+    background-color: #4bbf6e;
+}

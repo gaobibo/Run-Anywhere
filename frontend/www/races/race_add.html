@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+	<link href = "https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap" rel = "stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+	<!--
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel = "stylesheet" href = "../mobileui/style.css"> -->
+	<link rel = "stylesheet" href = "../css/common.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-storage.js"></script>
+	
+	
+	<script type="text/javascript" src="../cordova.js"></script>
+	<script type="text/javascript" src="../js/storage_opr.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="auth.js"></script>
+    <script src="../js/data_opr.js"></script>
+	<title> Add Race </title>
+
+</head>
+
+	<body>
+	
+		<div class="w3-bar w3-theme">
+            <button
+                    class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8"
+                    onclick="goBack()"
+                    style="width:20%"
+            >
+                <i class="material-icons nav__icon" style="font-size:45.5px">chevron_left</i>
+          
+            </button>
+          
+          
+          
+            <div class="w3-bar-item w3-button w3-padding-small w3-padding-16" style="width:60%;font-size:1.5em;font-weight: bold;">
+                Add Race
+            </div>
+          
+            <button
+                    class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-right w3-padding-8"
+                    onclick="addRace()"
+                    style="width:20%"
+            >
+                <i class="material-icons nav__icon" style="font-size:45.5px">check</i>
+          
+            </button>
+           
+          </div>
+		
+		<div class="content" style="background-color: #4bbf6e;">
+			<div class="w3-container" style="text-align: center;">
+			<img class="w3-circle" style="width: 128px;height: 128px;" id="raceLogo" src="../img/runner.jpg"/>
+			<i  id="selectPicture" style="color:white;font-size: 48px;" class="material-icons" onclick="getPhoto(false);">photo_library</i>
+			<i  id="takePhoto" style="color:white;font-size: 48px;" class="material-icons" onclick="getPhoto(true);">add_a_photo</i>
+			</div>
+			<main>
+			<div class="list" style="width:100%;">
+				<div class="item label-fixed" style="margin-left: 20px;margin-right: 20px;margin-bottom:1px;">
+					<label style="color:white;"> Name<span class = "required">*</span> </label><br>
+					<input type="text" id="raceName" name="" placeholder="" required style="width:100%"/> 
+				</div>
+			
+				<div class="item label-fixed" style="margin-left: 20px;margin-right: 20px;margin-bottom:1px;">
+					<label style="color:white;"> Event Day<span class = "required">*</span> </label><br>
+					<input type="date" id="eventday" style="font:white;width:100%;" value="2020-10-12" required/> 
+					<i class="fas fa-calendar-alt"></i>
+				</div>
+		
+				<div class="item label-fixed" style="margin-left: 20px;margin-right: 20px;margin-bottom:1px;">
+					<label style="color:white;"> Start Time<span class = "required">*</span> </label><br>
+					<input type="time" id="startdttm"  style="font:white;width:100%;" value="08:00:00" required/>
+					<i class="fas fa-clock"></i>
+				</div>
+					
+				<div class="item label-fixed" style="margin-left: 20px;margin-right: 20px;margin-bottom:1px;">
+					<label style="color:white;">  Distance in Miles<span class = "required">*</span> </label><br>
+					<input type="text" id="distance" name="" placeholder="" style="width:100%"/> 
+				</div>
+
+				<div class="item label-fixed" style="margin-left: 20px;margin-right: 20px;margin-bottom:1px;">
+					<label style="color:white;"> Capacity<span class = "required">*</span> </label><br>
+						<input type="text" id="capacity" name="" placeholder="" style="width:100%"/> 
+				</div>
+
+				<div class="item label-fixed" style="margin-left: 20px;margin-right: 20px;margin-bottom:1px;">
+					<label style="color:white;"> Description: </label><br>
+					<input type="textarea"  rows="5" id="raceDescription" name="" placeholder="" style="width:100%"/> 
+				</div>
+
+				<div class="item label-fixed" style="margin-left: 20px;margin-right: 20px;margin-bottom:1px;">
+					<label style="color:white;"> GPX File: </label><br>
+					<input type="text" id="gpxFile" value="https://gaobibo.github.io/2017chickenrun.kml" style="width:100%"/>
+				</div>
+
+				<div class="item label-fixed" style="margin-left: 20px;margin-right: 20px;margin-bottom:1px;">
+					<i style="color:white;font-size: 48px;" class="material-icons" onclick="onFileSelected()">touch_app</i>Start Address:
+					<label style="color:white;" id="startLatLng"> </label>
+				</div>
+			</div>
+			<div ><hr></div>
+		</main>
+			<div class="space"></div>
+			<div class="space"></div>
+		</div>
+		
+
+		<link rel = "stylesheet" href = "../css/footer.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<nav class="nav">
+			<a href="../races/races_map.html" class="w3-theme-dark nav__link">
+				<i class="material-icons nav__icon nav__link--active">directions_run</i>
+				<span class="nav__text">Race</span>
+			</a>
+			<a href="../profile/Profile_Main.html" class="nav__link">
+				<i class="material-icons nav__icon">settings</i>
+				<span class="nav__text">Profile</span>
+			</a>
+			<a href="../people/follows_main.html" class="nav__link">
+				<i class="material-icons nav__icon">group</i>
+				<span class="nav__text">People</span>
+			</a>
+		</nav>
+	</body>
+
+	<script>
+
+	document.addEventListener("deviceready", onDeviceReady, false);
+	var platformString = "";
+
+    // Cordova is ready
+    function onDeviceReady() {
+
+		console.log(cordova);
+		platformString = cordova.platformId;
+	}
+
+	var imgFilename = Math.floor(Date.now() / 1000);
+	function addRace()
+	{
+		let raceName = document.getElementById("raceName").value;
+		let raceDescription = document.getElementById("raceDescription").value;
+		var image = document.getElementById('raceLogo');
+		let imagePath = image.src;
+		
+		let eventday = document.getElementById("eventday").value;
+		let startdttm = document.getElementById("startdttm").value;
+		let capactity = document.getElementById("capacity").value;
+		let distance = document.getElementById("distance").value;
+		let startLatLng = document.getElementById("startLatLng").textContent;
+		let gpxFile = document.getElementById("gpxFile").value;
+		
+		uploadRaceLogo( platformString, imgFilename, image.src, urlImg =>{ 
+			if(urlImg == "fail")
+            {
+                urlImg = "https://firebasestorage.googleapis.com/v0/b/runanywhere-4441e.appspot.com/o/races_logo%2F1606151285.jpg?alt=media&token=b47951ec-9ab6-464a-8c4b-b8d0f7337dee";
+            }
+		
+			addUpdateRace( null, raceName, raceDescription, 
+			urlImg, eventday,startdttm,capactity, distance,startLatLng, //"42.189, -87.915", 
+				gpxFile, //"https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml", 
+				true);
+			
+			setTimeout(function(){
+				window.location.replace("../races/races_list.html");
+			}, 1000);
+		});
+
+	}
+
+
+	function onSuccess(imageData) {
+		console.log('success - js call');
+		//console.log(device.platform);
+		var captureDataUrl = imageData;
+		if( platformString == "browser")
+		{
+			captureDataUrl = 'data:image/jpeg;base64,' + imageData;
+		}
+		
+		//JS selector call is slightly faster...
+		var image = document.getElementById('raceLogo');
+		image.src = captureDataUrl;//imageData;
+		
+	}
+
+	function onFail(message) {
+		alert('Failed because: ' + message);
+	}
+
+	function getPhoto(camera) {
+		if (camera === true) {
+			//Use from Camera
+				navigator.camera.getPicture(onSuccess, onFail, {
+					quality: 50,
+					correctOrientation: true,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					destinationType: Camera.DestinationType.FILE_URI
+				});
+		}
+		else {
+			navigator.camera.getPicture(onSuccess, onFail, {
+				sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+				destinationType: Camera.DestinationType.FILE_URI
+			});
+		}
+	}
+
+	/*
+	var fileUpload = document.getElementById("selectKmlFile");
+
+	fileUpload.addEventListener('change', function(evt) {
+		var firstFile = evt.target.files[0]; // upload the first file only
+		parseDocument(firstFile);
+	});*/
+
+	
+	function onFileSelected() {
+		
+		var gpxFile = document.getElementById("gpxFile").value;
+
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET", gpxFile, false);
+		xmlhttp.send();
+		if (xmlhttp.status==200) {
+			extractGoogleCoords( xmlhttp.responseText);
+		}
+		/*
+		window.resolveLocalFileSystemURL(gpxFile, function (fileEntry) {
+            fileEntry.file(function (f) {
+                var reader = new FileReader();
+                reader.onloadend = function () {
+					extractGoogleCoords(this.result);
+                };
+                reader.readAsText(f);
+             });
+         }, function (error) {
+            alert("invalid kml file.");
+         });
+		*/
+		//parseDocument(gpxFile);
+	}
+
+	function parseDocument(file) {
+		var fileReader = new FileReader();
+		fileReader.onload = () => {
+			extractGoogleCoords(event.target.result);
+		}
+		fileReader.readAsText(file);
+	}
+
+	function extractGoogleCoords(plainText) {
+		
+		let parser = new DOMParser();
+		let xmlDoc = parser.parseFromString(plainText, "text/xml");
+		let googlePolygons = [];
+		let googleMarkers = [];
+
+		if (xmlDoc.documentElement.nodeName == "kml") {
+
+			for (const item of xmlDoc.getElementsByTagName('Placemark') ) {
+				let lines = item.getElementsByTagName('LineString');
+		
+				for (const line of lines) {
+					let coords = line.getElementsByTagName('coordinates')[0].childNodes[0].nodeValue.trim();
+					let points = coords.split(" ");
+
+
+					for (const point of points) {
+						let coord = point.split(",");
+						let startLatLng = document.getElementById("startLatLng");
+						startLatLng.textContent =  coord[1] + "," + coord[0];
+						return;
+					}
+					
+				}
+			}
+		} 
+	}
+
+		
+	function goBack() {
+		window.history.back();
+	}
+
+	</script>
+</html> 

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<title>Run Anywhere</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+
+<script type="text/javascript" src="../mobileui/mobileui.js"></script>
+<link rel = "stylesheet" href = "../mobileui/style.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+
+<link rel="stylesheet" type="text/css" href="../css/race_map.css" />
+<link rel = "stylesheet" href = "../css/common.css">
+<script type="text/javascript" src="../mobileui/mobileui.js"></script>
+<script type="text/javascript" src="codova.js"></script>
+
+<script
+defer src="https://maps.googleapis.com/maps/api/js?key=[API_KEY]&callback=initMap&libraries=places&v=weekly"
+
+></script>
+<script type="text/javascript" src="../js/map_opr.js"></script>
+
+  <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+
+<script type="text/javascript" src="race_detail.js"></script>
+<script type="text/javascript" src="../js/data_opr.js"></script>
+<!--<script type="text/javascript" src="../js/footer.js"></script> -->
+<style>
+#map-canvas{
+    width: 100%;
+    height: 100%;
+  }
+
+</style>
+
+<body onload="getCurrentRace()">
+  <div class="w3-bar w3-theme">
+    <button
+            class="w3-bar-item w3-button w3-padding-small w3-hover-opacity w3-padding-8"
+            onclick="goBack()"
+            style="width:20%"
+    >
+        <i class="material-icons nav__icon" style="font-size:45.5px">chevron_left</i>
+  
+    </button>
+  
+  
+    <div class="w3-bar-item w3-button w3-padding-small w3-padding-16" style="width:70%;font-size:1.5em;font-weight: bold;">
+      Race Detail
+    </div>
+  </div>
+ 
+ <div class="content" style="background-color: #4bbf6e;">
+
+
+  <div class="swiper-container swipper-gallery">
+      <div class="swiper-wrapper">
+         <!-- Add slide 5 -->
+         <div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" >
+          <div id="map-canvas"></div> 
+        </div>
+          <!-- Add slide 1 -->
+          <div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" >
+            <img src="../img/2.jpg" style="width:100%;height:100%;object-fit: cover;">
+            <div id="eventTime" class="bottom margin-bottom text-shadow padding">
+              
+            </div>
+          </div>
+          <!-- Add slide 2 -->
+          <div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" >
+            <img src="../img/1.jpg" style="width:100%;height:100%;object-fit: cover;">
+            <div id="capactity" class="bottom margin-bottom text-shadow padding">
+              
+            </div>
+          </div>
+          <!-- Add slide 3 -->
+          <div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" >
+            <img src="../img/3.jpg" style="width:100%;height:100%;object-fit: cover;">
+            <div id="distance" class="bottom margin-bottom text-shadow padding">
+              
+            </div>
+          </div>
+          <!-- Add slide 4 -->
+          <div class="swiper-slide text-white align-center cover black-opacity-30 blend-soft-light" >
+            <img src="../img/4.jpg" style="width:100%;height:100%;object-fit: cover;">
+            <div  class="bottom margin-bottom text-shadow padding">
+              Welcome to join us!
+            </div>
+          </div>
+         
+          
+
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination swiper-pagination-white"></div>
+      
+  </div>
+
+  <div class="padding">
+    <div class="left">
+      <img class="w3-circle" style="width: 128px;height: 128px;" id="raceLogo"  />
+    </div>
+    <div class="">
+      <h1 id="raceName" class="text-strong text-big"></h1>
+      <button id="registerRace" class="w3-bar-item w3-button w3-large w3-hover text-white" onclick="registerRace()" style="display: none;">&#128587;Register</button>
+      <button id="dropRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="dropRace()" style="display: none;">&#128581;Drop</button>
+      <button id="inviteRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../people/invites_list.html?id=' + raceId + ''" style="display: none;">&#128588;Invites</button>
+      <button id="resultRace" class="w3-bar-item w3-button w3-large w3-hover  text-white" onclick="document.location='../races/race_results.html?id=' + raceId + ''" style="display: none;">&#127941;Results</button>
+      
+    </div>
+    
+    
+  </div>
+  <main>
+  <div class="padding">
+   <p class="text-white" id="raceDescription"></p>
+ </div>
+
+ <div id="myResult" class="padding" style="display: none;">
+  
+  <span style="display: inline-block;margin-right: 10px;"><label class="text-white">My Result:</label> </span>
+   
+   <span style="display: inline-block;"><input type="text" style="font-size: 16px;"  id="myResultEdit" value="00:00:00"  disabled /></span>
+  <span style="display: inline-block;"><i id="setMyResult" style="color:white;font-size: 16px;"  onclick="onSetMyResult()" >&#9997;Edit</i></span>
+ 
+ </div>
+</main>
+</div>
+
+  <script type="text/javascript">
+    new Swiper('.swipper-gallery', {
+        pagination: '.swiper-pagination'
+    });
+  </script>
+
+    
+       
+<link rel = "stylesheet" href = "../css/footer.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<nav class="nav">
+    <a href="../races/races_map.html" class="w3-theme-dark nav__link">
+        <i class="material-icons nav__icon nav__link--active">directions_run</i>
+        <span class="nav__text">Race</span>
+    </a>
+    <a href="../profile/Profile_Main.html" class="nav__link">
+        <i class="material-icons nav__icon">settings</i>
+        <span class="nav__text">Profile</span>
+    </a>
+    <a href="../people/follows_main.html" class="nav__link">
+        <i class="material-icons nav__icon">group</i>
+        <span class="nav__text">People</span>
+    </a>
+</nav>
+</body>
+<script>
+    var raceId;
+    var raceDistance="";
+    var editMode = false;
+    function getCurrentRace()
+    {
+        var isLoading = true; 
+        loading('Please wait...');
+        var parameters = location.search.substring(1).split("&"); 
+        var temp = parameters[0].split("="); 
+        raceId = unescape(temp[1]); 
+        console.log(raceId);
+        getRace(raceId, function(snap){
+            setContent( snap.val());
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+          
+              
+              isMyRegisterRace(raceId, function(isRegister, result){
+                console.log( result );
+                if(  snap.val().eventday > today ){
+                  document.getElementById("resultRace").style.display = "none";
+                  document.getElementById("myResult").style.display = "none";
+                  document.getElementById("inviteRace").style.display = "block";
+                  if( isRegister ){
+                    document.getElementById("registerRace").style.display = "none";
+                    document.getElementById("dropRace").style.display = "block";
+                  }else{
+                    document.getElementById("registerRace").style.display = "block";
+                    document.getElementById("dropRace").style.display = "none";  
+                  }
+                }
+                else{
+                  document.getElementById("registerRace").style.display = "none";
+                  document.getElementById("dropRace").style.display = "none";
+                  document.getElementById("inviteRace").style.display = "none";
+                  document.getElementById("resultRace").style.display = "block";
+                  if( isRegister)
+                  {
+                    document.getElementById("myResult").style.display = "block";
+                    document.getElementById("myResultEdit").value = result;
+                  }
+                  else
+                  {
+                    document.getElementById("myResult").style.display = "none";
+                  }
+                    
+                }
+
+                if( isLoading ){
+                  closeLoading();
+                  isLoading = false;
+                }
+                
+              });  
+        });
+
+        setTimeout( function(){
+      if( isLoading ){
+        closeLoading();
+        isLoading = false;
+       }
+      }, 3000);
+        
+    }
+
+    function onSetMyResult()
+    {
+      setMyResult = document.getElementById("setMyResult");
+      console.log(setMyResult.innerHTML);
+      if( !editMode )
+      {
+        editMode = true;
+        document.getElementById("myResultEdit").disabled = false;
+        setMyResult.innerHTML = "&#9997;Set";
+      }
+      else
+      {
+        editMode = false;
+        updateMyResultInfo( raceId,  document.getElementById("myResultEdit").value, raceDistance);
+        document.getElementById("myResultEdit").disabled = true;
+        setMyResult.innerHTML == "&#9997;Edit";
+      }
+      
+      
+
+    }
+
+    function registerRace()
+    { 
+        addRegister(raceId);
+        document.getElementById("registerRace").style.display = "none";
+        document.getElementById("dropRace").style.display = "block";
+      
+    }
+
+    function dropRace()
+    { 
+        
+        cancelRegister(raceId);
+        document.getElementById("registerRace").style.display = "block";
+        document.getElementById("dropRace").style.display = "none";       
+    }
+
+    function inviteFriends()
+    {
+        
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+
+    function setContent(raceData)
+    {
+        console.log(raceData.raceName);
+        var raceName = raceData.raceName;
+        var raceDescription = raceData.raceDescription;
+        var imagePath = raceData.imagePath;
+        var eventday = raceData.eventday;
+        var capactity = raceData.capactity;
+        var distance = raceData.distance;
+        var gpxFile = raceData.gpxFile;
+        var startdttm = raceData.startdttm;
+        var startLatLng = raceData.startLatLng;
+        var isOpen = raceData.isOpen;
+        document.getElementById("raceLogo").setAttribute("src", imagePath);
+        document.getElementById("raceName").innerHTML= raceName;
+        document.getElementById("capactity").innerHTML = "Ruuners: " + capactity;
+        document.getElementById("distance").innerHTML = "Distance:" + distance + "Miles";
+        document.getElementById("eventTime").innerHTML = "Race Day: " + eventday + "  " + startdttm;
+        document.getElementById("raceDescription").innerHTML = raceDescription ;
+        raceDistance = distance;
+
+        setRoute( gpxFile );
+        setMapCenter( startLatLng);
+    }
+    </script>
+</html>
