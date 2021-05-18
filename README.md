@@ -1,7 +1,12 @@
 # Run-Anywhere-Mobile-App
-● Easy to find your race. Run Anywhere is a race management tool for runners.
-● Connect with friends and share your adventure. Run Anywhere is the social network for runners. Record a race, where your friends and followers can share
-their own races.
+* Easy to find your race. Run Anywhere is a race management app for runners.
+* Connect with friends and share your adventure. Run Anywhere is a social network app for runners. 
+* Record a race, where your friends and followers can share their own races.
+
+# In the project, use the following technologies
+* Html / Javascript / CSS
+* Cordova plugin (Geolocation, File, Camera)
+* Third-party API (Firebase, Google Map, MobileUI)
 
 # EER Diagram
 ![image](https://user-images.githubusercontent.com/60306897/116272317-6e006100-a746-11eb-9277-d855c955628e.png)
